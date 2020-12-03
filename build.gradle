@@ -1,0 +1,43 @@
+plugins {
+    id "org.springframework.boot" version "${springframeworkBootVersion}"
+    id "io.spring.dependency-management" version "${springDependencyManagementVersion}"
+    id "io.franzbecker.gradle-lombok" version "${gradleLombokVersion}"
+    id 'org.liquibase.gradle' version "${liquibaseVersion}"
+    id "java"
+}
+lombok {
+    version = "${lombokVersion}"
+    sha256 = ""
+}
+
+group = "edu.roadmaps.roadmaps-core"
+version = "0.0.1-SNAPSHOT"
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    compile "org.modelmapper:modelmapper:${modelMapperVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "org.springframework.boot:spring-boot-starter-security"
+    runtimeOnly "org.postgresql:postgresql"
+    implementation "com.auth0:java-jwt:${comAuthJwtVersion}"
+    implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-csv:${jacksonVersion}"
+
+
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testCompile "org.testcontainers:testcontainers:${testContainersVersion}"
+    testCompile "org.testcontainers:junit-jupiter:${testContainersVersion}"
+    testImplementation "org.testcontainers:postgresql:${testContainersVersion}"
+    testCompile "org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}"
+    testCompile "org.junit.jupiter:junit-jupiter-params:${junitJupiterVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}"
+
+}
+test {
+    useJUnitPlatform()
+}
