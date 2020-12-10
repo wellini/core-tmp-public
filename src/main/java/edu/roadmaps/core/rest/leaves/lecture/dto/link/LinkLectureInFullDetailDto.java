@@ -1,6 +1,6 @@
 package edu.roadmaps.core.rest.leaves.lecture.dto.link;
 
-import edu.roadmaps.core.rest.leaves.lecture.dto.LectureFullDetailLeafDto;
+import edu.roadmaps.core.rest.dto.leaf.LectureFullDetailLeafDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -11,8 +11,8 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @SuperBuilder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class LinkLectureInFullDetailDto extends LectureFullDetailLeafDto {
     private String link;
 }

@@ -28,9 +28,9 @@ public class AttachmentServiceImpl implements AttachmentService {
         Leaf leaf = leafService.get(lectureId);
         Attachment attachment = modelMapper.map(dto, Attachment.class);
         attachment.setId(UUID.randomUUID());
-        List<Attachment> attachments = leaf.getAttachments();
-        attachments.add(attachment);
-        leaf.setAttachments(attachments);
+//        List<Attachment> attachments = leaf.getAttachments();
+//        attachments.add(attachment);
+//        leaf.setAttachments(attachments);
         leafService.create(leaf);
         return modelMapper.map(attachment, AttachmentInDetailDto.class);
     }
@@ -38,11 +38,11 @@ public class AttachmentServiceImpl implements AttachmentService {
     @Override
     public void deleteAttachment(UUID leafId, UUID attachId) {
         Leaf leaf = leafService.get(leafId);
-        List<Attachment> attachments = leaf.getAttachments()
-                .stream()
-                .filter(att -> att.getId().compareTo(attachId) != 0)
-                .collect(Collectors.toList());
-        leaf.setAttachments(attachments);
+//        List<Attachment> attachments = leaf.getAttachments()
+//                .stream()
+//                .filter(att -> att.getId().compareTo(attachId) != 0)
+//                .collect(Collectors.toList());
+//        leaf.setAttachments(attachments);
     }
 
 }

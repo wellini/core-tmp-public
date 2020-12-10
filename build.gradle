@@ -1,17 +1,21 @@
 plugins {
-    id "org.springframework.boot" version "${springframeworkBootVersion}"
-    id "io.spring.dependency-management" version "${springDependencyManagementVersion}"
-    id "io.franzbecker.gradle-lombok" version "${gradleLombokVersion}"
-    id 'org.liquibase.gradle' version "${liquibaseVersion}"
+    id "org.springframework.boot" version "2.3.4.RELEASE"
+    id "io.spring.dependency-management" version "1.0.8.RELEASE"
+    id "io.franzbecker.gradle-lombok" version "1.14"
+    id 'org.liquibase.gradle' version "2.0.3"
     id "java"
 }
 lombok {
     version = "${lombokVersion}"
     sha256 = ""
 }
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
 
 group = "edu.roadmaps.roadmaps-core"
-version = "0.0.1-SNAPSHOT"
+version = "v0.1-SNAPSHOT"
 
 
 repositories {
@@ -19,22 +23,27 @@ repositories {
 }
 
 dependencies {
+    liquibaseRuntime 'org.liquibase:liquibase-core:3.8.1'
+    liquibaseRuntime 'org.liquibase:liquibase-groovy-dsl:2.1.1'
+    liquibaseRuntime group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
 
-    compile "org.modelmapper:modelmapper:${modelMapperVersion}"
+    implementation "org.modelmapper:modelmapper:${modelMapperVersion}"
     implementation "org.springframework.boot:spring-boot-starter-data-jpa"
     implementation "org.springframework.boot:spring-boot-starter-web"
     implementation "org.springframework.boot:spring-boot-starter-security"
+    implementation "org.springframework.boot:spring-boot-starter-jdbc"
     runtimeOnly "org.postgresql:postgresql"
     implementation "com.auth0:java-jwt:${comAuthJwtVersion}"
     implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-csv:${jacksonVersion}"
 
 
+    implementation group: 'com.h2database', name: 'h2', version: '1.0.60'
     testImplementation "org.springframework.boot:spring-boot-starter-test"
-    testCompile "org.testcontainers:testcontainers:${testContainersVersion}"
-    testCompile "org.testcontainers:junit-jupiter:${testContainersVersion}"
-    testImplementation "org.testcontainers:postgresql:${testContainersVersion}"
-    testCompile "org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}"
-    testCompile "org.junit.jupiter:junit-jupiter-params:${junitJupiterVersion}"
+    testImplementation "org.testcontainers:testcontainers:${testContainersVersion}"
+    testImplementation "org.testcontainers:junit-jupiter:${testContainersVersion}"
+    implementation "org.testcontainers:postgresql:${testContainersVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:${junitJupiterVersion}"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}"
 
 }

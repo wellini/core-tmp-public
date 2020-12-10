@@ -11,7 +11,7 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @SuperBuilder
-@NoArgsConstructor
+@AllArgsConstructor
 public class LinkLectureInListDto extends LeafDetailDto {
 }
 

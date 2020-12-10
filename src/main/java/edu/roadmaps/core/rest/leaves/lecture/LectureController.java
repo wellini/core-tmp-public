@@ -2,6 +2,8 @@ package edu.roadmaps.core.rest.leaves.lecture;
 
 
 import edu.roadmaps.core.rest.dto.leaf.LeafDto;
+import edu.roadmaps.core.rest.dto.leaf.LeafInCreateDto;
+import edu.roadmaps.core.rest.dto.leaf.LeafInUpdateDto;
 import edu.roadmaps.core.rest.leaves.LeafControllerRestFacade;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,7 @@ public class LectureController {
     @PostMapping(value = "/v0.1/courses/modules/{module_id}/lectures/",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> create(@RequestBody LeafDto dto, @PathVariable("module_id") UUID moduleId){
+    public ResponseEntity<?> create(@RequestBody LeafInCreateDto dto, @PathVariable("module_id") UUID moduleId){
         LeafDto response = facade.create(dto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
@@ -30,7 +32,7 @@ public class LectureController {
     @GetMapping(value = "/v0.1/courses/modules/lectures/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> get(@PathVariable("id") UUID id){
-        LeafDto response = facade.get(id);
+            LeafDto response = facade.get(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
@@ -43,7 +45,7 @@ public class LectureController {
     @PatchMapping(value = "/v0.1/courses/modules/lectures/{id}",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> update(@RequestBody LeafDto dto, @PathVariable("id") UUID id){
+    public ResponseEntity<?> update(@RequestBody LeafInUpdateDto dto, @PathVariable("id") UUID id){
         LeafDto response = facade.update(dto, id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

@@ -54,6 +54,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 
     @Override
     protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        log.error("RestResponseEntityExceptionHandler", ex);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ApiErrorDto("Internal server error :("));
     }
 

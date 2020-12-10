@@ -5,12 +5,12 @@ import edu.roadmaps.core.model.entity.leaf.Leaf;
 import edu.roadmaps.core.model.entity.leaf.LeafType;
 import java.util.UUID;
 
-public interface LeafService<E extends Leaf> {
+public interface LeafService {
 
-    E create(E leaf);
-    E update(E leaf, UUID uuid);
+    Leaf create(Leaf leaf);
+    Leaf update(Leaf leaf, UUID uuid);
     void delete(UUID uuid);
-    E get(UUID uuid);
+    Leaf get(UUID uuid);
 
     LeafType getLeafType();
 }

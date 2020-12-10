@@ -1,4 +1,4 @@
-package edu.roadmaps.core.rest.leaves.lecture.dto;
+package edu.roadmaps.core.rest.dto.leaf;
 
 import edu.roadmaps.core.model.entity.attachment.Attachment;
 import edu.roadmaps.core.rest.dto.leaf.LeafDetailDto;
@@ -16,7 +16,7 @@ import java.util.UUID;
 @Data
 @SuperBuilder
 @AllArgsConstructor
-@NoArgsConstructor
-public abstract class LectureFullDetailLeafDto extends LeafDetailDto {
-    private List<Attachment> attachments;
+//@NoArgsConstructor
+public class LectureFullDetailLeafDto extends LeafDetailDto {
+//    private List<Attachment> attachments;
 }

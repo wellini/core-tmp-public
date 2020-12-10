@@ -2,6 +2,7 @@ package edu.roadmaps.core.configuration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import org.modelmapper.Conditions;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,7 @@ public class AppConfig {
                 .setFieldMatchingEnabled(true)
                 .setSkipNullEnabled(true)
                 .setFieldAccessLevel(PRIVATE);
+        mapper.getConfiguration().setPropertyCondition(Conditions.isNotNull());
         return mapper;
     }
 

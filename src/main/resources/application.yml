@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dev
+    active: test
 
 ---
 
@@ -18,7 +18,7 @@ spring:
     username: toor
   liquibase:
     change-log: classpath:db.changelog/changelog.xml
-    enabled: true
+    enabled: false
 
 ---
 
@@ -34,3 +34,23 @@ spring:
     url: jdbc:tc:postgresql:10-alpine:///core_test
     password: postgres
     username: postgres
+  liquibase:
+    change-log: classpath:db.changelog/changelog.xml
+    enabled: false
+
+---
+
+spring:
+  profiles: prod
+  jpa:
+    database: POSTGRESQL
+    hibernate:
+      ddl-auto: create
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://db:5432/roadmaps_db
+    password: mew
+    username: mew
+  liquibase:
+    change-log: classpath:db.changelog/changelog.xml
+    enabled: false

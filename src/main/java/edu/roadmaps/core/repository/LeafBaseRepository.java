@@ -9,5 +9,4 @@ import java.util.UUID;
 
 @NoRepositoryBean
 public interface LeafBaseRepository<E extends Leaf> extends JpaRepository <E, UUID> {
-    List<E> findByTitle(String title);
 }

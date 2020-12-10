@@ -4,5 +4,5 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
-    <include file="classpath:/db.changelog/v1.0/2020-07-14--01-create-database.xml"/>
+    <include file="classpath:/db.changelog/v0.1/create-database.xml"/>
 </databaseChangeLog>

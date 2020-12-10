@@ -4,4 +4,86 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
 
 
+    <changeSet author="winterfir" id="create table leaf">
+        <createTable tableName="leaf">
+            <column name="id" type="uuid">
+                <constraints nullable="false"
+                             primaryKey="true"
+                             primaryKeyName="PK_leaf"/>
+            </column>
+            <column name="type" type="VARCHAR(31)"/>
+            <column name="title" type="VARCHAR(512)"/>
+            <column name="order_id" type="int"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="winterfir" id="create table link_lecture">
+        <createTable tableName="link_lecture">
+            <column name="id" type="uuid">
+                <constraints nullable="false"
+                             primaryKey="true"
+                             primaryKeyName="PK_link_lecture"/>
+            </column>
+            <column name="url" type="VARCHAR(2048)"/>
+
+        </createTable>
+    </changeSet>
+
+
+    <changeSet author="winterfir" id="create table text_lecture">
+        <createTable tableName="text_lecture">
+            <column name="id" type="uuid">
+                <constraints nullable="false"
+                             primaryKey="true"
+                             primaryKeyName="PK_text_lecture"/>
+            </column>
+            <column name="text" type="clob"/>
+
+        </createTable>
+    </changeSet>
+
+
+    <changeSet author="winterfir" id="create table profile">
+        <createTable tableName="profile">
+            <column name="id" type="uuid">
+                <constraints nullable="false"
+                             primaryKey="true"
+                             primaryKeyName="PK_profile"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="role" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)"/>
+
+        </createTable>
+    </changeSet>
+
+
+    <changeSet author="winterfir" id="create FK_link_lecture_leaf">
+        <addForeignKeyConstraint baseColumnNames="id"
+                                 baseTableName="link_lecture"
+                                 constraintName="FK_link_lecture_leaf"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 onDelete="NO ACTION"
+                                 onUpdate="NO ACTION"
+                                 referencedColumnNames="id"
+                                 referencedTableName="leaf"
+                                 validate="true"/>
+    </changeSet>
+
+    <changeSet author="winterfir" id="create FK_text_lecture_leaf">
+        <addForeignKeyConstraint baseColumnNames="id"
+                                 baseTableName="text_lecture"
+                                 constraintName="FK_text_lecture_leaf"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 onDelete="NO ACTION"
+                                 onUpdate="NO ACTION"
+                                 referencedColumnNames="id"
+                                 referencedTableName="leaf"
+                                 validate="true"/>
+    </changeSet>
+
 </databaseChangeLog>
