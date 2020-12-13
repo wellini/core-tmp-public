@@ -1,0 +1,51 @@
+name: Deploy
+
+env:
+  IMAGE_NAME: roadmapsedu/rmpscore
+  DOCKER_USER: ${{ secrets.DOCKER_USER }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: BuildImage
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build image and publish to registry
+        run: |
+          docker build -t $IMAGE_NAME:latest .
+          echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
+          docker push $IMAGE_NAME:latest
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-18.04
+    needs: build
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy service with traefik over ssh
+        env:
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )
+          eval $(ssh-agent -s)
+          echo "add ssh key"
+          echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+          ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" $SSH_USER@$SSH_HOST "
+            cd /opt/roadmaps-edu && \
+            (echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin) && \
+            docker-compose pull core && \
+            (docker-compose rm -f core || true) && \
+            docker-compose up -d core
+          "
