@@ -1,0 +1,366 @@
+07.02.2021 13:36:47.988 [main] INFO   e.r.core.Application - Starting Application on Lil-Santos-Mac.local with PID 7893 (/Users/extize/Documents/roadmaps-repos/core/target/classes started by extize in /Users/extize/Documents/roadmaps-repos/core)
+07.02.2021 13:36:47.995 [main] INFO   e.r.core.Application - No active profile set, falling back to default profiles: default
+07.02.2021 13:36:48.656 [main] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+07.02.2021 13:36:48.757 [main] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 92ms. Found 3 JPA repository interfaces.
+07.02.2021 13:36:49.290 [main] INFO   o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+07.02.2021 13:36:49.297 [main] INFO   o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+07.02.2021 13:36:49.298 [main] INFO   o.a.c.c.StandardService - Starting service [Tomcat]
+07.02.2021 13:36:49.298 [main] INFO   o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.38]
+07.02.2021 13:36:49.389 [main] INFO   o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+07.02.2021 13:36:49.389 [main] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1349 ms
+07.02.2021 13:36:49.493 [main] INFO   c.z.h.HikariDataSource - HikariPool-1 - Starting...
+07.02.2021 13:36:49.644 [main] INFO   c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+07.02.2021 13:36:50.315 [main] INFO   l.e.jvm.JdbcExecutor - SELECT COUNT(*) FROM core.databasechangeloglock
+07.02.2021 13:36:50.324 [main] INFO   l.e.jvm.JdbcExecutor - SELECT COUNT(*) FROM core.databasechangeloglock
+07.02.2021 13:36:50.327 [main] INFO   l.e.jvm.JdbcExecutor - SELECT LOCKED FROM core.databasechangeloglock WHERE ID=1
+07.02.2021 13:36:50.346 [main] INFO   l.l.StandardLockService - Successfully acquired change log lock
+07.02.2021 13:42:46.796 [main] INFO   e.r.core.Application - Starting Application on Lil-Santos-Mac.local with PID 7931 (/Users/extize/Documents/roadmaps-repos/core/target/classes started by extize in /Users/extize/Documents/roadmaps-repos/core)
+07.02.2021 13:42:46.798 [main] INFO   e.r.core.Application - No active profile set, falling back to default profiles: default
+07.02.2021 13:42:47.342 [main] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+07.02.2021 13:42:47.423 [main] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 73ms. Found 3 JPA repository interfaces.
+07.02.2021 13:42:47.846 [main] INFO   o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+07.02.2021 13:42:47.853 [main] INFO   o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+07.02.2021 13:42:47.853 [main] INFO   o.a.c.c.StandardService - Starting service [Tomcat]
+07.02.2021 13:42:47.853 [main] INFO   o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.38]
+07.02.2021 13:42:47.938 [main] INFO   o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+07.02.2021 13:42:47.938 [main] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1097 ms
+07.02.2021 13:42:48.054 [main] INFO   c.z.h.HikariDataSource - HikariPool-1 - Starting...
+07.02.2021 13:42:48.168 [main] INFO   c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+07.02.2021 13:42:48.753 [main] INFO   l.e.jvm.JdbcExecutor - SELECT COUNT(*) FROM core.databasechangeloglock
+07.02.2021 13:42:48.756 [main] INFO   l.e.jvm.JdbcExecutor - SELECT COUNT(*) FROM core.databasechangeloglock
+07.02.2021 13:42:48.760 [main] INFO   l.e.jvm.JdbcExecutor - SELECT LOCKED FROM core.databasechangeloglock WHERE ID=1
+07.02.2021 13:42:48.763 [main] INFO   l.l.StandardLockService - Waiting for changelog lock....
+07.02.2021 13:43:24.880 [main] INFO   e.r.core.Application - Starting Application on Lil-Santos-Mac.local with PID 7940 (/Users/extize/Documents/roadmaps-repos/core/target/classes started by extize in /Users/extize/Documents/roadmaps-repos/core)
+07.02.2021 13:43:24.882 [main] INFO   e.r.core.Application - No active profile set, falling back to default profiles: default
+07.02.2021 13:43:25.467 [main] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+07.02.2021 13:43:25.554 [main] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 80ms. Found 3 JPA repository interfaces.
+07.02.2021 13:43:25.968 [main] INFO   o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+07.02.2021 13:43:25.974 [main] INFO   o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+07.02.2021 13:43:25.974 [main] INFO   o.a.c.c.StandardService - Starting service [Tomcat]
+07.02.2021 13:43:25.975 [main] INFO   o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.38]
+07.02.2021 13:43:26.055 [main] INFO   o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+07.02.2021 13:43:26.055 [main] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1137 ms
+07.02.2021 13:43:26.150 [main] INFO   c.z.h.HikariDataSource - HikariPool-1 - Starting...
+07.02.2021 13:43:26.243 [main] INFO   c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+07.02.2021 13:43:26.837 [main] INFO   l.e.jvm.JdbcExecutor - SELECT COUNT(*) FROM core.databasechangeloglock
+07.02.2021 13:43:26.852 [main] INFO   l.e.jvm.JdbcExecutor - CREATE TABLE core.databasechangeloglock (ID INTEGER NOT NULL, LOCKED BOOLEAN NOT NULL, LOCKGRANTED TIMESTAMP WITHOUT TIME ZONE, LOCKEDBY VARCHAR(255), CONSTRAINT DATABASECHANGELOGLOCK_PKEY PRIMARY KEY (ID))
+07.02.2021 13:43:26.868 [main] INFO   l.e.jvm.JdbcExecutor - SELECT COUNT(*) FROM core.databasechangeloglock
+07.02.2021 13:43:26.873 [main] INFO   l.e.jvm.JdbcExecutor - DELETE FROM core.databasechangeloglock
+07.02.2021 13:43:26.875 [main] INFO   l.e.jvm.JdbcExecutor - INSERT INTO core.databasechangeloglock (ID, LOCKED) VALUES (1, FALSE)
+07.02.2021 13:43:26.881 [main] INFO   l.e.jvm.JdbcExecutor - SELECT LOCKED FROM core.databasechangeloglock WHERE ID=1
+07.02.2021 13:43:26.891 [main] INFO   l.l.StandardLockService - Successfully acquired change log lock
+07.02.2021 13:43:28.000 [main] INFO   l.e.jvm.JdbcExecutor - SELECT MD5SUM FROM core.databasechangelog WHERE MD5SUM IS NOT NULL LIMIT 1
+07.02.2021 13:43:28.002 [main] INFO   l.e.jvm.JdbcExecutor - SELECT COUNT(*) FROM core.databasechangelog
+07.02.2021 13:43:28.003 [main] INFO   l.c.StandardChangeLogHistoryService - Reading from core.databasechangelog
+07.02.2021 13:43:28.003 [main] INFO   l.e.jvm.JdbcExecutor - SELECT * FROM core.databasechangelog ORDER BY DATEEXECUTED ASC, ORDEREXECUTED ASC
+07.02.2021 13:43:28.007 [main] INFO   l.e.jvm.JdbcExecutor - SELECT COUNT(*) FROM core.databasechangeloglock
+07.02.2021 13:43:28.021 [main] INFO   l.l.StandardLockService - Successfully released change log lock
+07.02.2021 13:43:28.022 [main] WARN   o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.ValidationFailedException: Validation Failed:
+     1 change sets check sum
+          classpath:/db.changelog/leaves/0003-add-leaf_link.sql::raw::includeAll was: 8:91bc4f722dc595b7699fb51cba725c3f but is now: 8:324100ea0683d8fc147dcae3e039d436
+
+07.02.2021 13:43:28.022 [main] INFO   c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+07.02.2021 13:43:28.030 [main] INFO   c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+07.02.2021 13:43:28.032 [main] INFO   o.a.c.c.StandardService - Stopping service [Tomcat]
+07.02.2021 13:43:28.043 [main] INFO   o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+07.02.2021 13:43:28.046 [main] ERROR  o.s.b.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.ValidationFailedException: Validation Failed:
+     1 change sets check sum
+          classpath:/db.changelog/leaves/0003-add-leaf_link.sql::raw::includeAll was: 8:91bc4f722dc595b7699fb51cba725c3f but is now: 8:324100ea0683d8fc147dcae3e039d436
+
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1794)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:516)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:311)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1109)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at edu.roadmaps.core.Application.main(Application.java:9)
+Caused by: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 change sets check sum
+          classpath:/db.changelog/leaves/0003-add-leaf_link.sql::raw::includeAll was: 8:91bc4f722dc595b7699fb51cba725c3f but is now: 8:324100ea0683d8fc147dcae3e039d436
+
+	at liquibase.changelog.DatabaseChangeLog.validate(DatabaseChangeLog.java:291)
+	at liquibase.Liquibase.update(Liquibase.java:198)
+	at liquibase.Liquibase.update(Liquibase.java:179)
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:366)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:314)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1790)
+	... 19 common frames omitted
+07.02.2021 13:44:27.339 [main] INFO   e.r.core.Application - Starting Application on Lil-Santos-Mac.local with PID 7945 (/Users/extize/Documents/roadmaps-repos/core/target/classes started by extize in /Users/extize/Documents/roadmaps-repos/core)
+07.02.2021 13:44:27.342 [main] INFO   e.r.core.Application - No active profile set, falling back to default profiles: default
+07.02.2021 13:44:27.909 [main] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+07.02.2021 13:44:27.992 [main] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 76ms. Found 3 JPA repository interfaces.
+07.02.2021 13:44:28.463 [main] INFO   o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+07.02.2021 13:44:28.470 [main] INFO   o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+07.02.2021 13:44:28.470 [main] INFO   o.a.c.c.StandardService - Starting service [Tomcat]
+07.02.2021 13:44:28.471 [main] INFO   o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.38]
+07.02.2021 13:44:28.560 [main] INFO   o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+07.02.2021 13:44:28.560 [main] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1176 ms
+07.02.2021 13:44:28.655 [main] INFO   c.z.h.HikariDataSource - HikariPool-1 - Starting...
+07.02.2021 13:44:28.767 [main] INFO   c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+07.02.2021 13:44:29.446 [main] INFO   l.e.jvm.JdbcExecutor - SELECT COUNT(*) FROM core.databasechangeloglock
+07.02.2021 13:44:29.450 [main] INFO   l.e.jvm.JdbcExecutor - SELECT COUNT(*) FROM core.databasechangeloglock
+07.02.2021 13:44:29.454 [main] INFO   l.e.jvm.JdbcExecutor - SELECT LOCKED FROM core.databasechangeloglock WHERE ID=1
+07.02.2021 13:44:29.469 [main] INFO   l.l.StandardLockService - Successfully acquired change log lock
+07.02.2021 13:44:30.504 [main] INFO   l.e.jvm.JdbcExecutor - SELECT MD5SUM FROM core.databasechangelog WHERE MD5SUM IS NOT NULL LIMIT 1
+07.02.2021 13:44:30.507 [main] INFO   l.e.jvm.JdbcExecutor - SELECT COUNT(*) FROM core.databasechangelog
+07.02.2021 13:44:30.508 [main] INFO   l.c.StandardChangeLogHistoryService - Reading from core.databasechangelog
+07.02.2021 13:44:30.509 [main] INFO   l.e.jvm.JdbcExecutor - SELECT * FROM core.databasechangelog ORDER BY DATEEXECUTED ASC, ORDEREXECUTED ASC
+07.02.2021 13:44:30.521 [main] INFO   l.e.jvm.JdbcExecutor - CREATE TABLE leaf_link
+(
+    id                   uuid           NOT NULL,
+    link                 text,
+    PRIMARY KEY (id),
+    CONSTRAINT fk_leaf_link_to_leaf FOREIGN KEY (id) REFERENCES leaf(id)
+)
+07.02.2021 13:44:30.534 [main] INFO   l.c.ChangeSet - Custom SQL executed
+07.02.2021 13:44:30.536 [main] INFO   l.c.ChangeSet - ChangeSet classpath:/db.changelog/leaves/0003-add-leaf_link.sql::raw::includeAll ran successfully in 16ms
+07.02.2021 13:44:30.536 [main] INFO   l.e.jvm.JdbcExecutor - SELECT MAX(ORDEREXECUTED) FROM core.databasechangelog
+07.02.2021 13:44:30.538 [main] INFO   l.e.jvm.JdbcExecutor - INSERT INTO core.databasechangelog (ID, AUTHOR, FILENAME, DATEEXECUTED, ORDEREXECUTED, MD5SUM, DESCRIPTION, COMMENTS, EXECTYPE, CONTEXTS, LABELS, LIQUIBASE, DEPLOYMENT_ID) VALUES ('raw', 'includeAll', 'classpath:/db.changelog/leaves/0003-add-leaf_link.sql', NOW(), 3, '8:324100ea0683d8fc147dcae3e039d436', 'sql', '', 'EXECUTED', NULL, NULL, '3.8.1', '2694670513')
+07.02.2021 13:44:30.544 [main] INFO   l.l.StandardLockService - Successfully released change log lock
+07.02.2021 13:44:30.609 [main] INFO   o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+07.02.2021 13:44:30.664 [task-1] INFO   o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+07.02.2021 13:44:30.687 [main] WARN   o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+07.02.2021 13:44:30.724 [task-1] INFO   o.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.21.Final
+07.02.2021 13:44:30.936 [task-1] INFO   o.h.a.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+07.02.2021 13:44:30.946 [main] INFO   o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: c3608d9b-ae8e-445f-81f3-8f33b1e9b7fc
+
+07.02.2021 13:44:31.018 [main] INFO   o.s.s.w.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/**'], []
+07.02.2021 13:44:31.056 [main] INFO   o.s.s.w.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@53fb3e1b, org.springframework.security.web.context.SecurityContextPersistenceFilter@570ede3b, org.springframework.security.web.header.HeaderWriterFilter@6da86e98, org.springframework.security.web.csrf.CsrfFilter@33b4c775, org.springframework.security.web.authentication.logout.LogoutFilter@20040c6e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4917992b, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@230e163b, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@f5a680, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5cfde2a4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@25630ede, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@135f160e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@48a2b492, org.springframework.security.web.session.SessionManagementFilter@476dc0af, org.springframework.security.web.access.ExceptionTranslationFilter@4b1ad751, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4619854a]
+07.02.2021 13:44:31.063 [task-1] INFO   o.h.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL95Dialect
+07.02.2021 13:44:31.370 [main] INFO   o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+07.02.2021 13:44:31.408 [main] INFO   o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+07.02.2021 13:44:31.409 [main] INFO   o.s.d.r.c.DeferredRepositoryInitializationListener - Triggering deferred initialization of Spring Data repositories…
+07.02.2021 13:44:31.772 [task-1] INFO   o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+07.02.2021 13:44:31.779 [task-1] INFO   o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+07.02.2021 13:44:31.973 [main] INFO   o.s.d.r.c.DeferredRepositoryInitializationListener - Spring Data repositories initialized!
+07.02.2021 13:44:31.983 [main] INFO   e.r.core.Application - Started Application in 5.024 seconds (JVM running for 5.459)
+07.02.2021 14:00:03.871 [HikariPool-1 housekeeper] WARN   c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m4s942ms).
+07.02.2021 14:24:09.133 [SpringContextShutdownHook] INFO   o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+07.02.2021 14:24:09.136 [SpringContextShutdownHook] INFO   o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+07.02.2021 14:24:09.137 [SpringContextShutdownHook] INFO   c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+07.02.2021 14:24:09.142 [SpringContextShutdownHook] INFO   c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.
+07.02.2021 14:55:57.912 [main] INFO   e.r.core.Application - Starting Application on Lil-Santos-Mac.local with PID 8606 (/Users/extize/Documents/roadmaps-repos/core/target/classes started by extize in /Users/extize/Documents/roadmaps-repos/core)
+07.02.2021 14:55:57.914 [main] INFO   e.r.core.Application - No active profile set, falling back to default profiles: default
+07.02.2021 14:55:58.506 [main] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+07.02.2021 14:55:58.595 [main] INFO   o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 80ms. Found 3 JPA repository interfaces.
+07.02.2021 14:55:59.081 [main] INFO   o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+07.02.2021 14:55:59.089 [main] INFO   o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+07.02.2021 14:55:59.090 [main] INFO   o.a.c.c.StandardService - Starting service [Tomcat]
+07.02.2021 14:55:59.090 [main] INFO   o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.38]
+07.02.2021 14:55:59.190 [main] INFO   o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+07.02.2021 14:55:59.190 [main] INFO   o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1236 ms
+07.02.2021 14:55:59.291 [main] INFO   c.z.h.HikariDataSource - HikariPool-1 - Starting...
+07.02.2021 14:55:59.408 [main] INFO   c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+07.02.2021 14:56:00.057 [main] INFO   l.e.jvm.JdbcExecutor - SELECT COUNT(*) FROM core.databasechangeloglock
+07.02.2021 14:56:00.061 [main] INFO   l.e.jvm.JdbcExecutor - SELECT COUNT(*) FROM core.databasechangeloglock
+07.02.2021 14:56:00.064 [main] INFO   l.e.jvm.JdbcExecutor - SELECT LOCKED FROM core.databasechangeloglock WHERE ID=1
+07.02.2021 14:56:00.081 [main] INFO   l.l.StandardLockService - Successfully acquired change log lock
+07.02.2021 14:56:01.287 [main] INFO   l.e.jvm.JdbcExecutor - SELECT MD5SUM FROM core.databasechangelog WHERE MD5SUM IS NOT NULL LIMIT 1
+07.02.2021 14:56:01.291 [main] INFO   l.e.jvm.JdbcExecutor - SELECT COUNT(*) FROM core.databasechangelog
+07.02.2021 14:56:01.293 [main] INFO   l.c.StandardChangeLogHistoryService - Reading from core.databasechangelog
+07.02.2021 14:56:01.293 [main] INFO   l.e.jvm.JdbcExecutor - SELECT * FROM core.databasechangelog ORDER BY DATEEXECUTED ASC, ORDEREXECUTED ASC
+07.02.2021 14:56:01.312 [main] INFO   l.l.StandardLockService - Successfully released change log lock
+07.02.2021 14:56:01.378 [main] INFO   o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+07.02.2021 14:56:01.427 [task-1] INFO   o.h.j.i.u.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+07.02.2021 14:56:01.446 [main] WARN   o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+07.02.2021 14:56:01.479 [task-1] INFO   o.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.21.Final
+07.02.2021 14:56:01.591 [main] INFO   o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: e857481b-f2b9-4cec-b466-0ef07c2f1ffc
+
+07.02.2021 14:56:01.636 [task-1] INFO   o.h.a.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+07.02.2021 14:56:01.655 [main] INFO   o.s.s.w.DefaultSecurityFilterChain - Creating filter chain: Ant [pattern='/**'], []
+07.02.2021 14:56:01.682 [main] INFO   o.s.s.w.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@718e700c, org.springframework.security.web.context.SecurityContextPersistenceFilter@1f4fa465, org.springframework.security.web.header.HeaderWriterFilter@23a9400c, org.springframework.security.web.csrf.CsrfFilter@6a9d572, org.springframework.security.web.authentication.logout.LogoutFilter@6d7d0946, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1104cf3a, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@4b99f2ed, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@5b5e45bc, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@28b286c0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6b888692, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3d0697da, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@10c1682b, org.springframework.security.web.session.SessionManagementFilter@6731b6bd, org.springframework.security.web.access.ExceptionTranslationFilter@76c2d002, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@40ef385f]
+07.02.2021 14:56:01.745 [task-1] INFO   o.h.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL95Dialect
+07.02.2021 14:56:01.962 [main] INFO   o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+07.02.2021 14:56:01.992 [main] INFO   o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+07.02.2021 14:56:01.993 [main] INFO   o.s.d.r.c.DeferredRepositoryInitializationListener - Triggering deferred initialization of Spring Data repositories…
+07.02.2021 14:56:02.377 [task-1] INFO   o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+07.02.2021 14:56:02.383 [task-1] INFO   o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+07.02.2021 14:56:02.558 [main] INFO   o.s.d.r.c.DeferredRepositoryInitializationListener - Spring Data repositories initialized!
+07.02.2021 14:56:02.565 [main] INFO   e.r.core.Application - Started Application in 5.214 seconds (JVM running for 5.674)
+07.02.2021 15:17:21.518 [HikariPool-1 housekeeper] WARN   c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9m21s845ms).
+07.02.2021 15:19:03.019 [http-nio-8080-exec-2] INFO   o.a.c.c.C.[.[.[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+07.02.2021 15:19:03.019 [http-nio-8080-exec-2] INFO   o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+07.02.2021 15:19:03.034 [http-nio-8080-exec-2] INFO   o.s.w.s.DispatcherServlet - Completed initialization in 15 ms
+07.02.2021 15:19:33.381 [http-nio-8080-exec-4] ERROR  e.r.c.r.h.RestResponseEntityExceptionHandler - RestResponseEntityExceptionHandler
+org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Could not resolve type id '<string>' as a subtype of `edu.roadmaps.core.rest.leaves.dto.LeafInCreateDto`: known type ids = [LINK_LECTURE, LeafInCreateDto, TEXT_LECTURE]; nested exception is com.fasterxml.jackson.databind.exc.InvalidTypeIdException: Could not resolve type id '<string>' as a subtype of `edu.roadmaps.core.rest.leaves.dto.LeafInCreateDto`: known type ids = [LINK_LECTURE, LeafInCreateDto, TEXT_LECTURE]
+ at [Source: (PushbackInputStream); line: 2, column: 13]
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:284)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.read(AbstractJackson2HttpMessageConverter.java:242)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodArgumentResolver.readWithMessageConverters(AbstractMessageConverterMethodArgumentResolver.java:205)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.readWithMessageConverters(RequestResponseBodyMethodProcessor.java:158)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:131)
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:121)
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:167)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:134)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:209)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+Caused by: com.fasterxml.jackson.databind.exc.InvalidTypeIdException: Could not resolve type id '<string>' as a subtype of `edu.roadmaps.core.rest.leaves.dto.LeafInCreateDto`: known type ids = [LINK_LECTURE, LeafInCreateDto, TEXT_LECTURE]
+ at [Source: (PushbackInputStream); line: 2, column: 13]
+	at com.fasterxml.jackson.databind.exc.InvalidTypeIdException.from(InvalidTypeIdException.java:43)
+	at com.fasterxml.jackson.databind.DeserializationContext.invalidTypeIdException(DeserializationContext.java:1784)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownTypeId(DeserializationContext.java:1291)
+	at com.fasterxml.jackson.databind.jsontype.impl.TypeDeserializerBase._handleUnknownTypeId(TypeDeserializerBase.java:294)
+	at com.fasterxml.jackson.databind.jsontype.impl.TypeDeserializerBase._findDeserializer(TypeDeserializerBase.java:160)
+	at com.fasterxml.jackson.databind.jsontype.impl.AsPropertyTypeDeserializer._deserializeTypedForId(AsPropertyTypeDeserializer.java:115)
+	at com.fasterxml.jackson.databind.jsontype.impl.AsPropertyTypeDeserializer.deserializeTypedFromObject(AsPropertyTypeDeserializer.java:99)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.deserializeWithType(BeanDeserializerBase.java:1209)
+	at com.fasterxml.jackson.databind.deser.impl.TypeWrappedDeserializer.deserialize(TypeWrappedDeserializer.java:68)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4524)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3519)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:273)
+	... 57 common frames omitted
+07.02.2021 15:20:43.357 [http-nio-8080-exec-6] ERROR  e.r.c.r.h.RestResponseEntityExceptionHandler - RestResponseEntityExceptionHandler
+org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unrecognized field "order_id" (class edu.roadmaps.core.rest.leaves.dto.LinkLectureInCreateDto), not marked as ignorable; nested exception is com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "order_id" (class edu.roadmaps.core.rest.leaves.dto.LinkLectureInCreateDto), not marked as ignorable (4 known properties: "title", "orderId", "type", "link"])
+ at [Source: (PushbackInputStream); line: 5, column: 18] (through reference chain: edu.roadmaps.core.rest.leaves.dto.LinkLectureInCreateDto["order_id"])
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:284)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.read(AbstractJackson2HttpMessageConverter.java:242)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodArgumentResolver.readWithMessageConverters(AbstractMessageConverterMethodArgumentResolver.java:205)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.readWithMessageConverters(RequestResponseBodyMethodProcessor.java:158)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:131)
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:121)
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:167)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:134)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:209)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+Caused by: com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "order_id" (class edu.roadmaps.core.rest.leaves.dto.LinkLectureInCreateDto), not marked as ignorable (4 known properties: "title", "orderId", "type", "link"])
+ at [Source: (PushbackInputStream); line: 5, column: 18] (through reference chain: edu.roadmaps.core.rest.leaves.dto.LinkLectureInCreateDto["order_id"])
+	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
+	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownProperty(BeanDeserializerBase.java:1604)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownVanilla(BeanDeserializerBase.java:1582)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:299)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer._deserializeOther(BeanDeserializer.java:194)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:166)
+	at com.fasterxml.jackson.databind.jsontype.impl.AsPropertyTypeDeserializer._deserializeTypedForId(AsPropertyTypeDeserializer.java:132)
+	at com.fasterxml.jackson.databind.jsontype.impl.AsPropertyTypeDeserializer.deserializeTypedFromObject(AsPropertyTypeDeserializer.java:99)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.deserializeWithType(BeanDeserializerBase.java:1209)
+	at com.fasterxml.jackson.databind.deser.impl.TypeWrappedDeserializer.deserialize(TypeWrappedDeserializer.java:68)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4524)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3519)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:273)
+	... 57 common frames omitted
+07.02.2021 15:30:26.138 [HikariPool-1 housekeeper] WARN   c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m4s517ms).
+07.02.2021 15:51:58.802 [HikariPool-1 housekeeper] WARN   c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=21m2s663ms).
+07.02.2021 16:59:22.493 [HikariPool-1 housekeeper] WARN   c.z.h.p.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h7m23s692ms).
+07.02.2021 17:04:19.822 [SpringContextShutdownHook] INFO   o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+07.02.2021 17:04:19.825 [SpringContextShutdownHook] INFO   o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+07.02.2021 17:04:19.825 [SpringContextShutdownHook] INFO   c.z.h.HikariDataSource - HikariPool-1 - Shutdown initiated...
+07.02.2021 17:04:19.830 [SpringContextShutdownHook] INFO   c.z.h.HikariDataSource - HikariPool-1 - Shutdown completed.

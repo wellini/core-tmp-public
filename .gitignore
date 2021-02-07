@@ -3,3 +3,7 @@
 /gradle/
 /.gradle/
 /.idea/
+/target/
+
+.DS_Store
+.env

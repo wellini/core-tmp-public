@@ -1,52 +1,44 @@
 package edu.roadmaps.core.rest.leaves;
 
-import edu.roadmaps.core.model.entity.leaf.Leaf;
-import edu.roadmaps.core.model.entity.leaf.LeafType;
-import edu.roadmaps.core.rest.dto.leaf.LeafDto;
+import edu.roadmaps.core.model.entity.Leaf;
+import edu.roadmaps.core.rest.leaves.converter.DtoConverter;
+import edu.roadmaps.core.rest.leaves.dto.LeafInCreateDto;
+import edu.roadmaps.core.rest.leaves.dto.LeafInUpdateDto;
+import edu.roadmaps.core.rest.leaves.dto.LectureFullDetailLeafDto;
+import edu.roadmaps.core.rest.leaves.converter.LeafDtoConverterStrategy;
 import edu.roadmaps.core.service.leaf.LeafService;
-import edu.roadmaps.core.service.leaf.LeafServiceStrategy;
-import edu.roadmaps.core.service.converter.DtoConverter;
-import edu.roadmaps.core.service.converter.LeafDtoConverterStrategy;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
 @Component
+@RequiredArgsConstructor
 public class LeafControllerRestFacade {
+
     private final LeafDtoConverterStrategy dtoConverterStrategy;
-    private final LeafServiceStrategy leafServiceStrategy;
+    private final LeafService service;
 
-    @Autowired
-    public LeafControllerRestFacade(LeafDtoConverterStrategy dtoConverterStrategy, LeafServiceStrategy leafServiceStrategy) {
-        this.dtoConverterStrategy = dtoConverterStrategy;
-        this.leafServiceStrategy = leafServiceStrategy;
+    public LectureFullDetailLeafDto create(UUID moduleId, LeafInCreateDto dto) {
+        DtoConverter converter = dtoConverterStrategy.getConverter(dto.getType());
+        Leaf leaf = converter.toEntity(dto);
+        return converter.toFullDto(service.create(leaf));
     }
 
-    public LeafDto create(LeafDto dto){
-        LeafType receivedType = dto.getType();
-        DtoConverter converter = dtoConverterStrategy.getConverter(receivedType);
-        LeafService service = leafServiceStrategy.getService(receivedType);
-
-        return converter.toFullDto(service.create(converter.toEntity(dto)));
-    }
-    public LeafDto get(UUID id){
-        LeafService service = leafServiceStrategy.getService(LeafType.LEAF);
-        Leaf found = service.get(id);
-        DtoConverter converter = dtoConverterStrategy.getConverter(found.getType());
-        return converter.toFullDto(found);
-    }
-    public void delete(UUID id){
-        LeafService service = leafServiceStrategy.getService(LeafType.LEAF);
-        service.delete(id);
-    }
-    public LeafDto update(LeafDto dto, UUID id){
-        LeafType receivedType = dto.getType();
-        DtoConverter converter = dtoConverterStrategy.getConverter(receivedType);
-        LeafService service = leafServiceStrategy.getService(receivedType);
-        Leaf leaf = service.update(converter.toEntity(dto), id);
-
+    public LectureFullDetailLeafDto get(UUID id) {
+        Leaf leaf = service.get(id);
+        DtoConverter converter = dtoConverterStrategy.getConverter(leaf.getType());
         return converter.toFullDto(leaf);
+    }
 
+    public void delete(UUID id) {
+        service.deleteById(id);
+    }
+
+    public LectureFullDetailLeafDto update(UUID id, LeafInUpdateDto dto) {
+        DtoConverter converter = dtoConverterStrategy.getConverter(dto.getType());
+        Leaf leaf = converter.toEntity(dto);
+        leaf.setId(id);
+        return converter.toFullDto(service.update(leaf));
     }
 }

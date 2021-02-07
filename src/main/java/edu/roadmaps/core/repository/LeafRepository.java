@@ -1,8 +1,9 @@
 package edu.roadmaps.core.repository;
 
-import edu.roadmaps.core.model.entity.leaf.Leaf;
-import org.springframework.stereotype.Repository;
+import edu.roadmaps.core.model.entity.Leaf;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public interface LeafRepository extends LeafBaseRepository<Leaf> {
+import java.util.UUID;
+
+public interface LeafRepository extends JpaRepository<Leaf, UUID> {
 }

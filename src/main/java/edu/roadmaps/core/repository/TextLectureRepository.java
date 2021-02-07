@@ -1,8 +1,10 @@
 package edu.roadmaps.core.repository;
 
-import edu.roadmaps.core.model.entity.leaf.TextLectureLeaf;
+import edu.roadmaps.core.model.entity.TextLectureLeaf;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface TextLectureRepository extends LeafBaseRepository<TextLectureLeaf> {
+import java.util.UUID;
+
+public interface TextLectureRepository extends JpaRepository<TextLectureLeaf, UUID> {
 }

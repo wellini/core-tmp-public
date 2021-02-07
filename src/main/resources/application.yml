@@ -1,56 +1,12 @@
 spring:
-  profiles:
-    active: dev
-
----
-
-spring:
-  profiles: dev
-  jpa:
-    database: h2
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-  datasource:
-    driverClassName: org.h2.Driver
-    url: jdbc:h2:mem:testdb
-    password: root
-    username: toor
-#  liquibase:
-#    change-log: classpath:db.changelog/changelog.xml
-#    enabled: false
-
----
-
-spring:
-  profiles: test
-  jpa:
-    database: POSTGRESQL
-    hibernate:
-      ddl-auto: create
-    show-sql: true
-  datasource:
-    driverClassName: org.testcontainers.jdbc.ContainerDatabaseDriver
-    url: jdbc:tc:postgresql:10-alpine:///core_test
-    password: postgres
-    username: postgres
-#  liquibase:
-#    change-log: classpath:db.changelog/changelog.xml
-#    enabled: false
-
----
-
-spring:
-  profiles: prod
   jpa:
     database: POSTGRESQL
     hibernate:
       ddl-auto: none
   datasource:
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://db:5432/roadmaps_db
-    password: mew
-    username: mew
-#  liquibase:
-#    change-log: classpath:db.changelog/changelog.xml
-#    enabled: false
+    url: jdbc:postgresql://localhost:5432/roadmaps_db?currentSchema=core
+    password: roadmaps
+    username: roadmaps
+  liquibase:
+    change-log: 'classpath:/db.changelog/changelog.xml'

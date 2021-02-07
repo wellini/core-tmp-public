@@ -1,16 +1,33 @@
 package edu.roadmaps.core.service.leaf;
 
+import edu.roadmaps.core.exception.EntityNotFoundException;
+import edu.roadmaps.core.model.entity.Leaf;
+import edu.roadmaps.core.repository.LeafRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
-import edu.roadmaps.core.model.entity.leaf.Leaf;
-import edu.roadmaps.core.model.entity.leaf.LeafType;
 import java.util.UUID;
 
-public interface LeafService {
+@Service
+@RequiredArgsConstructor
+public class LeafService {
 
-    Leaf create(Leaf leaf);
-    Leaf update(Leaf leaf, UUID uuid);
-    void delete(UUID uuid);
-    Leaf get(UUID uuid);
+    private final LeafRepository repository;
 
-    LeafType getLeafType();
+    public Leaf create(Leaf leaf) {
+        return repository.save(leaf);
+    }
+
+    public void deleteById(UUID id) {
+        repository.deleteById(id);
+    }
+
+    public Leaf get(UUID id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("No lecture with id=" + id));
+    }
+
+    public Leaf update(Leaf leaf) {
+        return repository.save(leaf);
+    }
 }

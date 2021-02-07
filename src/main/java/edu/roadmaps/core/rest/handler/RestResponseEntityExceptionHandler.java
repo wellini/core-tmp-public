@@ -1,10 +1,7 @@
 package edu.roadmaps.core.rest.handler;
 
-import edu.roadmaps.core.model.exception.ManagedException;
-import edu.roadmaps.core.model.exception.NotFoundException;
-import edu.roadmaps.core.model.exception.ValidationException;
+import edu.roadmaps.core.exception.RoadmapsException;
 import edu.roadmaps.core.rest.dto.api.ApiErrorDto;
-import edu.roadmaps.core.security.exception.ManagedSecurityException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -21,28 +18,10 @@ import static org.springframework.http.ResponseEntity.ok;
 @Slf4j
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(value = {ManagedException.class})
-    public ResponseEntity<ApiErrorDto> handleManagedException(ManagedException ex, WebRequest request) {
+    @ExceptionHandler(value = {RoadmapsException.class})
+    public ResponseEntity<ApiErrorDto> handleManagedException(RoadmapsException ex, WebRequest request) {
         log.error("RestResponseEntityExceptionHandler", ex);
         return ok(new ApiErrorDto(ex.getExplanation()));
-    }
-
-    @ExceptionHandler(value = {ManagedSecurityException.class})
-    public ResponseEntity<ApiErrorDto> handleManagedException(ManagedSecurityException ex, WebRequest request) {
-        log.error("RestResponseEntityExceptionHandler", ex);
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ApiErrorDto(ex.getExplanation()));
-    }
-
-    @ExceptionHandler(value = {NotFoundException.class})
-    public ResponseEntity<ApiErrorDto> handleNotFoundException(NotFoundException ex, WebRequest request) {
-        log.error("RestResponseEntityExceptionHandler", ex);
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiErrorDto(ex.getExplanation()));
-    }
-
-    @ExceptionHandler(value = {ValidationException.class})
-    public ResponseEntity<ApiErrorDto> handleValidationException(ValidationException ex, WebRequest request) {
-        log.error("RestResponseEntityExceptionHandler", ex);
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ApiErrorDto(ex.getExplanation()));
     }
 
     @ExceptionHandler(value = {RuntimeException.class})
