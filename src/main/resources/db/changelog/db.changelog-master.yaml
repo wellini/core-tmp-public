@@ -1,0 +1,8 @@
+databaseChangeLog:
+
+  - include:
+      file: db/changelog/leaves/0001-add-leaf.sql
+  - include:
+      file: db/changelog/leaves/0002-add-leaf_text.sql
+  - include:
+      file: db/changelog/leaves/0003-add-leaf_link.sql

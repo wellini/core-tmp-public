@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build image and publish to registry
-        run: mvn compile jib:build
+        run: mvn --settings .m2/settings.xml compile jib:build
 
   deploy:
     name: Deploy
@@ -42,6 +42,7 @@ jobs:
           ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" $SSH_USER@$SSH_HOST "
             cd /opt/roadmaps-edu && \
             (echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin) && \
+            echo 'JAVA_TOOL_OPTIONS="-Dspring.datasource.url=${{ secrets.POSTGRES_URL }}" "-Dspring.datasource.password=${{ secrets.POSTGRES_PASSWORD }}" "-Dspring.datasource.username=${{ secrets.POSTGRES_USER }}"' > envs/core.env && \
             docker-compose pull core && \
             (docker-compose rm -f core || true) && \
             docker-compose up -d core

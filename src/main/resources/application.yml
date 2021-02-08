@@ -1,12 +1,9 @@
 spring:
   jpa:
-    database: POSTGRESQL
     hibernate:
       ddl-auto: none
+      show-sql: true
   datasource:
-    driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/roadmaps_db?currentSchema=core
-    password: roadmaps
     username: roadmaps
-  liquibase:
-    change-log: 'classpath:/db.changelog/changelog.xml'
+    password: roadmaps
