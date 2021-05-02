@@ -1,0 +1,1 @@
+mvn spring-boot:run -Dspring-boot.run.arguments="--spring.datasource.url=${POSTGRES_URL} --spring.datasource.username=${POSTGRES_USER} --spring.datasource.password=${POSTGRES_PASSWORD}"

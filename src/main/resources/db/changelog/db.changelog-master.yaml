@@ -6,3 +6,17 @@ databaseChangeLog:
       file: db/changelog/leaves/0002-add-leaf_text.sql
   - include:
       file: db/changelog/leaves/0003-add-leaf_link.sql
+  - include:
+      file: db/changelog/users/0001-add-user.sql
+  - include:
+      file: db/changelog/courses/0001-add-course.sql
+  - include:
+      file: db/changelog/modules/0001-add-module.sql
+  - include:
+      file: db/changelog/leaves/0004-add-module_id.sql
+  - include:
+      file: db/changelog/leaves/0005-add-course_id.sql
+  - include:
+      file: db/changelog/seed/default-user.sql
+  - include:
+      file: db/changelog/courses/0002-add-cover-fields.sql
