@@ -22,12 +22,7 @@ import java.lang.annotation.Target;
         @Parameter(in = ParameterIn.QUERY
                 , description = "Number of records per page."
                 , name = "size"
-                , content = @Content(schema = @Schema(type = "integer", defaultValue = "20"))),
-        @Parameter(in = ParameterIn.QUERY
-                , description = "Sorting criteria in the format: property(,asc|desc). "
-                + "Default sort order is ascending. " + "Multiple sort criteria are supported."
-                , name = "sort"
-                , content = @Content(array = @ArraySchema(schema = @Schema(type = "string"))))
+                , content = @Content(schema = @Schema(type = "integer", defaultValue = "20")))
 })
 public @interface ApiPageable {
 
