@@ -23,9 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     CorsConfigurationSource corsConfigurationSource() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
-        config.addAllowedOrigin("http://localhost:3000");
-        config.addAllowedOrigin("http://dev.roadmaps.nonfallable.com");
-        config.addAllowedOrigin("https://dev.roadmaps.nonfallable.com");
+        config.applyPermitDefaultValues();
         source.registerCorsConfiguration("/**", config);
         return source;
     }
