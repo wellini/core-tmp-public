@@ -14,14 +14,10 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/**");
-    }
-
-    @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .anyRequest().permitAll().and()
-                .cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
+        http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues()).and()
+                .csrf().disable()
+                .authorizeRequests()
+                .anyRequest().permitAll();
     }
 }
