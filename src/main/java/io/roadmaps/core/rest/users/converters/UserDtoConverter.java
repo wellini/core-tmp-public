@@ -1,7 +1,7 @@
 package io.roadmaps.core.rest.users.converters;
 
 import io.roadmaps.core.model.entity.User;
-import io.roadmaps.core.rest.users.dto.UserResponseDto;
+import io.roadmaps.core.rest.users.dto.templates.UserResponseDtoTemplate;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
@@ -12,7 +12,7 @@ public class UserDtoConverter {
 
     private final ModelMapper modelMapper;
 
-    public UserResponseDto fromDomain(User user) {
-        return modelMapper.map(user, UserResponseDto.class);
+    public <T extends UserResponseDtoTemplate> T fromDomain(User course, Class<T> clazz) {
+        return modelMapper.map(course, clazz);
     }
 }

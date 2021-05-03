@@ -1,11 +1,11 @@
-package io.roadmaps.core.rest.users.dto;
+package io.roadmaps.core.rest.users.dto.templates;
 
 import lombok.Data;
 
 import java.util.UUID;
 
 @Data
-public class UserResponseDto {
+public class UserResponseDtoTemplate {
 
     private UUID id;
 
