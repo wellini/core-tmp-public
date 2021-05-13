@@ -7,3 +7,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/roadmaps_db?currentSchema=core
     username: roadmaps
     password: roadmaps
+
+springdoc:
+  api-docs:
+    path: /api/swagger
