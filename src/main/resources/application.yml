@@ -13,3 +13,9 @@ springdoc:
     path: /api/swagger
   swagger-ui:
     path: /api/swagger-ui
+
+server:
+  forward-headers-strategy: NATIVE
+#  tomcat:
+#    remoteip:
+#      internal-proxies:
