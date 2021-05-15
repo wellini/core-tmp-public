@@ -19,7 +19,7 @@ import javax.persistence.SecondaryTable;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @SecondaryTable(name = "leaf_text")
-@DiscriminatorValue(value = "TEXT_LECTURE")
+@DiscriminatorValue(value = "TEXT")
 public class TextLeaf extends Leaf {
 
     @Column(name = "text", table="leaf_text")

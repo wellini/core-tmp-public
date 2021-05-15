@@ -19,7 +19,7 @@ import javax.persistence.SecondaryTable;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @SecondaryTable(name = "leaf_link")
-@DiscriminatorValue(value = "LINK_LECTURE")
+@DiscriminatorValue(value = "LINK")
 public class LinkLeaf extends Leaf {
 
     @Column(name = "link", table="leaf_link")
