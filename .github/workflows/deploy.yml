@@ -42,7 +42,13 @@ jobs:
           ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" $SSH_USER@$SSH_HOST "
             cd /opt/roadmaps-edu && \
             (echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin) && \
-            echo 'JAVA_TOOL_OPTIONS="-Dspring.datasource.url=${{ secrets.POSTGRES_URL }}" "-Dspring.datasource.password=${{ secrets.POSTGRES_PASSWORD }}" "-Dspring.datasource.username=${{ secrets.POSTGRES_USER }}"' > envs/core.env && \
+            echo 'JAVA_TOOL_OPTIONS="-Dspring.datasource.url=${{ secrets.POSTGRES_URL }}" "-Dspring.datasource.password=${{ secrets.POSTGRES_PASSWORD }}" "-Dspring.datasource.username=${{ secrets.POSTGRES_USER }}"' >> envs/core.env && \
+            echo 'JWT_TOKEN="${{ secrets.JWT_TOKEN }}"' >> envs/core.env && \
+            echo 'JWT_TOKEN_VALID_DAYS="${{ secrets.JWT_TOKEN_VALID_DAYS }}"' >> envs/core.env && \
+            echo 'GOOGLE_CLIENT_ID="${{ secrets.GOOGLE_CLIENT_ID }}"' >> envs/core.env && \
+            echo 'GOOGLE_CLIENT_SECRET="${{ secrets.GOOGLE_CLIENT_SECRET }}"' >> envs/core.env && \
+            echo 'GOOGLE_REDIRECT_URI="${{ secrets.GOOGLE_REDIRECT_URI }}"' >> envs/core.env && \
+            echo 'GOOGLE_APP_NAME="${{ secrets.GOOGLE_APP_NAME }}"' >> envs/core.env && \
             docker-compose pull core && \
             (docker-compose rm -f core || true) && \
             docker-compose up -d core
