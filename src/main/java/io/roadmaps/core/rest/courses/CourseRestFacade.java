@@ -34,15 +34,14 @@ public class CourseRestFacade {
     private final CourseAffiliationService affiliationService;
     private final AuthorizationService authorizationService;
 
-    public Page<GetAllCoursesResponseDto> getAllCourses(Pageable pageable) {
-        UUID currentUserId = authorizationService.getCurrentUserId();
-        Page<Course> page = repository.findCoursesByAuthorId(currentUserId, pageable);
+    public Page<GetAllCoursesResponseDto> getAllCourses(Pageable pageable, UUID userId) {
+        Page<Course> page = repository.findCoursesByAuthorId(userId, pageable);
         List<GetAllCoursesResponseDto> content = page
                 .getContent()
                 .stream()
                 .map(entity -> {
                     GetAllCoursesResponseDto dto = converter.fromDomain(entity, GetAllCoursesResponseDto.class);
-                    CourseAffiliationType affiliationType = affiliationService.getAffiliationType(entity.getId(), currentUserId);
+                    CourseAffiliationType affiliationType = affiliationService.getAffiliationType(entity.getId(), userId);
                     dto.setAffiliationType(affiliationType);
                     return dto;
                 })
@@ -51,14 +50,13 @@ public class CourseRestFacade {
     }
 
     @Transactional
-    public CreateCourseResponseDto createCourse(CreateCourseDto dto) {
+    public CreateCourseResponseDto createCourse(CreateCourseDto dto, UUID userId) {
         Course course = converter.toDomain(dto);
-        UUID currentUserId = authorizationService.getCurrentUserId();
-        course.setAuthorId(currentUserId);
+        course.setAuthorId(userId);
         Course savedCourse = repository.save(course);
         CourseAffiliation affiliation = affiliationService.createOrUpdateAffiliation(
                 savedCourse.getId(),
-                currentUserId,
+                userId,
                 CourseAffiliationType.TEACHER
         );
         CreateCourseResponseDto responseDto = converter.fromDomain(savedCourse, CreateCourseResponseDto.class);
@@ -66,24 +64,24 @@ public class CourseRestFacade {
         return responseDto;
     }
 
-    public GetCourseResponseDto getCourse(UUID id) {
+    public GetCourseResponseDto getCourse(UUID id,UUID userId) {
         Course course = repository.findById(id).orElseThrow(EntityNotFoundException::new);
         CourseAffiliationType affiliationType = affiliationService.getAffiliationType(
                 course.getId(),
-                authorizationService.getCurrentUserId()
+                userId
         );
         GetCourseResponseDto responseDto = converter.fromDomain(course, GetCourseResponseDto.class);
         responseDto.setAffiliationType(affiliationType);
         return responseDto;
     }
 
-    public UpdateCourseResponseDto updateCourse(UUID id, UpdateCourseDto dto) {
+    public UpdateCourseResponseDto updateCourse(UUID id, UpdateCourseDto dto, UUID userId) {
         Course course = repository.findById(id).orElseThrow(EntityNotFoundException::new);
         converter.update(course, dto);
         Course savedCourse = repository.save(course);
         CourseAffiliationType affiliationType = affiliationService.getAffiliationType(
                 course.getId(),
-                authorizationService.getCurrentUserId()
+                userId
         );
         UpdateCourseResponseDto responseDto = converter.fromDomain(savedCourse, UpdateCourseResponseDto.class);
         responseDto.setAffiliationType(affiliationType);

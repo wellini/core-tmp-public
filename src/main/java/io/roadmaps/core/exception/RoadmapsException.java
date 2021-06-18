@@ -2,7 +2,7 @@ package io.roadmaps.core.exception;
 
 public class RoadmapsException extends RuntimeException {
 
-    private String explanation;
+    private final String explanation;
 
     public String getExplanation() {
         return explanation;

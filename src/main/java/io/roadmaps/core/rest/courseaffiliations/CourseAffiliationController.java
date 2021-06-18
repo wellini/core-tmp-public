@@ -8,6 +8,7 @@ import io.roadmaps.core.repository.CourseRepository;
 import io.roadmaps.core.rest.courseaffiliations.converters.CourseAffiliationDtoConverter;
 import io.roadmaps.core.rest.courseaffiliations.dto.CreateCourseAffiliationForStudentResponseDto;
 import io.roadmaps.core.security.AuthorizationService;
+import io.roadmaps.core.security.annotations.UserId;
 import io.roadmaps.core.service.CourseAffiliationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,15 +22,16 @@ import java.util.UUID;
 public class CourseAffiliationController {
 
     private final CourseAffiliationService affiliationService;
-    private final AuthorizationService authorizationService;
     private final CourseRepository courseRepository;
     private final CourseAffiliationDtoConverter converter;
 
     @PostMapping("/api/courses/{courseId}/course-affiliations/create-course-affiliation-for-student")
-    public CreateCourseAffiliationForStudentResponseDto createCourseAffiliationForStudent(@PathVariable UUID courseId) {
+    public CreateCourseAffiliationForStudentResponseDto createCourseAffiliationForStudent(@PathVariable UUID courseId, @UserId UUID userId) {
         Course course = courseRepository.findById(courseId).orElseThrow(EntityNotFoundException::new);
-        CourseAffiliation affiliation = affiliationService.createOrUpdateAffiliation(course.getId(), authorizationService
-                .getCurrentUserId(), CourseAffiliationType.STUDENT);
+        CourseAffiliation affiliation = affiliationService.createOrUpdateAffiliation(
+                course.getId(),
+                userId,
+                CourseAffiliationType.STUDENT);
         return converter.fromDomain(affiliation, CreateCourseAffiliationForStudentResponseDto.class);
     }
 }

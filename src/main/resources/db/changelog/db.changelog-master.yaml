@@ -24,3 +24,5 @@ databaseChangeLog:
       file: db/changelog/users/0002-rename-user-to-users.sql
   - include:
       file: db/changelog/courseaffiliations/0001-add-course_affiliation.sql
+  - include:
+      file: db/changelog/authprovider/0001-add-auth_provider.sql

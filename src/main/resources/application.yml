@@ -4,9 +4,9 @@ spring:
       ddl-auto: none
       show-sql: true
   datasource:
-    url: jdbc:postgresql://localhost:5432/roadmaps_db?currentSchema=core
-    username: roadmaps
-    password: roadmaps
+    url: jdbc:postgresql://localhost:5432/roadmaps_db
+    username: postgres
+    password: mysecretpassword
 
 springdoc:
   api-docs:
@@ -16,6 +16,13 @@ springdoc:
 
 server:
   forward-headers-strategy: NATIVE
-#  tomcat:
-#    remoteip:
-#      internal-proxies:
+
+jwt:
+  secret: ${JWT_SECRET}
+  tokenValidDays: ${JWT_TOKEN_VALID_DAYS}
+
+google:
+  clientId: ${GOOGLE_CLIENT_ID}
+  clientSecret: ${GOOGLE_CLIENT_SECRET}
+  redirectUri: ${GOOGLE_REDIRECT_URI}
+  appName: ${GOOGLE_APP_NAME}
