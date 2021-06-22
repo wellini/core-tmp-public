@@ -12,14 +12,6 @@ import java.util.List;
 @Configuration
 public class Web implements WebMvcConfigurer {
 
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowCredentials(true)
-                .allowedMethods("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH")
-                .allowedOriginPatterns("http://localhost*");
-    }
-
     @Bean
     public UserIdArgumentResolver userIdArgumentResolver() {
         return new UserIdArgumentResolver();
