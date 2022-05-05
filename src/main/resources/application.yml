@@ -1,8 +1,8 @@
 spring:
   jpa:
+    show-sql: true
     hibernate:
       ddl-auto: none
-      show-sql: true
   datasource:
     url: jdbc:postgresql://localhost:5432/roadmaps_db
     username: postgres
