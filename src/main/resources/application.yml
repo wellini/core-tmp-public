@@ -5,8 +5,8 @@ spring:
       ddl-auto: none
   datasource:
     url: jdbc:postgresql://localhost:5432/roadmaps_db
-    username: postgres
-    password: mysecretpassword
+    username: roadmaps
+    password: roadmaps
 
 springdoc:
   api-docs:
