@@ -1,11 +1,9 @@
 package io.roadmaps.core.rest.courses;
 
+import io.roadmaps.core.model.entity.enums.CourseAffiliationType;
 import io.roadmaps.core.rest.courses.dto.CreateCourseDto;
 import io.roadmaps.core.rest.courses.dto.UpdateCourseDto;
-import io.roadmaps.core.rest.courses.dto.response.CreateCourseResponseDto;
-import io.roadmaps.core.rest.courses.dto.response.GetAllCoursesResponseDto;
-import io.roadmaps.core.rest.courses.dto.response.GetCourseResponseDto;
-import io.roadmaps.core.rest.courses.dto.response.UpdateCourseResponseDto;
+import io.roadmaps.core.rest.courses.dto.response.*;
 import io.roadmaps.core.security.annotations.UserId;
 import io.roadmaps.core.swagger.ApiPageable;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -25,8 +23,10 @@ public class CourseController {
 
     @GetMapping("/api/courses")
     @ApiPageable
-    public Page<GetAllCoursesResponseDto> getAllCourses(@PageableDefault @Parameter(hidden = true) Pageable pageable, @UserId UUID userId) {
-        return restFacade.getAllCourses(pageable, userId);
+    public Page<GetAllCoursesResponseDto> getAllCourses(@PageableDefault @Parameter(hidden = true) Pageable pageable,
+                                                        @RequestParam(required = false) CourseAffiliationType affiliationType,
+                                                        @UserId UUID userId) {
+        return restFacade.getAllCourses(pageable, affiliationType, userId);
     }
 
     @PostMapping("/api/courses")

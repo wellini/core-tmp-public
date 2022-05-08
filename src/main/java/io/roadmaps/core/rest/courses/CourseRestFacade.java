@@ -8,11 +8,7 @@ import io.roadmaps.core.repository.CourseRepository;
 import io.roadmaps.core.rest.courses.converters.CourseDtoConverter;
 import io.roadmaps.core.rest.courses.dto.CreateCourseDto;
 import io.roadmaps.core.rest.courses.dto.UpdateCourseDto;
-import io.roadmaps.core.rest.courses.dto.response.CreateCourseResponseDto;
-import io.roadmaps.core.rest.courses.dto.response.GetAllCoursesResponseDto;
-import io.roadmaps.core.rest.courses.dto.response.GetCourseResponseDto;
-import io.roadmaps.core.rest.courses.dto.response.UpdateCourseResponseDto;
-import io.roadmaps.core.security.AuthorizationService;
+import io.roadmaps.core.rest.courses.dto.response.*;
 import io.roadmaps.core.service.CourseAffiliationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -32,20 +28,26 @@ public class CourseRestFacade {
     private final CourseRepository repository;
     private final CourseDtoConverter converter;
     private final CourseAffiliationService affiliationService;
-    private final AuthorizationService authorizationService;
 
-    public Page<GetAllCoursesResponseDto> getAllCourses(Pageable pageable, UUID userId) {
-        Page<Course> page = repository.findCoursesByAuthorId(userId, pageable);
+    public Page<GetAllCoursesResponseDto> getAllCourses(Pageable pageable, CourseAffiliationType affiliationType, UUID userId) {
+        Page<Course> page;
+        if (affiliationType == null) {
+            page = repository.findCoursesByAuthorId(userId, pageable);
+        } else {
+            page = repository.findCoursesByUserIdAndByAffiliationType(userId, affiliationType, pageable);
+        }
+
         List<GetAllCoursesResponseDto> content = page
                 .getContent()
                 .stream()
                 .map(entity -> {
                     GetAllCoursesResponseDto dto = converter.fromDomain(entity, GetAllCoursesResponseDto.class);
-                    CourseAffiliationType affiliationType = affiliationService.getAffiliationType(entity.getId(), userId);
-                    dto.setAffiliationType(affiliationType);
+                    CourseAffiliationType currentAffiliationType = affiliationService.getAffiliationType(entity.getId(), userId);
+                    dto.setAffiliationType(currentAffiliationType);
                     return dto;
                 })
                 .collect(Collectors.toList());
+
         return new PageImpl<>(content, pageable, page.getTotalElements());
     }
 
@@ -64,7 +66,7 @@ public class CourseRestFacade {
         return responseDto;
     }
 
-    public GetCourseResponseDto getCourse(UUID id,UUID userId) {
+    public GetCourseResponseDto getCourse(UUID id, UUID userId) {
         Course course = repository.findById(id).orElseThrow(EntityNotFoundException::new);
         CourseAffiliationType affiliationType = affiliationService.getAffiliationType(
                 course.getId(),
