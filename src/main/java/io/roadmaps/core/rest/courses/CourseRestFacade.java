@@ -3,8 +3,10 @@ package io.roadmaps.core.rest.courses;
 import io.roadmaps.core.exception.EntityNotFoundException;
 import io.roadmaps.core.model.entity.Course;
 import io.roadmaps.core.model.entity.CourseAffiliation;
+import io.roadmaps.core.model.entity.CourseWithAuthorFullnameView;
 import io.roadmaps.core.model.entity.enums.CourseAffiliationType;
 import io.roadmaps.core.repository.CourseRepository;
+import io.roadmaps.core.repository.CourseWithAuthorFullnameViewRepository;
 import io.roadmaps.core.rest.courses.converters.CourseDtoConverter;
 import io.roadmaps.core.rest.courses.dto.CreateCourseDto;
 import io.roadmaps.core.rest.courses.dto.UpdateCourseDto;
@@ -26,6 +28,7 @@ import java.util.stream.Collectors;
 public class CourseRestFacade {
 
     private final CourseRepository repository;
+    private final CourseWithAuthorFullnameViewRepository withAuthorFullnameViewRepository;
     private final CourseDtoConverter converter;
     private final CourseAffiliationService affiliationService;
 
@@ -67,13 +70,14 @@ public class CourseRestFacade {
     }
 
     public GetCourseResponseDto getCourse(UUID id, UUID userId) {
-        Course course = repository.findById(id).orElseThrow(EntityNotFoundException::new);
+        CourseWithAuthorFullnameView course = withAuthorFullnameViewRepository.findById(id).orElseThrow(EntityNotFoundException::new);
         CourseAffiliationType affiliationType = affiliationService.getAffiliationType(
                 course.getId(),
                 userId
         );
         GetCourseResponseDto responseDto = converter.fromDomain(course, GetCourseResponseDto.class);
         responseDto.setAffiliationType(affiliationType);
+        responseDto.setAuthorFullname(course.getFullname());
         return responseDto;
     }
 

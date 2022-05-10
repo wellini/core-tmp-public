@@ -1,6 +1,7 @@
 package io.roadmaps.core.rest.courses.converters;
 
 import io.roadmaps.core.model.entity.Course;
+import io.roadmaps.core.model.entity.CourseWithAuthorFullnameView;
 import io.roadmaps.core.rest.courses.dto.CreateCourseDto;
 import io.roadmaps.core.rest.courses.dto.UpdateCourseDto;
 import io.roadmaps.core.rest.courses.dto.templates.CourseResponseDtoTemplate;
@@ -19,6 +20,10 @@ public class CourseDtoConverter {
     }
 
     public <T extends CourseResponseDtoTemplate> T fromDomain(Course course, Class<T> clazz) {
+        return modelMapper.map(course, clazz);
+    }
+
+    public <T extends CourseResponseDtoTemplate> T fromDomain(CourseWithAuthorFullnameView course, Class<T> clazz) {
         return modelMapper.map(course, clazz);
     }
 
