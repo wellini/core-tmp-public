@@ -28,3 +28,7 @@ databaseChangeLog:
       file: db/changelog/authprovider/0001-add-auth_provider.sql
   - include:
       file: db/changelog/courses/0003-add-course-with-author-fullname-view.sql
+  - include:
+      file: db/changelog/seed/default-course.sql
+  - include:
+      file: db/changelog/seed/default-courseaffiliation.sql
