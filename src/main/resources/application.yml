@@ -4,7 +4,7 @@ spring:
     hibernate:
       ddl-auto: none
   datasource:
-    url: jdbc:postgresql://localhost:5432/roadmaps_db
+    url: ${POSTGRES_URL}
     username: roadmaps
     password: roadmaps
 

@@ -1,10 +1,28 @@
-FROM openjdk:18-alpine
-RUN apk add maven
+FROM openjdk:17-jdk-alpine as build
+WORKDIR /workspace/app
 
-WORKDIR /opt/core
-COPY ./pom.xml .
-RUN mvn dependency:go-offline
+COPY mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
+COPY src src
 
-COPY . .
-EXPOSE 8080
-CMD ["sh", "./entrypoint.sh" ]
+RUN ./mvnw install -DskipTests
+RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
+
+# App is compiled now - can copy non-code files
+COPY .env.example .
+COPY entrypoint.sh .
+
+FROM eclipse-temurin:17-jre-alpine
+
+ARG BUILD_WORKDIR=/workspace/app
+ARG DEPENDENCY_IN_BUILD=$BUILD_WORKDIR/target/dependency
+
+COPY --from=build $DEPENDENCY_IN_BUILD/BOOT-INF/lib /app/lib
+COPY --from=build $DEPENDENCY_IN_BUILD/META-INF /app/META-INF
+COPY --from=build $DEPENDENCY_IN_BUILD/BOOT-INF/classes /app
+
+COPY --from=build $BUILD_WORKDIR/.env.example .
+COPY --from=build $BUILD_WORKDIR/new-entrypoint.sh .
+
+CMD ["sh", "./entrypoint.sh"]

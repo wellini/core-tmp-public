@@ -1,15 +1,18 @@
-version: '3.8'
+version: '3.9'
 
 services:
   core:
     container_name: core
+    image: core
     build: .
-    links:
+    depends_on:
       - db
     env_file:
       - .env.example
     ports:
       - "8080:8080"
+    networks:
+      - core-and-db
 
   db:
     container_name: db
@@ -18,3 +21,8 @@ services:
       - .env.example
     ports:
       - "5432:5432"
+    networks:
+      - core-and-db
+
+networks:
+  core-and-db: {}
