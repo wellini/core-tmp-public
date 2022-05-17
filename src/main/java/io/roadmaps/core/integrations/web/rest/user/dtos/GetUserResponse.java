@@ -21,7 +21,7 @@ public class GetUserResponse {
     private GetUserResponse(User user) {
         id = user.getId();
         fullname = user.getFullname();
-        username = getUsername();
+        username = user.getUsername();
     }
 
     public static GetUserResponse create(User user) {
