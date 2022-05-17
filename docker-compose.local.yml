@@ -16,7 +16,7 @@ services:
 
   db:
     container_name: db
-    image: postgres:11-alpine
+    image: docker.io/postgres:11-alpine
     env_file:
       - .env.example
     ports:
@@ -32,4 +32,4 @@ networks:
   core-and-db: {}
 
 volumes:
-  pg_volume:
+  pg_volume: {}

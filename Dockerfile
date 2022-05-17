@@ -1,4 +1,4 @@
-FROM openjdk:17-jdk-alpine as build
+FROM docker.io/eclipse-temurin:17-jdk-alpine as build
 WORKDIR /workspace/app
 
 COPY mvnw .
@@ -13,7 +13,7 @@ RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 COPY .env.example .
 COPY entrypoint.sh .
 
-FROM eclipse-temurin:17-jre-alpine
+FROM docker.io/eclipse-temurin:17-jre-alpine
 
 ARG BUILD_WORKDIR=/workspace/app
 ARG DEPENDENCY_IN_BUILD=$BUILD_WORKDIR/target/dependency
