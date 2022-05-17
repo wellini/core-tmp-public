@@ -1,9 +1,13 @@
 package io.roadmaps.core.configuration;
 
-import io.roadmaps.core.security.filter.JwtFilter;
+import io.roadmaps.core.integrations.authproviders.model.AuthProviderRepository;
+import io.roadmaps.core.integrations.authproviders.services.AuthProviderService;
+import io.roadmaps.core.integrations.authproviders.services.AuthProviderServiceImpl;
+import io.roadmaps.core.integrations.auth.filter.JwtFilter;
 import io.roadmaps.core.utils.cors.CORSFilter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -46,6 +50,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/api/swagger-ui/**",
                 "/api/swagger/**"
         );
+    }
+
+    @Bean
+    public AuthProviderService getAuthProviderService(AuthProviderRepository repository) {
+        return new AuthProviderServiceImpl(repository);
     }
 
 }

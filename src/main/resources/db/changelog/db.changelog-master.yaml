@@ -32,3 +32,9 @@ databaseChangeLog:
       file: db/changelog/seed/default-course.sql
   - include:
       file: db/changelog/seed/default-courseaffiliation.sql
+  - include:
+      file: db/changelog/leaves/0006-remove-not-null-remove-course_id.sql
+  - include:
+      file: db/changelog/modules/0002-remove-not-null.sql
+  - include:
+      file: db/changelog/seed/fix-default-course.sql

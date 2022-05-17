@@ -1,0 +1,2 @@
+update module m set order_id = m.order_id - 1 where m.course_id = '5685cac5-4b42-48ba-a337-21d885faf4e1';
+update leaf l set order_id = l.order_id - 1 where l.module_id in (select id from module m where m.course_id = '5685cac5-4b42-48ba-a337-21d885faf4e1');

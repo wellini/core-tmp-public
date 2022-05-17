@@ -20,6 +20,8 @@
     <properties>
         <java.version>17</java.version>
         <testcontainers.version>1.16.2</testcontainers.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -120,6 +122,14 @@
                     <from>
                         <image>gcr.io/distroless/java17-debian11@sha256:3c6795e841e2762796e5494a5e81e6b30bdb9c367e1ad6c31237c8d08fe038cb</image>
                     </from>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>16</source>
+                    <target>16</target>
                 </configuration>
             </plugin>
         </plugins>

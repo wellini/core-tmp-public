@@ -3,10 +3,14 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
-  datasource:
-    url: ${POSTGRES_URL}
-    username: roadmaps
-    password: roadmaps
+    properties:
+      javax:
+        persistence:
+          jdbc:
+            driver: org.postgresql.Driver
+            url: ${POSTGRES_URL}
+            user: ${POSTGRES_USER}
+            password: ${POSTGRES_PASSWORD}
 
 springdoc:
   api-docs:
@@ -18,8 +22,8 @@ server:
   forward-headers-strategy: NATIVE
 
 jwt:
-  secret: ${JWT_SECRET}
-  tokenValidDays: ${JWT_TOKEN_VALID_DAYS}
+  secret: 123123123123123123123123123123123123123123123123123123
+  tokenValidDays: 365
 
 google:
   clientId: ${GOOGLE_CLIENT_ID}

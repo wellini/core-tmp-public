@@ -1,6 +1,6 @@
 package io.roadmaps.core.configuration;
 
-import io.roadmaps.core.security.annotations.UserId;
+import io.roadmaps.core.integrations.auth.annotations.UserId;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.security.SecurityRequirement;

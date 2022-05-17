@@ -16,13 +16,20 @@ services:
 
   db:
     container_name: db
-    image: postgres:alpine
+    image: postgres:11-alpine
     env_file:
       - .env.example
     ports:
       - "5432:5432"
     networks:
       - core-and-db
+    volumes:
+      - pg_volume:/var/database/postgres/data
+    environment:
+      PGDATA: /var/database/postgres/data
 
 networks:
   core-and-db: {}
+
+volumes:
+  pg_volume:
