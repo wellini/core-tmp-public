@@ -18,11 +18,9 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Slf4j
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -48,15 +46,15 @@ public class Course {
     private Map<UUID, CourseAffiliationType> affiliations = new HashMap();
 
     private Course(User author, CourseCreationCommand creationCommand) {
-        this.id = UUID.randomUUID();
+        id = UUID.randomUUID();
         this.author = author;
-        this.presentation = Presentation.create(
+        presentation = Presentation.create(
                 creationCommand.getTitle(),
                 creationCommand.getCoverTheme(),
                 creationCommand.getCoverUrl()
         );
         CourseAffiliation courseAffiliation = CourseAffiliation.create(id, author.getId(), CourseAffiliationType.TEACHER);
-        this.courseAffiliations = Arrays.asList(courseAffiliation);
+        courseAffiliations = Arrays.asList(courseAffiliation);
         refreshAffiliations();
     }
 
