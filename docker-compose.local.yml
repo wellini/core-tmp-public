@@ -12,6 +12,10 @@ services:
       - "8080:8080"
     networks:
       - core-and-db
+    volumes:
+      - m2:/root/.m2/repository
+    logging:
+      driver: local
 
   db:
     container_name: db
@@ -24,9 +28,12 @@ services:
       - pg_volume:/var/database/postgres/data
     environment:
       PGDATA: /var/database/postgres/data
+    logging:
+      driver: local
 
 networks:
   core-and-db: {}
 
 volumes:
   pg_volume: {}
+  m2: {}
