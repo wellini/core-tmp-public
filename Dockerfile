@@ -23,6 +23,6 @@ COPY --from=build $DEPENDENCY_IN_BUILD/META-INF /app/META-INF
 COPY --from=build $DEPENDENCY_IN_BUILD/BOOT-INF/classes /app
 
 COPY --from=build $BUILD_WORKDIR/.env.example .
-COPY --from=build $BUILD_WORKDIR/new-entrypoint.sh .
+COPY --from=build $BUILD_WORKDIR/entrypoint.sh .
 
 CMD ["sh", "./entrypoint.sh"]
