@@ -11,6 +11,13 @@ spring:
             url: ${POSTGRES_URL}
             user: ${POSTGRES_USER}
             password: ${POSTGRES_PASSWORD}
+      jakarta:
+        persistence:
+          jdbc:
+            driver: org.postgresql.Driver
+            url: ${POSTGRES_URL}
+            user: ${POSTGRES_USER}
+            password: ${POSTGRES_PASSWORD}
 
 springdoc:
   api-docs:
