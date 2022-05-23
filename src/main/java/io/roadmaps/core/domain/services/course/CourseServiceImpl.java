@@ -7,8 +7,11 @@ import io.roadmaps.core.domain.model.course.CourseRepository;
 import io.roadmaps.core.domain.model.course.commands.CourseCreationCommand;
 import io.roadmaps.core.domain.model.course.commands.EnrollInCourseCommandImpl;
 import io.roadmaps.core.domain.model.course.commands.ModuleCreationCommand;
+import io.roadmaps.core.domain.model.courseAffiliation.CourseAffiliationRepository;
 import io.roadmaps.core.domain.model.courseAffiliation.enums.CourseAffiliationType;
+import io.roadmaps.core.domain.model.leaf.LeafRepository;
 import io.roadmaps.core.domain.model.module.Module;
+import io.roadmaps.core.domain.model.module.ModuleRepository;
 import io.roadmaps.core.domain.model.user.User;
 import io.roadmaps.core.domain.services.CurrentUserIdProvider;
 import io.roadmaps.core.domain.services.course.commands.EditPresentationServiceCommand;
@@ -29,6 +32,9 @@ public class CourseServiceImpl implements CourseService {
     private final CourseRepository repository;
     private final UserService userService;
     private final CurrentUserIdProvider currentUserIdProvider;
+    private final CourseAffiliationRepository courseAffiliationRepository;
+    private final ModuleRepository moduleRepository;
+    private final LeafRepository leafRepository;
 
     @Override
     @Transactional
@@ -103,8 +109,13 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
+    @Transactional
     public void removeCourse(UUID id) {
         log.debug("Remove course with id {{}}", id);
+        Course course = getCourse(id);
+        course.getModules().forEach(module -> leafRepository.deleteAllByModuleId(module.getId()));
+        moduleRepository.deleteAllByCourseId(course.getId());
+        courseAffiliationRepository.deleteAllByCourseId(course.getId());
         repository.delete(id);
     }
 }

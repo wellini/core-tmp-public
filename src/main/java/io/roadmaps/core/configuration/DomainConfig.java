@@ -1,6 +1,7 @@
 package io.roadmaps.core.configuration;
 
 import io.roadmaps.core.domain.model.course.CourseRepository;
+import io.roadmaps.core.domain.model.courseAffiliation.CourseAffiliationRepository;
 import io.roadmaps.core.domain.model.leaf.LeafRepository;
 import io.roadmaps.core.domain.model.module.ModuleRepository;
 import io.roadmaps.core.domain.model.user.UserRepository;
@@ -20,8 +21,15 @@ import org.springframework.context.annotation.Configuration;
 public class DomainConfig {
 
     @Bean
-    public CourseService getCourseService(CourseRepository courseRepository, UserService userService, CurrentUserIdProvider provider) {
-        return new CourseServiceImpl(courseRepository, userService, provider);
+    public CourseService getCourseService(
+            CourseRepository courseRepository,
+            UserService userService,
+            CurrentUserIdProvider provider,
+            CourseAffiliationRepository courseAffiliationRepository,
+            ModuleRepository moduleRepository,
+            LeafRepository leafRepository
+    ) {
+        return new CourseServiceImpl(courseRepository, userService, provider, courseAffiliationRepository, moduleRepository, leafRepository);
     }
 
     @Bean

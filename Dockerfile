@@ -1,4 +1,4 @@
-FROM docker.io/eclipse-temurin:17-jdk-alpine as build
+FROM docker.io/eclipse-temurin:17-jdk as build
 WORKDIR /workspace/app
 
 COPY mvnw .

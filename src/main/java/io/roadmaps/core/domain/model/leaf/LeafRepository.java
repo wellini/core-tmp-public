@@ -12,5 +12,7 @@ public interface LeafRepository {
 
     Optional<Leaf> findLeafByIdAndType(UUID id, LeafType leafType);
 
+    void deleteAllByModuleId(UUID moduleId);
+
     void save(Leaf leaf);
 }

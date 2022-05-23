@@ -7,5 +7,7 @@ public interface ModuleRepository {
 
     Optional<Module> findModule(UUID id);
 
+    void deleteAllByCourseId(UUID courseId);
+
     void save(Module module);
 }

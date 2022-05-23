@@ -22,6 +22,7 @@ public class CourseAffiliation {
     private CourseAffiliationType type;
 
     private CourseAffiliation(UUID courseId, UUID userId, CourseAffiliationType type) {
+        this.id = UUID.randomUUID();
         this.courseId = courseId;
         this.userId = userId;
         this.type = type;

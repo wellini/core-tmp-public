@@ -3,6 +3,7 @@ package io.roadmaps.core.integrations.jpa.repositories;
 import io.roadmaps.core.domain.model.leaf.Leaf;
 import io.roadmaps.core.domain.model.leaf.LeafRepository;
 import io.roadmaps.core.domain.model.leaf.enums.LeafType;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.RepositoryDefinition;
 import org.springframework.data.repository.query.Param;
@@ -24,6 +25,12 @@ public interface JpaLeafRepository extends LeafRepository {
     @Query("SELECT l FROM Leaf l WHERE l.id = :id AND l.type = :type")
     @Transactional
     Optional<Leaf> findLeafByIdAndType(@Param("id") UUID id, @Param("type") LeafType leafType);
+
+    @Override
+    @Transactional
+    @Modifying
+    @Query("DELETE FROM Leaf l WHERE l.moduleId = :moduleId")
+    void deleteAllByModuleId(@Param("moduleId") UUID moduleId);
 
     @Override
     @Transactional

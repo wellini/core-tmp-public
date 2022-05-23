@@ -2,6 +2,7 @@ package io.roadmaps.core.integrations.jpa.repositories;
 
 import io.roadmaps.core.domain.model.module.Module;
 import io.roadmaps.core.domain.model.module.ModuleRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.RepositoryDefinition;
 import org.springframework.data.repository.query.Param;
@@ -18,6 +19,12 @@ public interface JpaModuleRepository extends ModuleRepository {
     @Query("SELECT m FROM Module m WHERE m.id = :id")
     @Transactional
     Optional<Module> findModule(@Param("id") UUID id);
+
+    @Override
+    @Transactional
+    @Modifying
+    @Query("DELETE FROM Module m WHERE m.courseId = :courseId")
+    void deleteAllByCourseId(@Param("courseId") UUID courseId);
 
     @Override
     @Transactional

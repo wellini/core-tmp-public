@@ -15,11 +15,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 @Slf4j
@@ -38,10 +41,10 @@ public class Course {
     private User author;
 
     @Getter
-    private List<Module> modules = Collections.emptyList();
+    private List<Module> modules = new ArrayList<>();
 
     @Getter
-    private List<CourseAffiliation> courseAffiliations = Collections.emptyList();
+    private Set<CourseAffiliation> courseAffiliations = new HashSet<>();
 
     private Map<UUID, CourseAffiliationType> affiliations = new HashMap();
 
@@ -53,16 +56,14 @@ public class Course {
                 creationCommand.getCoverTheme(),
                 creationCommand.getCoverUrl()
         );
-        CourseAffiliation courseAffiliation = CourseAffiliation.create(id, author.getId(), CourseAffiliationType.TEACHER);
-        courseAffiliations = Arrays.asList(courseAffiliation);
-        refreshAffiliations();
+        this.addCourseAffiliation(author.getId(), CourseAffiliationType.TEACHER);
     }
 
     public static Course create(User author, CourseCreationCommand creationCommand) {
         return new Course(author, creationCommand);
     }
 
-    public Course setCourseAffiliations(List<CourseAffiliation> courseAffiliations) {
+    public Course setCourseAffiliations(Set<CourseAffiliation> courseAffiliations) {
         this.courseAffiliations = courseAffiliations;
         refreshAffiliations();
         return this;
