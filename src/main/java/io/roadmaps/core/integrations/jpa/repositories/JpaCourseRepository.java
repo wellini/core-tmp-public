@@ -27,9 +27,9 @@ public interface JpaCourseRepository extends CourseRepository {
     List<Course> findAllCourses();
 
     @Override
-    @Query("SELECT c FROM Course c JOIN CourseAffiliation ca ON c.id = ca.courseId WHERE ca.type = :affiliationType")
+    @Query("SELECT c FROM Course c INNER JOIN CourseAffiliation ca ON c.id = ca.courseId WHERE ca.type = :affiliationType AND ca.userId = :userId")
     @Transactional
-    List<Course> findAllCoursesByAffiliationType(@Param("affiliationType") CourseAffiliationType affiliationType);
+    List<Course> findAllCoursesByAffiliationType(@Param("userId") UUID userId, @Param("affiliationType") CourseAffiliationType affiliationType);
 
     @Override
     @Transactional

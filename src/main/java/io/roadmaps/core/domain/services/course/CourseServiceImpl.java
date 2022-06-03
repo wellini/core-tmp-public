@@ -22,7 +22,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.transaction.Transactional;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Slf4j
@@ -51,7 +53,12 @@ public class CourseServiceImpl implements CourseService {
     @Override
     @Transactional
     public List<Course> getAllCoursesByAffiliationType(CourseAffiliationType affiliationType) {
-        return repository.findAllCoursesByAffiliationType(affiliationType);
+        Optional<User> currentUser = userService.getCurrentUser();
+        if(currentUser.isPresent()) {
+            return repository.findAllCoursesByAffiliationType(currentUser.get().getId(), affiliationType);
+        } else {
+            return Collections.emptyList();
+        }
     }
 
     @Override

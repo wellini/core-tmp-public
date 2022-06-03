@@ -12,7 +12,7 @@ public interface CourseRepository {
 
     List<Course> findAllCourses();
 
-    List<Course> findAllCoursesByAffiliationType(CourseAffiliationType affiliationType);
+    List<Course> findAllCoursesByAffiliationType(UUID userId, CourseAffiliationType affiliationType);
 
     void delete(UUID id);
 
