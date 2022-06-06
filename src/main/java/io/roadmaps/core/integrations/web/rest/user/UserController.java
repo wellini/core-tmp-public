@@ -13,7 +13,7 @@ public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/users/getMe")
+    @GetMapping("/api/users/getMe")
     public GetUserResponse getMe() {
         return GetUserResponse.create(userService.getCurrentUser().orElseThrow(() -> new EntityNotFoundException("User not found")));
     }
