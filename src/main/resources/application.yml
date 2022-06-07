@@ -25,5 +25,5 @@ jwt:
 google:
   clientId: ${GOOGLE_CLIENT_ID}
   clientSecret: ${GOOGLE_CLIENT_SECRET}
-  redirectUri: http://localhost:3000
+  redirectUri: ${GOOGLE_REDIRECT_URI}
   appName: ${GOOGLE_APP_NAME}
