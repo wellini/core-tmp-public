@@ -4,8 +4,8 @@
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_2.xsd">
 
-    <entity class="io.roadmaps.core.domain.model.leaf.Leaf">
-        <table name="leaf" />
+    <entity class="io.roadmaps.core.domain.model.leaf.Leaf" name="Leaf">
+        <table name="leaves" />
         <discriminator-column name="type" discriminator-type="STRING"/>
         <attributes>
             <id name="id">

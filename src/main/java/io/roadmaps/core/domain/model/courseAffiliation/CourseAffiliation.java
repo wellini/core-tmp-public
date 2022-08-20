@@ -1,34 +1,36 @@
 package io.roadmaps.core.domain.model.courseAffiliation;
 
 import io.roadmaps.core.domain.model.courseAffiliation.enums.CourseAffiliationType;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.UUID;
+import java.io.Serializable;
 
-@Data
+@Getter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-public class CourseAffiliation {
+public class CourseAffiliation implements Serializable {
 
     @EqualsAndHashCode.Include
-    private UUID id;
+    private Long courseId;
 
-    private UUID courseId;
-
-    private UUID userId;
+    @EqualsAndHashCode.Include
+    private Long userId;
 
     private CourseAffiliationType type;
 
-    private CourseAffiliation(UUID courseId, UUID userId, CourseAffiliationType type) {
-        this.id = UUID.randomUUID();
-        this.courseId = courseId;
-        this.userId = userId;
-        this.type = type;
+    private CourseAffiliation(Long courseId, Long userId, CourseAffiliationType type) {
+        if(type == CourseAffiliationType.GUEST) {
+            throw new IllegalArgumentException("GUEST cannot be a type of affiliation because it is neutral value that means there is no any affiliation");
+        } else {
+            this.courseId = courseId;
+            this.userId = userId;
+            this.type = type;
+        }
     }
 
-    public static CourseAffiliation create(UUID courseId, UUID userId, CourseAffiliationType type) {
+    public static CourseAffiliation create(Long courseId, Long userId, CourseAffiliationType type) {
         return new CourseAffiliation(courseId, userId, type);
     }
 }

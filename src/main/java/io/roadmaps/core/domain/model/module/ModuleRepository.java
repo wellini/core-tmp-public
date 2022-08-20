@@ -5,9 +5,11 @@ import java.util.UUID;
 
 public interface ModuleRepository {
 
-    Optional<Module> findModule(UUID id);
+    Optional<Module> findModule(Long id);
 
-    void deleteAllByCourseId(UUID courseId);
+    Optional<Module> findModuleByLeafId(Long leafId);
+
+    void deleteAllByCourseId(Long courseId);
 
     void save(Module module);
 }

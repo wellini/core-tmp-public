@@ -4,8 +4,8 @@
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_2.xsd">
 
-    <entity class="io.roadmaps.core.integrations.authproviders.model.AuthProvider">
-        <table name="auth_provider" />
+    <entity class="io.roadmaps.core.integrations.authproviders.model.AuthProvider" name="AuthProvider">
+        <table name="auth_providers" />
         <attributes>
             <id name="id">
                 <column name="id" />

@@ -1,13 +1,12 @@
 package io.roadmaps.core.domain.model.leaf;
 
-import io.roadmaps.core.domain.model.module.commands.LeafCreationCommand;
+import io.roadmaps.core.domain.common.id.Generator;
+import io.roadmaps.core.domain.model.module.events.LeafCreationEvent;
 import io.roadmaps.core.domain.model.leaf.enums.LeafType;
-import io.roadmaps.core.domain.model.leaf.commands.UpdateTextCommand;
+import io.roadmaps.core.domain.model.leaf.events.UpdateTextEvent;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.util.UUID;
 
 @Getter
 @EqualsAndHashCode(callSuper = true)
@@ -16,19 +15,20 @@ public class TextLeaf extends Leaf {
 
     private String text;
 
-    private TextLeaf(String title, String text) {
-        super(title, LeafType.TEXT);
+    private TextLeaf(Generator<Long> idGenerator, String title, String text) {
+        super(idGenerator, title, LeafType.TEXT);
         this.text = text;
     }
 
-    public static TextLeaf create(LeafCreationCommand creationCommand) {
+    public static TextLeaf create(Generator<Long> idGenerator, LeafCreationEvent creationCommand) {
         return new TextLeaf(
+                idGenerator,
                 creationCommand.getTitle(),
                 creationCommand.getText()
         );
     }
 
-    public void updateText(UpdateTextCommand updateTextCommand) {
+    public void updateText(UpdateTextEvent updateTextCommand) {
         text = updateTextCommand.getText();
     }
 }

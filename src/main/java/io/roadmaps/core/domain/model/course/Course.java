@@ -1,12 +1,14 @@
 package io.roadmaps.core.domain.model.course;
 
-import io.roadmaps.core.domain.model.course.commands.CourseCreationCommand;
-import io.roadmaps.core.domain.model.course.commands.EnrollInCourseCommand;
-import io.roadmaps.core.domain.model.course.commands.ModuleCreationCommand;
+import io.roadmaps.core.domain.common.id.Generator;
+import io.roadmaps.core.domain.model.course.affiliationsregistry.AffiliationsRegistry;
+import io.roadmaps.core.domain.model.course.events.CourseCreationEvent;
+import io.roadmaps.core.domain.model.course.events.MoveLeafEvent;
+import io.roadmaps.core.domain.model.course.events.MoveModuleEvent;
 import io.roadmaps.core.domain.model.course.presentation.Presentation;
-import io.roadmaps.core.domain.model.course.presentation.commands.EditPresentationCommand;
-import io.roadmaps.core.domain.model.courseAffiliation.CourseAffiliation;
+import io.roadmaps.core.domain.model.course.presentation.events.EditPresentationEvent;
 import io.roadmaps.core.domain.model.courseAffiliation.enums.CourseAffiliationType;
+import io.roadmaps.core.domain.model.leaf.Leaf;
 import io.roadmaps.core.domain.model.module.Module;
 import io.roadmaps.core.domain.model.user.User;
 import io.roadmaps.core.exception.EntityNotFoundException;
@@ -16,12 +18,7 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
 
 @Slf4j
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -30,7 +27,7 @@ public class Course {
 
     @EqualsAndHashCode.Include
     @Getter
-    private UUID id;
+    private Long id;
 
     @Getter
     private Presentation presentation;
@@ -41,47 +38,32 @@ public class Course {
     @Getter
     private List<Module> modules = new ArrayList<>();
 
-    @Getter
-    private Set<CourseAffiliation> courseAffiliations = new HashSet<>();
+    private AffiliationsRegistry affiliationsRegistry;
 
-    private Map<UUID, CourseAffiliationType> affiliations = new HashMap();
-
-    private Course(User author, CourseCreationCommand creationCommand) {
-        id = UUID.randomUUID();
+    private Course(Generator<Long> idGenerator, User author, CourseCreationEvent creationCommand) {
+        id = idGenerator.generateNext();
         this.author = author;
         presentation = Presentation.create(
                 creationCommand.getTitle(),
-                creationCommand.getCoverTheme(),
-                creationCommand.getCoverUrl()
+                creationCommand.getCoverTheme()
         );
-        this.addCourseAffiliation(author.getId(), CourseAffiliationType.TEACHER);
+        affiliationsRegistry = AffiliationsRegistry.init(id);
+        affiliationsRegistry.addAffiliation(author.getId(), CourseAffiliationType.TEACHER);
     }
 
-    public static Course create(User author, CourseCreationCommand creationCommand) {
-        return new Course(author, creationCommand);
+    public static Course create(Generator<Long> idGenerator, User author, CourseCreationEvent creationCommand) {
+        return new Course(idGenerator, author, creationCommand);
     }
 
-    public Course setCourseAffiliations(Set<CourseAffiliation> courseAffiliations) {
-        this.courseAffiliations = courseAffiliations;
-        refreshAffiliations();
-        return this;
+    public CourseAffiliationType getAffiliationType(Long userId) {
+        return affiliationsRegistry.getAffiliationType(userId);
     }
 
-    public CourseAffiliationType getAffiliationType(UUID userId) {
-        return affiliations.get(userId);
+    public void addModule(Module module, int orderId) {
+        modules.add(Math.min(orderId, modules.size()), module);
     }
 
-    public UUID addModule(ModuleCreationCommand moduleCreationCommand) {
-        Module module = Module.create(moduleCreationCommand.getTitle());
-        if(moduleCreationCommand.getOrderId() < this.modules.size()) {
-            modules.add(moduleCreationCommand.getOrderId(), module);
-        } else {
-            modules.add(module);
-        }
-        return module.getId();
-    }
-
-    public void removeModule(UUID moduleId) {
+    public void removeModule(Long moduleId) {
         Module targetModule = modules.stream()
                 .filter(module -> module.getId().equals(moduleId))
                 .findFirst()
@@ -89,23 +71,34 @@ public class Course {
         this.modules.remove(targetModule);
     }
 
-    public void enrollInCourse(EnrollInCourseCommand enrollCommand) {
-        addCourseAffiliation(enrollCommand.getUserId(), CourseAffiliationType.STUDENT);
+    public void enrollInCourse(Long userId) {
+        affiliationsRegistry.addAffiliation(userId, CourseAffiliationType.STUDENT);
     }
 
-    public void editPresentation(EditPresentationCommand command) {
-        this.presentation.edit(command);
+    public void editPresentation(EditPresentationEvent command) {
+        presentation.edit(command);
     }
 
-    private void addCourseAffiliation(UUID userId, CourseAffiliationType affiliationType) {
-        log.debug("Connect user with id {{}} with course with id {{}} as {{}}", userId, id, affiliationType);
-        CourseAffiliation courseAffiliation = CourseAffiliation.create(id, userId, affiliationType);
-        courseAffiliations.add(courseAffiliation);
-        refreshAffiliations();
+    public void moveLeaf(Long leafId, MoveLeafEvent command) {
+        Module fromModule = modules.stream()
+                .filter(module -> module.hasLeaf(leafId))
+                .findFirst()
+                .orElseThrow(EntityNotFoundException::new);
+        Module destinationModule = modules.stream()
+                .filter(module -> module.getId().equals(command.getDestinationModuleId()))
+                .findFirst()
+                .orElseThrow(EntityNotFoundException::new);
+        Leaf leaf = fromModule.getLeaf(leafId);
+        destinationModule.addLeaf(leaf, command.getDestinationOrderId());
+        fromModule.removeLeaf(leafId);
     }
 
-    private void refreshAffiliations() {
-        affiliations = new HashMap<>();
-        courseAffiliations.forEach(ca -> affiliations.put(ca.getUserId(), ca.getType()));
+    public void moveModule(Long moduleId, MoveModuleEvent command) {
+        Module module = modules.stream()
+                .filter(m -> m.getId().equals(moduleId))
+                .findFirst()
+                .orElseThrow(EntityNotFoundException::new);
+        modules.remove(module);
+        modules.add(Math.min(command.getDestinationOrderId(), modules.size()), module);
     }
 }

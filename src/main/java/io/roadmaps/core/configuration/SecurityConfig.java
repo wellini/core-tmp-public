@@ -1,5 +1,6 @@
 package io.roadmaps.core.configuration;
 
+import io.roadmaps.core.domain.common.id.Generator;
 import io.roadmaps.core.integrations.authproviders.model.AuthProviderRepository;
 import io.roadmaps.core.integrations.authproviders.services.AuthProviderService;
 import io.roadmaps.core.integrations.authproviders.services.AuthProviderServiceImpl;
@@ -7,6 +8,7 @@ import io.roadmaps.core.integrations.auth.filter.JwtFilter;
 import io.roadmaps.core.utils.cors.CORSFilter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -29,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        //@formatter:off
+        // @formatter:off
         http
                 .cors().disable()
                 .csrf().disable()
@@ -40,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(corsFilter,UsernamePasswordAuthenticationFilter.class);
-        //@formatter:on
+        // @formatter:on
     }
 
     @Override
@@ -48,13 +50,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers(
                 "/api/auth/login/provider/google",
                 "/api/swagger-ui/**",
-                "/api/swagger/**"
+                "/api/swagger/**",
+                "/api/hrid/**"
         );
     }
 
     @Bean
-    public AuthProviderService getAuthProviderService(AuthProviderRepository repository) {
-        return new AuthProviderServiceImpl(repository);
+    public AuthProviderService getAuthProviderService(
+            @Qualifier("authProviderIdIdSequenceGenerator") Generator<Long> authProviderIdIdSequenceGenerator,
+            AuthProviderRepository repository
+    ) {
+        return new AuthProviderServiceImpl(repository, authProviderIdIdSequenceGenerator);
     }
 
 }

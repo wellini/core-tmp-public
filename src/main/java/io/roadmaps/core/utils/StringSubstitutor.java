@@ -24,6 +24,11 @@ public class StringSubstitutor {
         return this;
     }
 
+    public StringSubstitutor add(String key, Object value) {
+        kv.put(key, value.toString());
+        return this;
+    }
+
     public String replace(String str) {
         StringBuilder sb = new StringBuilder();
         char[] strArray = str.toCharArray();

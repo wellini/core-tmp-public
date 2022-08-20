@@ -4,8 +4,8 @@
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_2.xsd">
 
-    <entity class="io.roadmaps.core.domain.model.module.Module">
-        <table name="module" />
+    <entity class="io.roadmaps.core.domain.model.module.Module" name="Module">
+        <table name="modules" />
         <attributes>
             <id name="id">
                 <column name="id" />
