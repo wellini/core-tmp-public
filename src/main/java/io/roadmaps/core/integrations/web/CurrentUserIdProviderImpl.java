@@ -13,12 +13,12 @@ import java.util.UUID;
 public class CurrentUserIdProviderImpl implements CurrentUserIdProvider {
 
     @Override
-    public Optional<Long> getCurrentUserId() {
+    public Optional<UUID> getCurrentUserId() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
             return Optional.empty();
         } else {
-            return Optional.of(Long.parseLong((String) authentication.getPrincipal()));
+            return Optional.of(UUID.fromString(authentication.getPrincipal().toString()));
         }
     }
 }

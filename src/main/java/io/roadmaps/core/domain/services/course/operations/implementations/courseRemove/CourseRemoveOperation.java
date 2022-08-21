@@ -7,9 +7,8 @@ import io.roadmaps.core.domain.model.leaf.LeafRepository;
 import io.roadmaps.core.domain.model.module.ModuleRepository;
 import io.roadmaps.core.domain.services.course.operations.ExplainedExecResult;
 import io.roadmaps.core.domain.services.course.operations.Operation;
-import io.roadmaps.core.domain.services.course.operations.context.OperationExecutionContextFactory;
-import io.roadmaps.core.domain.services.course.operations.context.implementations.AbstractOperationExecutionContext;
 import io.roadmaps.core.domain.services.course.operations.commands.CommandType;
+import io.roadmaps.core.domain.services.course.operations.context.OperationExecutionContext;
 import io.roadmaps.core.domain.services.courseAffiliation.CourseAffiliationService;
 import io.roadmaps.core.domain.services.user.UserService;
 import io.roadmaps.core.exception.EntityNotFoundException;
@@ -23,8 +22,8 @@ public class CourseRemoveOperation extends Operation<CourseRemoveCommand> {
     private final CourseAffiliationRepository courseAffiliationRepository;
     private final CourseRepository courseRepository;
 
-    public CourseRemoveOperation(OperationExecutionContextFactory contextFactory, UserService userService, CourseAffiliationService courseAffiliationService, LeafRepository leafRepository, ModuleRepository moduleRepository, CourseAffiliationRepository courseAffiliationRepository, CourseRepository courseRepository) {
-        super(contextFactory, userService, courseAffiliationService);
+    public CourseRemoveOperation(UserService userService, CourseAffiliationService courseAffiliationService, LeafRepository leafRepository, ModuleRepository moduleRepository, CourseAffiliationRepository courseAffiliationRepository, CourseRepository courseRepository) {
+        super(userService, courseAffiliationService);
         this.leafRepository = leafRepository;
         this.moduleRepository = moduleRepository;
         this.courseAffiliationRepository = courseAffiliationRepository;
@@ -38,7 +37,7 @@ public class CourseRemoveOperation extends Operation<CourseRemoveCommand> {
 
     @Override
     @Transactional
-    protected ExplainedExecResult doExecute(AbstractOperationExecutionContext context, CourseRemoveCommand command) {
+    protected ExplainedExecResult doExecute(OperationExecutionContext context, CourseRemoveCommand command) {
         Course course = courseRepository.findCourse(command.getCourseId()).orElseThrow(EntityNotFoundException::new);
         leafRepository.deleteAllByCourseId(course.getId());
         moduleRepository.deleteAllByCourseId(course.getId());

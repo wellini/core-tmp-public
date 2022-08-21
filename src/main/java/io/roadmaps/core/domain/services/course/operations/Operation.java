@@ -4,8 +4,7 @@ import io.roadmaps.core.domain.model.courseAffiliation.enums.CourseAffiliationTy
 import io.roadmaps.core.domain.model.user.User;
 import io.roadmaps.core.domain.services.course.operations.commands.Command;
 import io.roadmaps.core.domain.services.course.operations.commands.CommandType;
-import io.roadmaps.core.domain.services.course.operations.context.implementations.AbstractOperationExecutionContext;
-import io.roadmaps.core.domain.services.course.operations.context.OperationExecutionContextFactory;
+import io.roadmaps.core.domain.services.course.operations.context.OperationExecutionContext;
 import io.roadmaps.core.domain.services.courseAffiliation.CourseAffiliationService;
 import io.roadmaps.core.domain.services.user.UserService;
 import io.roadmaps.core.exception.NotEnoughPermissionsException;
@@ -16,7 +15,6 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public abstract class Operation<C extends Command> {
 
-    private final OperationExecutionContextFactory contextFactory;
     protected final UserService userService;
     protected final CourseAffiliationService courseAffiliationService;
 
@@ -28,7 +26,7 @@ public abstract class Operation<C extends Command> {
 
     public ExplainedExecResult execute(C command) {
         User currentUser = userService.getCurrentUser();
-        AbstractOperationExecutionContext context = contextFactory.createContext(currentUser.getId(), command);
+        OperationExecutionContext context = OperationExecutionContext.create(currentUser.getId(), command);
         if (getCommandType().hasRestrictedAccess()) {
             return executeWithAccessCheck(command, currentUser, context);
         } else {
@@ -36,11 +34,11 @@ public abstract class Operation<C extends Command> {
         }
     }
 
-    private ExplainedExecResult executeDirectly(C command, AbstractOperationExecutionContext context) {
+    private ExplainedExecResult executeDirectly(C command, OperationExecutionContext context) {
         return getExplainedExecResult(command, context);
     }
 
-    private ExplainedExecResult executeWithAccessCheck(C command, User currentUser, AbstractOperationExecutionContext context) {
+    private ExplainedExecResult executeWithAccessCheck(C command, User currentUser, OperationExecutionContext context) {
         CourseAffiliationType affiliation = courseAffiliationService.safeResolveAffiliation(currentUser.getId(), command);
         if (getCommandType().isAllowedFor(affiliation)) {
             context.setCurrentUserAffiliationType(affiliation);
@@ -51,7 +49,7 @@ public abstract class Operation<C extends Command> {
         }
     }
 
-    private ExplainedExecResult getExplainedExecResult(C command, AbstractOperationExecutionContext context) {
+    private ExplainedExecResult getExplainedExecResult(C command, OperationExecutionContext context) {
         log.info("Execute [{}]: {}", getCommandType(), getCommandType().getToDoMessage(context));
         try {
             ExplainedExecResult execResult = doExecute(context, command);
@@ -65,6 +63,6 @@ public abstract class Operation<C extends Command> {
         }
     }
 
-    protected abstract ExplainedExecResult doExecute(AbstractOperationExecutionContext context, C command);
+    protected abstract ExplainedExecResult doExecute(OperationExecutionContext context, C command);
 
 }

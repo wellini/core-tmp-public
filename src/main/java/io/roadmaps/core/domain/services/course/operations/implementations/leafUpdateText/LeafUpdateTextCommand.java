@@ -3,8 +3,10 @@ package io.roadmaps.core.domain.services.course.operations.implementations.leafU
 import io.roadmaps.core.domain.model.leaf.events.UpdateTextEvent;
 import io.roadmaps.core.domain.services.course.operations.commands.Command;
 
+import java.util.UUID;
+
 public interface LeafUpdateTextCommand extends Command, UpdateTextEvent {
 
     @Override
-    Long getLeafId();
+    UUID getLeafId();
 }

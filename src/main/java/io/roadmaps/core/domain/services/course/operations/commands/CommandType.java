@@ -1,7 +1,7 @@
 package io.roadmaps.core.domain.services.course.operations.commands;
 
 import io.roadmaps.core.domain.model.courseAffiliation.enums.CourseAffiliationType;
-import io.roadmaps.core.domain.services.course.operations.context.implementations.AbstractOperationExecutionContext;
+import io.roadmaps.core.domain.services.course.operations.context.OperationExecutionContext;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -91,11 +91,11 @@ public enum CommandType {
         return !allowedFor.isEmpty();
     }
 
-    public String getToDoMessage(AbstractOperationExecutionContext context) {
+    public String getToDoMessage(OperationExecutionContext context) {
         return context.inflate(toDoMessageTemplate);
     }
 
-    public String getCompletedMessage(AbstractOperationExecutionContext context) {
+    public String getCompletedMessage(OperationExecutionContext context) {
         return context.inflate(completedMessageTemplate);
     }
 }

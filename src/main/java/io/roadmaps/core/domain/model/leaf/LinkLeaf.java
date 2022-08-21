@@ -1,8 +1,7 @@
 package io.roadmaps.core.domain.model.leaf;
 
-import io.roadmaps.core.domain.common.id.Generator;
-import io.roadmaps.core.domain.model.module.events.LeafCreationEvent;
 import io.roadmaps.core.domain.model.leaf.enums.LeafType;
+import io.roadmaps.core.domain.model.module.events.LeafCreationEvent;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
@@ -15,14 +14,13 @@ public class LinkLeaf extends Leaf {
     public LinkLeaf() {
     }
 
-    private LinkLeaf(Generator<Long> idGenerator, String title, String link) {
-        super(idGenerator, title, LeafType.LINK);
+    private LinkLeaf(String title, String link) {
+        super(title, LeafType.LINK);
         this.link = link;
     }
 
-    public static LinkLeaf create(Generator<Long> idGenerator, LeafCreationEvent creationCommand) {
+    public static LinkLeaf create(LeafCreationEvent creationCommand) {
         return new LinkLeaf(
-                idGenerator,
                 creationCommand.getTitle(),
                 creationCommand.getLink()
         );

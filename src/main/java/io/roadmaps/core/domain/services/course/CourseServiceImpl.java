@@ -25,7 +25,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     @Transactional
-    public Course getCourse(Long id) {
+    public Course getCourse(UUID id) {
         return repository.findCourse(id).orElseThrow(EntityNotFoundException::new);
     }
 
@@ -47,13 +47,13 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public List<Module> getModulesInCourse(Long id) {
+    public List<Module> getModulesInCourse(UUID id) {
         Course course = getCourse(id);
         return course.getModules();
     }
 
     @Override
-    public List<User> getStudentsInCourse(Long id) {
+    public List<User> getStudentsInCourse(UUID id) {
         return userService.getStudentsInCourse(id);
     }
 }

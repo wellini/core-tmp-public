@@ -3,8 +3,10 @@ package io.roadmaps.core.domain.services.course.operations.implementations.leafE
 import io.roadmaps.core.domain.model.leaf.events.EditLeafTitleEvent;
 import io.roadmaps.core.domain.services.course.operations.commands.Command;
 
+import java.util.UUID;
+
 public interface LeafEditTitleCommand extends Command, EditLeafTitleEvent {
 
     @Override
-    Long getLeafId();
+    UUID getLeafId();
 }

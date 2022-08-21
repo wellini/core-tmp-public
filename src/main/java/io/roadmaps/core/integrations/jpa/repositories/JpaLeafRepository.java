@@ -10,25 +10,26 @@ import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
 import java.util.Optional;
+import java.util.UUID;
 
-@RepositoryDefinition(domainClass = Leaf.class, idClass = Long.class)
+@RepositoryDefinition(domainClass = Leaf.class, idClass = UUID.class)
 public interface JpaLeafRepository extends LeafRepository {
 
     @Override
     @Query("SELECT l FROM Leaf l WHERE l.id = :id")
     @Transactional
-    Optional<Leaf> findLeaf(@Param("id") Long id);
+    Optional<Leaf> findLeaf(@Param("id") UUID id);
 
     @Override
     @Query("SELECT l FROM Leaf l WHERE l.id = :id AND l.type = :type")
     @Transactional
-    Optional<Leaf> findLeafByIdAndType(@Param("id") Long id, @Param("type") LeafType leafType);
+    Optional<Leaf> findLeafByIdAndType(@Param("id") UUID id, @Param("type") LeafType leafType);
 
     @Override
     @Transactional
     @Modifying
     @Query(value = "DELETE FROM leaves l USING modules m WHERE l.module_id = m.id AND m.course_id = :courseId", nativeQuery = true)
-    void deleteAllByCourseId(@Param("courseId") Long courseId);
+    void deleteAllByCourseId(@Param("courseId") UUID courseId);
 
     @Override
     @Transactional

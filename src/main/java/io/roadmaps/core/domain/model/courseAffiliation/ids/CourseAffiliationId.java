@@ -12,8 +12,8 @@ import java.util.UUID;
 public class CourseAffiliationId implements Serializable {
 
     @EqualsAndHashCode.Include
-    private Long courseId;
+    private UUID courseId;
 
     @EqualsAndHashCode.Include
-    private Long userId;
+    private UUID userId;
 }

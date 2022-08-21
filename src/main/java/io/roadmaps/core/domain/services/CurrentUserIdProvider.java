@@ -8,5 +8,5 @@ public interface CurrentUserIdProvider {
     /**
      * @return Optional.empty() if user not authorized, else his id
      */
-    Optional<Long> getCurrentUserId();
+    Optional<UUID> getCurrentUserId();
 }

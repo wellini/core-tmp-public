@@ -1,11 +1,12 @@
 package io.roadmaps.core.domain.model.leaf;
 
-import io.roadmaps.core.domain.common.id.Generator;
-import io.roadmaps.core.domain.model.leaf.events.EditLeafTitleEvent;
 import io.roadmaps.core.domain.model.leaf.enums.LeafType;
+import io.roadmaps.core.domain.model.leaf.events.EditLeafTitleEvent;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
@@ -13,16 +14,16 @@ import lombok.NoArgsConstructor;
 public abstract class Leaf {
 
     @EqualsAndHashCode.Include
-    protected Long id;
+    protected UUID id;
 
     protected String title;
 
     protected LeafType type;
 
-    protected Long moduleId;
+    protected UUID moduleId;
 
-    protected Leaf(Generator<Long> idGenerator, String title, LeafType type) {
-        id = idGenerator.generateNext();
+    protected Leaf(String title, LeafType type) {
+        id = UUID.randomUUID();
         this.title = title;
         this.type = type;
     }

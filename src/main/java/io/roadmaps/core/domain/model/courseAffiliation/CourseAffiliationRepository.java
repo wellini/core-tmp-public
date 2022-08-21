@@ -5,11 +5,11 @@ import java.util.UUID;
 
 public interface CourseAffiliationRepository {
 
-    Optional<CourseAffiliation> getCourseAffiliationByLeafId(Long userId, Long leafId);
+    Optional<CourseAffiliation> getCourseAffiliationByLeafId(UUID userId, UUID leafId);
 
-    Optional<CourseAffiliation> getCourseAffiliationByModuleId(Long userId, Long moduleId);
+    Optional<CourseAffiliation> getCourseAffiliationByModuleId(UUID userId, UUID moduleId);
 
-    Optional<CourseAffiliation> getCourseAffiliationByCourseId(Long userId, Long courseId);
+    Optional<CourseAffiliation> getCourseAffiliationByCourseId(UUID userId, UUID courseId);
 
-    void deleteAllByCourseId(Long courseId);
+    void deleteAllByCourseId(UUID courseId);
 }

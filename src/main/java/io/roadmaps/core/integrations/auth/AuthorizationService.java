@@ -12,7 +12,7 @@ import io.roadmaps.core.domain.services.user.UserService;
 import io.roadmaps.core.exception.AuthException;
 import io.roadmaps.core.integrations.authproviders.model.enums.AuthProviderType;
 import io.roadmaps.core.integrations.authproviders.services.AuthProviderService;
-import io.roadmaps.core.integrations.web.rest.api.auth.dto.response.LoginByGoogleProviderResponseDto;
+import io.roadmaps.core.integrations.web.rest.auth.dto.response.LoginByGoogleProviderResponseDto;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

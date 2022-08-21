@@ -4,9 +4,8 @@ import io.roadmaps.core.domain.model.module.Module;
 import io.roadmaps.core.domain.model.module.ModuleRepository;
 import io.roadmaps.core.domain.services.course.operations.ExplainedExecResult;
 import io.roadmaps.core.domain.services.course.operations.Operation;
-import io.roadmaps.core.domain.services.course.operations.context.OperationExecutionContextFactory;
-import io.roadmaps.core.domain.services.course.operations.context.implementations.AbstractOperationExecutionContext;
 import io.roadmaps.core.domain.services.course.operations.commands.CommandType;
+import io.roadmaps.core.domain.services.course.operations.context.OperationExecutionContext;
 import io.roadmaps.core.domain.services.courseAffiliation.CourseAffiliationService;
 import io.roadmaps.core.domain.services.user.UserService;
 import io.roadmaps.core.exception.EntityNotFoundException;
@@ -17,8 +16,8 @@ public class ModuleEditTitleOperation extends Operation<ModuleEditTitleCommand> 
 
     private final ModuleRepository repository;
 
-    public ModuleEditTitleOperation(OperationExecutionContextFactory contextFactory, UserService userService, CourseAffiliationService courseAffiliationService, ModuleRepository repository) {
-        super(contextFactory, userService, courseAffiliationService);
+    public ModuleEditTitleOperation(UserService userService, CourseAffiliationService courseAffiliationService, ModuleRepository repository) {
+        super(userService, courseAffiliationService);
         this.repository = repository;
     }
 
@@ -29,7 +28,7 @@ public class ModuleEditTitleOperation extends Operation<ModuleEditTitleCommand> 
 
     @Override
     @Transactional
-    protected ExplainedExecResult doExecute(AbstractOperationExecutionContext context, ModuleEditTitleCommand command) {
+    protected ExplainedExecResult doExecute(OperationExecutionContext context, ModuleEditTitleCommand command) {
         Module module = repository.findModule(command.getModuleId()).orElseThrow(EntityNotFoundException::new);
         module.editTitle(command);
         repository.save(module);

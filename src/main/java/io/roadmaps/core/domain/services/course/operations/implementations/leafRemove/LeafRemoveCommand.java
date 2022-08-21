@@ -7,5 +7,5 @@ import java.util.UUID;
 public interface LeafRemoveCommand extends Command {
 
     @Override
-    Long getLeafId();
+    UUID getLeafId();
 }

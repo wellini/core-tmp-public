@@ -8,17 +8,17 @@ import java.util.UUID;
 
 public interface CourseRepository {
 
-    Optional<Course> findCourse(Long id);
+    Optional<Course> findCourse(UUID id);
 
-    Optional<Course> findCourseByModuleId(Long moduleId);
+    Optional<Course> findCourseByModuleId(UUID moduleId);
 
-    Optional<Course> findCourseByLeafId(Long leafId);
+    Optional<Course> findCourseByLeafId(UUID leafId);
 
     List<Course> findAllCourses();
 
-    List<Course> findAllCoursesByAffiliationType(Long userId, CourseAffiliationType affiliationType);
+    List<Course> findAllCoursesByAffiliationType(UUID userId, CourseAffiliationType affiliationType);
 
-    void delete(Long id);
+    void delete(UUID id);
 
     void save(Course course);
 }

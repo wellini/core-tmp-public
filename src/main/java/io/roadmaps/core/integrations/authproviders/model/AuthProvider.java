@@ -1,15 +1,16 @@
 package io.roadmaps.core.integrations.authproviders.model;
 
-import io.roadmaps.core.domain.common.id.Generator;
 import io.roadmaps.core.integrations.authproviders.model.enums.AuthProviderType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
 public class AuthProvider {
 
-    private Long id;
+    private UUID id;
 
     private String providerId;
 
@@ -17,18 +18,18 @@ public class AuthProvider {
 
     private String token;
 
-    private Long userId;
+    private UUID userId;
 
-    private AuthProvider(Generator<Long> idGenerator, Long userId, AuthProviderType type, String providerId, String token) {
-        this.id = idGenerator.generateNext();
+    private AuthProvider(UUID userId, AuthProviderType type, String providerId, String token) {
+        this.id = UUID.randomUUID();
         this.providerId = providerId;
         this.type = type;
         this.token = token;
         this.userId = userId;
     }
 
-    public static AuthProvider create(Generator<Long> idGenerator, Long userId, AuthProviderType type, String providerId, String token) {
-        return new AuthProvider(idGenerator, userId, type, providerId, token);
+    public static AuthProvider create(UUID userId, AuthProviderType type, String providerId, String token) {
+        return new AuthProvider(userId, type, providerId, token);
     }
 
     public void update(String providerId, String token) {

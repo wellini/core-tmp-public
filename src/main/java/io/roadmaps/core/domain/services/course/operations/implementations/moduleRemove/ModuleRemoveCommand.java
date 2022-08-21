@@ -7,5 +7,5 @@ import java.util.UUID;
 public interface ModuleRemoveCommand extends Command {
 
     @Override
-    Long getModuleId();
+    UUID getModuleId();
 }

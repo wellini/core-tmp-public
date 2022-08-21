@@ -1,14 +1,12 @@
 package io.roadmaps.core.configuration;
 
-import io.roadmaps.core.domain.common.id.Generator;
+import io.roadmaps.core.integrations.auth.filter.JwtFilter;
 import io.roadmaps.core.integrations.authproviders.model.AuthProviderRepository;
 import io.roadmaps.core.integrations.authproviders.services.AuthProviderService;
 import io.roadmaps.core.integrations.authproviders.services.AuthProviderServiceImpl;
-import io.roadmaps.core.integrations.auth.filter.JwtFilter;
 import io.roadmaps.core.utils.cors.CORSFilter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -57,10 +55,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public AuthProviderService getAuthProviderService(
-            @Qualifier("authProviderIdIdSequenceGenerator") Generator<Long> authProviderIdIdSequenceGenerator,
             AuthProviderRepository repository
     ) {
-        return new AuthProviderServiceImpl(repository, authProviderIdIdSequenceGenerator);
+        return new AuthProviderServiceImpl(repository);
     }
 
 }

@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
+import java.util.UUID;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -16,12 +17,12 @@ public class ModuleServiceImpl implements ModuleService {
     private final ModuleRepository repository;
 
     @Override
-    public Module getModule(Long id) {
+    public Module getModule(UUID id) {
         return repository.findModule(id).orElseThrow(EntityNotFoundException::new);
     }
 
     @Override
-    public List<Leaf> getLeavesInModule(Long id) {
+    public List<Leaf> getLeavesInModule(UUID id) {
         Module module = getModule(id);
         return module.getLeaves();
     }

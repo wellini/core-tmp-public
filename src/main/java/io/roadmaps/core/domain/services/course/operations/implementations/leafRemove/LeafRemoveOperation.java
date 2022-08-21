@@ -4,9 +4,8 @@ import io.roadmaps.core.domain.model.module.Module;
 import io.roadmaps.core.domain.model.module.ModuleRepository;
 import io.roadmaps.core.domain.services.course.operations.ExplainedExecResult;
 import io.roadmaps.core.domain.services.course.operations.Operation;
-import io.roadmaps.core.domain.services.course.operations.context.OperationExecutionContextFactory;
-import io.roadmaps.core.domain.services.course.operations.context.implementations.AbstractOperationExecutionContext;
 import io.roadmaps.core.domain.services.course.operations.commands.CommandType;
+import io.roadmaps.core.domain.services.course.operations.context.OperationExecutionContext;
 import io.roadmaps.core.domain.services.courseAffiliation.CourseAffiliationService;
 import io.roadmaps.core.domain.services.user.UserService;
 import io.roadmaps.core.exception.EntityNotFoundException;
@@ -17,8 +16,8 @@ public class LeafRemoveOperation extends Operation<LeafRemoveCommand> {
 
     private final ModuleRepository moduleRepository;
 
-    public LeafRemoveOperation(OperationExecutionContextFactory contextFactory, UserService userService, CourseAffiliationService courseAffiliationService, ModuleRepository moduleRepository) {
-        super(contextFactory, userService, courseAffiliationService);
+    public LeafRemoveOperation(UserService userService, CourseAffiliationService courseAffiliationService, ModuleRepository moduleRepository) {
+        super(userService, courseAffiliationService);
         this.moduleRepository = moduleRepository;
     }
 
@@ -29,7 +28,7 @@ public class LeafRemoveOperation extends Operation<LeafRemoveCommand> {
 
     @Override
     @Transactional
-    protected ExplainedExecResult doExecute(AbstractOperationExecutionContext context, LeafRemoveCommand command) {
+    protected ExplainedExecResult doExecute(OperationExecutionContext context, LeafRemoveCommand command) {
         Module module = moduleRepository.findModuleByLeafId(command.getLeafId()).orElseThrow(EntityNotFoundException::new);
         context.setModuleId(module.getId());
         module.removeLeaf(command.getLeafId());

@@ -14,5 +14,5 @@ public interface UserService {
 
     User getOrCreate(String username, String fullname);
 
-    List<User> getStudentsInCourse(Long courseId);
+    List<User> getStudentsInCourse(UUID courseId);
 }

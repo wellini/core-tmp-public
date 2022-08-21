@@ -8,11 +8,11 @@ import java.util.UUID;
 
 public interface LeafRepository {
 
-    Optional<Leaf> findLeaf(Long id);
+    Optional<Leaf> findLeaf(UUID id);
 
-    Optional<Leaf> findLeafByIdAndType(Long id, LeafType leafType);
+    Optional<Leaf> findLeafByIdAndType(UUID id, LeafType leafType);
 
-    void deleteAllByCourseId(Long courseId);
+    void deleteAllByCourseId(UUID courseId);
 
     void save(Leaf leaf);
 }

@@ -3,10 +3,9 @@ package io.roadmaps.core.domain.services.course.operations.implementations.modul
 import io.roadmaps.core.domain.model.course.Course
 import io.roadmaps.core.domain.model.course.CourseRepository
 import io.roadmaps.core.domain.model.courseAffiliation.enums.CourseAffiliationType
-import io.roadmaps.core.domain.services.course.operations.context.implementations.SimpleOperationExecutionContext
 import io.roadmaps.core.domain.services.courseAffiliation.CourseAffiliationService
 import io.roadmaps.core.domain.services.user.UserService
-import io.roadmaps.core.integrations.web.rest.api.course.dtos.commands.ModuleMoveCommandDto
+import io.roadmaps.core.integrations.web.rest.course.dtos.commands.ModuleMoveCommandDto
 import spock.lang.Specification
 
 class ModuleMoveOperationSpec extends Specification {

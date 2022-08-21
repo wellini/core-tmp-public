@@ -1,6 +1,5 @@
 package io.roadmaps.core.domain.model.course;
 
-import io.roadmaps.core.domain.common.id.Generator;
 import io.roadmaps.core.domain.model.course.affiliationsregistry.AffiliationsRegistry;
 import io.roadmaps.core.domain.model.course.events.CourseCreationEvent;
 import io.roadmaps.core.domain.model.course.events.MoveLeafEvent;
@@ -19,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Slf4j
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -27,7 +27,7 @@ public class Course {
 
     @EqualsAndHashCode.Include
     @Getter
-    private Long id;
+    private UUID id;
 
     @Getter
     private Presentation presentation;
@@ -40,8 +40,8 @@ public class Course {
 
     private AffiliationsRegistry affiliationsRegistry;
 
-    private Course(Generator<Long> idGenerator, User author, CourseCreationEvent creationCommand) {
-        id = idGenerator.generateNext();
+    private Course(User author, CourseCreationEvent creationCommand) {
+        id = UUID.randomUUID();
         this.author = author;
         presentation = Presentation.create(
                 creationCommand.getTitle(),
@@ -51,11 +51,11 @@ public class Course {
         affiliationsRegistry.addAffiliation(author.getId(), CourseAffiliationType.TEACHER);
     }
 
-    public static Course create(Generator<Long> idGenerator, User author, CourseCreationEvent creationCommand) {
-        return new Course(idGenerator, author, creationCommand);
+    public static Course create(User author, CourseCreationEvent creationCommand) {
+        return new Course(author, creationCommand);
     }
 
-    public CourseAffiliationType getAffiliationType(Long userId) {
+    public CourseAffiliationType getAffiliationType(UUID userId) {
         return affiliationsRegistry.getAffiliationType(userId);
     }
 
@@ -63,7 +63,7 @@ public class Course {
         modules.add(Math.min(orderId, modules.size()), module);
     }
 
-    public void removeModule(Long moduleId) {
+    public void removeModule(UUID moduleId) {
         Module targetModule = modules.stream()
                 .filter(module -> module.getId().equals(moduleId))
                 .findFirst()
@@ -71,7 +71,7 @@ public class Course {
         this.modules.remove(targetModule);
     }
 
-    public void enrollInCourse(Long userId) {
+    public void enrollInCourse(UUID userId) {
         affiliationsRegistry.addAffiliation(userId, CourseAffiliationType.STUDENT);
     }
 
@@ -79,7 +79,7 @@ public class Course {
         presentation.edit(command);
     }
 
-    public void moveLeaf(Long leafId, MoveLeafEvent command) {
+    public void moveLeaf(UUID leafId, MoveLeafEvent command) {
         Module fromModule = modules.stream()
                 .filter(module -> module.hasLeaf(leafId))
                 .findFirst()
@@ -93,7 +93,7 @@ public class Course {
         fromModule.removeLeaf(leafId);
     }
 
-    public void moveModule(Long moduleId, MoveModuleEvent command) {
+    public void moveModule(UUID moduleId, MoveModuleEvent command) {
         Module module = modules.stream()
                 .filter(m -> m.getId().equals(moduleId))
                 .findFirst()

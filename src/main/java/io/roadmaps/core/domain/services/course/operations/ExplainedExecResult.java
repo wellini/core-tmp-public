@@ -11,11 +11,11 @@ import java.util.UUID;
 @NoArgsConstructor
 public class ExplainedExecResult {
 
-    private Long id;
+    private UUID id;
 
     private String message;
 
-    private ExplainedExecResult(Long id) {
+    private ExplainedExecResult(UUID id) {
         this.id = id;
     }
 
@@ -23,7 +23,7 @@ public class ExplainedExecResult {
         return new ExplainedExecResult();
     }
 
-    public static ExplainedExecResult identified(Long id) {
+    public static ExplainedExecResult identified(UUID id) {
         return new ExplainedExecResult(id);
     }
 }

@@ -31,7 +31,7 @@ public class JwtTokenService {
         secretKey = Keys.hmacShaKeyFor(jwtSecret.getBytes());
     }
 
-    public String generate(Long userId) {
+    public String generate(UUID userId) {
         Instant instant = Instant.now();
 
         return Jwts.builder()

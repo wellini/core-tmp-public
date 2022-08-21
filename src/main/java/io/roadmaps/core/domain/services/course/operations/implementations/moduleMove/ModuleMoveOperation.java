@@ -4,9 +4,8 @@ import io.roadmaps.core.domain.model.course.Course;
 import io.roadmaps.core.domain.model.course.CourseRepository;
 import io.roadmaps.core.domain.services.course.operations.ExplainedExecResult;
 import io.roadmaps.core.domain.services.course.operations.Operation;
-import io.roadmaps.core.domain.services.course.operations.context.OperationExecutionContextFactory;
-import io.roadmaps.core.domain.services.course.operations.context.implementations.AbstractOperationExecutionContext;
 import io.roadmaps.core.domain.services.course.operations.commands.CommandType;
+import io.roadmaps.core.domain.services.course.operations.context.OperationExecutionContext;
 import io.roadmaps.core.domain.services.courseAffiliation.CourseAffiliationService;
 import io.roadmaps.core.domain.services.user.UserService;
 import io.roadmaps.core.exception.EntityNotFoundException;
@@ -17,8 +16,8 @@ public class ModuleMoveOperation extends Operation<ModuleMoveCommand> {
 
     private final CourseRepository courseRepository;
 
-    public ModuleMoveOperation(OperationExecutionContextFactory contextFactory, UserService userService, CourseAffiliationService courseAffiliationService, CourseRepository courseRepository) {
-        super(contextFactory, userService, courseAffiliationService);
+    public ModuleMoveOperation(UserService userService, CourseAffiliationService courseAffiliationService, CourseRepository courseRepository) {
+        super(userService, courseAffiliationService);
         this.courseRepository = courseRepository;
     }
 
@@ -29,7 +28,7 @@ public class ModuleMoveOperation extends Operation<ModuleMoveCommand> {
 
     @Override
     @Transactional
-    protected ExplainedExecResult doExecute(AbstractOperationExecutionContext context, ModuleMoveCommand command) {
+    protected ExplainedExecResult doExecute(OperationExecutionContext context, ModuleMoveCommand command) {
         Course course = courseRepository.findCourseByModuleId(command.getModuleId())
                 .orElseThrow(EntityNotFoundException::new);
         course.moveModule(command.getModuleId(), command);

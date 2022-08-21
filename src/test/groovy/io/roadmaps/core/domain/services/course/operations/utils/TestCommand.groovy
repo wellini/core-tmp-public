@@ -5,7 +5,7 @@ import io.roadmaps.core.domain.services.course.operations.commands.CommandType
 
 class TestCommand implements Command {
 
-    def Long courseId
+    def UUID courseId
 
     def CommandType commandType
 }

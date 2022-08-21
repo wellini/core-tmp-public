@@ -3,10 +3,9 @@ package io.roadmaps.core.domain.services.course.operations.implementations.leafM
 import io.roadmaps.core.domain.model.course.Course
 import io.roadmaps.core.domain.model.course.CourseRepository
 import io.roadmaps.core.domain.model.courseAffiliation.enums.CourseAffiliationType
-import io.roadmaps.core.domain.services.course.operations.context.implementations.SimpleOperationExecutionContext
 import io.roadmaps.core.domain.services.courseAffiliation.CourseAffiliationService
 import io.roadmaps.core.domain.services.user.UserService
-import io.roadmaps.core.integrations.web.rest.api.course.dtos.commands.LeafMoveCommandDto
+import io.roadmaps.core.integrations.web.rest.course.dtos.commands.LeafMoveCommandDto
 import spock.lang.Specification
 
 class LeafMoveOperationSpec extends Specification {

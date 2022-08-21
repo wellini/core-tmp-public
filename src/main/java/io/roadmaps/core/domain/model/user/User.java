@@ -1,9 +1,10 @@
 package io.roadmaps.core.domain.model.user;
 
-import io.roadmaps.core.domain.common.id.Generator;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
+import java.util.UUID;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -11,19 +12,19 @@ import lombok.NoArgsConstructor;
 public class User {
 
     @EqualsAndHashCode.Include
-    private Long id;
+    private UUID id;
 
     private String fullname;
 
     private String username;
 
-    private User(Generator<Long> idGenerator, String username, String fullname) {
-        this.id = idGenerator.generateNext();
+    private User(String username, String fullname) {
+        this.id = UUID.randomUUID();
         this.fullname = fullname;
         this.username = username;
     }
 
-    public static User create(Generator<Long> idGenerator, String username, String fullname) {
-        return new User(idGenerator, username, fullname);
+    public static User create(String username, String fullname) {
+        return new User(username, fullname);
     }
 }

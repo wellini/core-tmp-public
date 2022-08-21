@@ -4,10 +4,11 @@ import io.roadmaps.core.domain.model.leaf.Leaf;
 import io.roadmaps.core.domain.model.module.Module;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface ModuleService {
 
-    Module getModule(Long id);
+    Module getModule(UUID id);
 
-    List<Leaf> getLeavesInModule(Long id);
+    List<Leaf> getLeavesInModule(UUID id);
 }

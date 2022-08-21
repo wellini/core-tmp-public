@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
 import java.util.Optional;
+import java.util.UUID;
 
 @RepositoryDefinition(domainClass = Module.class, idClass = Long.class)
 public interface JpaModuleRepository extends ModuleRepository {
@@ -16,18 +17,18 @@ public interface JpaModuleRepository extends ModuleRepository {
     @Override
     @Query("SELECT m FROM Module m WHERE m.id = :id")
     @Transactional
-    Optional<Module> findModule(@Param("id") Long id);
+    Optional<Module> findModule(@Param("id") UUID id);
 
     @Override
     @Query("SELECT m FROM Module m RIGHT JOIN Leaf l ON l.moduleId = m.id WHERE l.id = :leafId")
     @Transactional
-    Optional<Module> findModuleByLeafId(@Param("leafId") Long leafId);
+    Optional<Module> findModuleByLeafId(@Param("leafId") UUID leafId);
 
     @Override
     @Transactional
     @Modifying
     @Query("DELETE FROM Module m WHERE m.courseId = :courseId")
-    void deleteAllByCourseId(@Param("courseId") Long courseId);
+    void deleteAllByCourseId(@Param("courseId") UUID courseId);
 
     @Override
     @Transactional

@@ -2,8 +2,10 @@ package io.roadmaps.core.domain.services.course.operations.implementations.cours
 
 import io.roadmaps.core.domain.services.course.operations.commands.Command;
 
+import java.util.UUID;
+
 public interface CourseRemoveCommand extends Command {
 
     @Override
-    Long getCourseId();
+    UUID getCourseId();
 }

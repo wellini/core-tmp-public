@@ -10,13 +10,13 @@ import java.util.UUID;
 
 public interface CourseService {
 
-    Course getCourse(Long id);
+    Course getCourse(UUID id);
 
     List<Course> getAllCourses();
 
     List<Course> getAllCoursesByAffiliationType(CourseAffiliationType affiliationType);
 
-    List<Module> getModulesInCourse(Long id);
+    List<Module> getModulesInCourse(UUID id);
 
-    List<User> getStudentsInCourse(Long id);
+    List<User> getStudentsInCourse(UUID id);
 }

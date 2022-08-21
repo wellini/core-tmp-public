@@ -1,14 +1,14 @@
 package io.roadmaps.core.domain.services.course.operations
 
 import io.roadmaps.core.domain.model.courseAffiliation.enums.CourseAffiliationType
-import io.roadmaps.core.domain.services.course.operations.context.implementations.SimpleOperationExecutionContext
+import io.roadmaps.core.domain.services.course.operations.context.OperationExecutionContext
 import spock.lang.Specification
 
 class OperationExecutionContextSpec extends Specification {
 
     def "Scenario: Operation context inflates template"() {
         given: "Operation context with all fulfilled fields"
-        def context = new SimpleOperationExecutionContext()
+        def context = new OperationExecutionContext()
         context.currentUserId = UUID.randomUUID()
         context.currentUserAffiliationType = CourseAffiliationType.GUEST
         context.courseId = UUID.randomUUID()

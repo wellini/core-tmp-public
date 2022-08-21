@@ -5,9 +5,8 @@ import io.roadmaps.core.domain.model.leaf.TextLeaf;
 import io.roadmaps.core.domain.model.leaf.enums.LeafType;
 import io.roadmaps.core.domain.services.course.operations.ExplainedExecResult;
 import io.roadmaps.core.domain.services.course.operations.Operation;
-import io.roadmaps.core.domain.services.course.operations.context.OperationExecutionContextFactory;
-import io.roadmaps.core.domain.services.course.operations.context.implementations.AbstractOperationExecutionContext;
 import io.roadmaps.core.domain.services.course.operations.commands.CommandType;
+import io.roadmaps.core.domain.services.course.operations.context.OperationExecutionContext;
 import io.roadmaps.core.domain.services.courseAffiliation.CourseAffiliationService;
 import io.roadmaps.core.domain.services.user.UserService;
 import io.roadmaps.core.exception.EntityNotFoundException;
@@ -18,8 +17,8 @@ public class LeafUpdateTextOperation extends Operation<LeafUpdateTextCommand> {
 
     private final LeafRepository leafRepository;
 
-    public LeafUpdateTextOperation(OperationExecutionContextFactory contextFactory, UserService userService, CourseAffiliationService courseAffiliationService, LeafRepository leafRepository) {
-        super(contextFactory, userService, courseAffiliationService);
+    public LeafUpdateTextOperation(UserService userService, CourseAffiliationService courseAffiliationService, LeafRepository leafRepository) {
+        super(userService, courseAffiliationService);
         this.leafRepository = leafRepository;
     }
 
@@ -30,7 +29,7 @@ public class LeafUpdateTextOperation extends Operation<LeafUpdateTextCommand> {
 
     @Override
     @Transactional
-    protected ExplainedExecResult doExecute(AbstractOperationExecutionContext context, LeafUpdateTextCommand command) {
+    protected ExplainedExecResult doExecute(OperationExecutionContext context, LeafUpdateTextCommand command) {
         TextLeaf leaf = (TextLeaf) leafRepository.findLeafByIdAndType(command.getLeafId(), LeafType.TEXT).orElseThrow(EntityNotFoundException::new);
         leaf.updateText(command);
         leafRepository.save(leaf);

@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public interface AuthProviderRepository {
 
-    Optional<AuthProvider> findByUserIdAndType(Long userId, AuthProviderType type);
+    Optional<AuthProvider> findByUserIdAndType(UUID userId, AuthProviderType type);
 
     void save(AuthProvider authProvider);
 }

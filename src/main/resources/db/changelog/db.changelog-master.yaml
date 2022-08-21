@@ -42,5 +42,3 @@ databaseChangeLog:
       file: db/changelog/courseaffiliations/0002-make-composite-pk.sql
   - include:
       file: db/changelog/common/0001-rename-tables-to-plural-form.sql
-  - include:
-      file: db/changelog/common/0002-migrate-to-sequences.sql

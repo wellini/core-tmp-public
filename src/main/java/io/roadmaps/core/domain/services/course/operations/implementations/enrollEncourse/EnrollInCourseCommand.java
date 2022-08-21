@@ -7,5 +7,5 @@ import java.util.UUID;
 public interface EnrollInCourseCommand extends Command {
 
     @Override
-    Long getCourseId();
+    UUID getCourseId();
 }

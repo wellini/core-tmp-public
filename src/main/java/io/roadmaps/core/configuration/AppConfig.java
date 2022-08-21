@@ -2,7 +2,6 @@ package io.roadmaps.core.configuration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import io.roadmaps.core.integrations.web.rest.hrid.HRIDJacksonModule;
 import org.modelmapper.Conditions;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
@@ -29,7 +28,6 @@ public class AppConfig {
     @Bean
     public ObjectMapper objectMapper() {
         return new ObjectMapper()
-                .disable(SerializationFeature.FAIL_ON_EMPTY_BEANS)
-                .registerModule(new HRIDJacksonModule());
+                .disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
     }
 }

@@ -11,7 +11,7 @@ import javax.transaction.Transactional;
 import java.util.Optional;
 import java.util.UUID;
 
-@RepositoryDefinition(domainClass = CourseAffiliation.class, idClass = Long.class)
+@RepositoryDefinition(domainClass = CourseAffiliation.class, idClass = UUID.class)
 public interface JpaCourseAffiliationRepository extends CourseAffiliationRepository {
 
     @Override
@@ -20,23 +20,23 @@ public interface JpaCourseAffiliationRepository extends CourseAffiliationReposit
             "RIGHT JOIN Module m ON m.courseId = ca.courseId " +
             "RIGHT JOIN Leaf l ON l.moduleId = m.id " +
             "WHERE ca.userId = :userId AND l.id = :leafId")
-    Optional<CourseAffiliation> getCourseAffiliationByLeafId(@Param("userId") Long userId, @Param("leafId") Long leafId);
+    Optional<CourseAffiliation> getCourseAffiliationByLeafId(@Param("userId") UUID userId, @Param("leafId") UUID leafId);
 
     @Override
     @Transactional
     @Query("SELECT ca FROM CourseAffiliation ca " +
             "LEFT JOIN Module m ON m.courseId = ca.courseId " +
             "WHERE ca.userId = :userId AND m.id = :moduleId")
-    Optional<CourseAffiliation> getCourseAffiliationByModuleId(@Param("userId") Long userId, @Param("moduleId") Long moduleId);
+    Optional<CourseAffiliation> getCourseAffiliationByModuleId(@Param("userId") UUID userId, @Param("moduleId") UUID moduleId);
 
     @Override
     @Transactional
     @Query("SELECT ca FROM CourseAffiliation ca WHERE ca.userId = :userId AND ca.courseId = :courseId")
-    Optional<CourseAffiliation> getCourseAffiliationByCourseId(@Param("userId") Long userId, @Param("courseId") Long courseId);
+    Optional<CourseAffiliation> getCourseAffiliationByCourseId(@Param("userId") UUID userId, @Param("courseId") UUID courseId);
 
     @Override
     @Transactional
     @Modifying
     @Query("DELETE FROM CourseAffiliation ca WHERE ca.courseId = :courseId")
-    void deleteAllByCourseId(@Param("courseId") Long courseId);
+    void deleteAllByCourseId(@Param("courseId") UUID courseId);
 }

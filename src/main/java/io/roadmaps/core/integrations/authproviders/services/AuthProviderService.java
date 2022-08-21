@@ -6,5 +6,5 @@ import java.util.UUID;
 
 public interface AuthProviderService {
 
-    Long saveAuthentication(Long userId, AuthProviderType type, String providerId, String token);
+    UUID saveAuthentication(UUID userId, AuthProviderType type, String providerId, String token);
 }

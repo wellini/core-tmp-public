@@ -5,7 +5,7 @@ import io.roadmaps.core.domain.model.course.enums.CourseCoverTheme
 import io.roadmaps.core.domain.model.module.Module
 import io.roadmaps.core.domain.model.user.User
 import io.roadmaps.core.domain.services.course.operations.commands.CommandType
-import io.roadmaps.core.integrations.web.rest.api.course.dtos.commands.CreateCourseCommandDto
+import io.roadmaps.core.integrations.web.rest.course.dtos.commands.CreateCourseCommandDto
 import org.apache.commons.lang3.RandomStringUtils
 
 class TestFabric {

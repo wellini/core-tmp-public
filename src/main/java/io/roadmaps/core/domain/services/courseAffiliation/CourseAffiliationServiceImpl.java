@@ -15,25 +15,25 @@ public class CourseAffiliationServiceImpl implements CourseAffiliationService {
     private final CourseAffiliationRepository repository;
 
     @Override
-    public CourseAffiliationType safeGetAffiliationTypeByLeafId(Long userId, Long leafId) {
+    public CourseAffiliationType safeGetAffiliationTypeByLeafId(UUID userId, UUID leafId) {
         Optional<CourseAffiliation> courseAffiliation = repository.getCourseAffiliationByLeafId(userId, leafId);
         return courseAffiliation.map(CourseAffiliation::getType).orElse(CourseAffiliationType.GUEST);
     }
 
     @Override
-    public CourseAffiliationType safeGetAffiliationTypeByModuleId(Long userId, Long moduleId) {
+    public CourseAffiliationType safeGetAffiliationTypeByModuleId(UUID userId, UUID moduleId) {
         Optional<CourseAffiliation> courseAffiliation = repository.getCourseAffiliationByModuleId(userId, moduleId);
         return courseAffiliation.map(CourseAffiliation::getType).orElse(CourseAffiliationType.GUEST);
     }
 
     @Override
-    public CourseAffiliationType safeGetAffiliationTypeByCourseId(Long userId, Long courseId) {
+    public CourseAffiliationType safeGetAffiliationTypeByCourseId(UUID userId, UUID courseId) {
         Optional<CourseAffiliation> courseAffiliation = repository.getCourseAffiliationByCourseId(userId, courseId);
         return courseAffiliation.map(CourseAffiliation::getType).orElse(CourseAffiliationType.GUEST);
     }
 
     @Override
-    public CourseAffiliationType safeResolveAffiliation(Long userId, AffiliationResolvable resolvable) {
+    public CourseAffiliationType safeResolveAffiliation(UUID userId, AffiliationResolvable resolvable) {
         if(Objects.nonNull(resolvable.getCourseId())) {
             return safeGetAffiliationTypeByCourseId(userId, resolvable.getCourseId());
         } else if (Objects.nonNull(resolvable.getModuleId())) {

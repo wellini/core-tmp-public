@@ -6,11 +6,11 @@ import java.util.UUID;
 
 public interface CourseAffiliationService {
 
-    CourseAffiliationType safeGetAffiliationTypeByLeafId(Long userId, Long leafId);
+    CourseAffiliationType safeGetAffiliationTypeByLeafId(UUID userId, UUID leafId);
 
-    CourseAffiliationType safeGetAffiliationTypeByModuleId(Long userId, Long moduleId);
+    CourseAffiliationType safeGetAffiliationTypeByModuleId(UUID userId, UUID moduleId);
 
-    CourseAffiliationType safeGetAffiliationTypeByCourseId(Long userId, Long courseId);
+    CourseAffiliationType safeGetAffiliationTypeByCourseId(UUID userId, UUID courseId);
 
-    CourseAffiliationType safeResolveAffiliation(Long userId, AffiliationResolvable resolvable);
+    CourseAffiliationType safeResolveAffiliation(UUID userId, AffiliationResolvable resolvable);
 }

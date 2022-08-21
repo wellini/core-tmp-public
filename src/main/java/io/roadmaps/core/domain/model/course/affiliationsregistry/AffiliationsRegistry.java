@@ -9,18 +9,19 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 @NoArgsConstructor
 public class AffiliationsRegistry {
 
-    private Long courseId;
+    private UUID courseId;
 
     @Getter
     private Set<CourseAffiliation> courseAffiliations = new HashSet<>();
 
-    private Map<Long, CourseAffiliationType> indexByUsers = new HashMap();
+    private Map<UUID, CourseAffiliationType> indexByUsers = new HashMap();
 
-    public static AffiliationsRegistry init(Long courseId) {
+    public static AffiliationsRegistry init(UUID courseId) {
         AffiliationsRegistry affiliationsRegistry = new AffiliationsRegistry();
         affiliationsRegistry.courseId = courseId;
         return affiliationsRegistry;
@@ -31,11 +32,11 @@ public class AffiliationsRegistry {
         refreshIndex();
     }
 
-    public CourseAffiliationType getAffiliationType(Long userId) {
+    public CourseAffiliationType getAffiliationType(UUID userId) {
         return indexByUsers.get(userId);
     }
 
-    public void addAffiliation(Long userId, CourseAffiliationType type) {
+    public void addAffiliation(UUID userId, CourseAffiliationType type) {
         courseAffiliations.add(CourseAffiliation.create(courseId, userId, type));
         refreshIndex();
     }

@@ -4,10 +4,9 @@ import io.roadmaps.core.domain.model.courseAffiliation.enums.CourseAffiliationTy
 import io.roadmaps.core.domain.model.leaf.LeafRepository
 import io.roadmaps.core.domain.model.leaf.TextLeaf
 import io.roadmaps.core.domain.model.leaf.enums.LeafType
-import io.roadmaps.core.domain.services.course.operations.context.implementations.SimpleOperationExecutionContext
 import io.roadmaps.core.domain.services.courseAffiliation.CourseAffiliationService
 import io.roadmaps.core.domain.services.user.UserService
-import io.roadmaps.core.integrations.web.rest.api.course.dtos.commands.LeafUpdateTextCommandDto
+import io.roadmaps.core.integrations.web.rest.course.dtos.commands.LeafUpdateTextCommandDto
 import org.apache.commons.lang3.RandomStringUtils
 import spock.lang.Specification
 

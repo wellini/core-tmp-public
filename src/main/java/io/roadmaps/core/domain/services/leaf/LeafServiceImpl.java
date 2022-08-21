@@ -6,6 +6,8 @@ import io.roadmaps.core.exception.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.UUID;
+
 @Slf4j
 @RequiredArgsConstructor
 public class LeafServiceImpl implements LeafService {
@@ -13,7 +15,7 @@ public class LeafServiceImpl implements LeafService {
     private final LeafRepository repository;
 
     @Override
-    public Leaf getLeaf(Long id) {
+    public Leaf getLeaf(UUID id) {
         return repository.findLeaf(id).orElseThrow(EntityNotFoundException::new);
     }
 }

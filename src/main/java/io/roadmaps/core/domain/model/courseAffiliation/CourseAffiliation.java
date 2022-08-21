@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 @Getter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -13,14 +14,14 @@ import java.io.Serializable;
 public class CourseAffiliation implements Serializable {
 
     @EqualsAndHashCode.Include
-    private Long courseId;
+    private UUID courseId;
 
     @EqualsAndHashCode.Include
-    private Long userId;
+    private UUID userId;
 
     private CourseAffiliationType type;
 
-    private CourseAffiliation(Long courseId, Long userId, CourseAffiliationType type) {
+    private CourseAffiliation(UUID courseId, UUID userId, CourseAffiliationType type) {
         if(type == CourseAffiliationType.GUEST) {
             throw new IllegalArgumentException("GUEST cannot be a type of affiliation because it is neutral value that means there is no any affiliation");
         } else {
@@ -30,7 +31,7 @@ public class CourseAffiliation implements Serializable {
         }
     }
 
-    public static CourseAffiliation create(Long courseId, Long userId, CourseAffiliationType type) {
+    public static CourseAffiliation create(UUID courseId, UUID userId, CourseAffiliationType type) {
         return new CourseAffiliation(courseId, userId, type);
     }
 }

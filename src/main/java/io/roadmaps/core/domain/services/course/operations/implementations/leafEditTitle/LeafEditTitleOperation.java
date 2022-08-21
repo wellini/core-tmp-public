@@ -4,9 +4,8 @@ import io.roadmaps.core.domain.model.leaf.Leaf;
 import io.roadmaps.core.domain.model.leaf.LeafRepository;
 import io.roadmaps.core.domain.services.course.operations.ExplainedExecResult;
 import io.roadmaps.core.domain.services.course.operations.Operation;
-import io.roadmaps.core.domain.services.course.operations.context.OperationExecutionContextFactory;
-import io.roadmaps.core.domain.services.course.operations.context.implementations.AbstractOperationExecutionContext;
 import io.roadmaps.core.domain.services.course.operations.commands.CommandType;
+import io.roadmaps.core.domain.services.course.operations.context.OperationExecutionContext;
 import io.roadmaps.core.domain.services.courseAffiliation.CourseAffiliationService;
 import io.roadmaps.core.domain.services.user.UserService;
 import io.roadmaps.core.exception.EntityNotFoundException;
@@ -17,8 +16,8 @@ public class LeafEditTitleOperation extends Operation<LeafEditTitleCommand> {
 
     private final LeafRepository leafRepository;
 
-    public LeafEditTitleOperation(OperationExecutionContextFactory contextFactory, UserService userService, CourseAffiliationService courseAffiliationService, LeafRepository leafRepository) {
-        super(contextFactory, userService, courseAffiliationService);
+    public LeafEditTitleOperation(UserService userService, CourseAffiliationService courseAffiliationService, LeafRepository leafRepository) {
+        super(userService, courseAffiliationService);
         this.leafRepository = leafRepository;
     }
 
@@ -29,7 +28,7 @@ public class LeafEditTitleOperation extends Operation<LeafEditTitleCommand> {
 
     @Override
     @Transactional
-    protected ExplainedExecResult doExecute(AbstractOperationExecutionContext context, LeafEditTitleCommand command) {
+    protected ExplainedExecResult doExecute(OperationExecutionContext context, LeafEditTitleCommand command) {
         Leaf leaf = leafRepository.findLeaf(command.getLeafId()).orElseThrow(EntityNotFoundException::new);
         leaf.editTitle(command);
         leafRepository.save(leaf);

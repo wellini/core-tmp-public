@@ -4,9 +4,8 @@ import io.roadmaps.core.domain.model.course.Course;
 import io.roadmaps.core.domain.model.course.CourseRepository;
 import io.roadmaps.core.domain.services.course.operations.ExplainedExecResult;
 import io.roadmaps.core.domain.services.course.operations.Operation;
-import io.roadmaps.core.domain.services.course.operations.context.OperationExecutionContextFactory;
-import io.roadmaps.core.domain.services.course.operations.context.implementations.AbstractOperationExecutionContext;
 import io.roadmaps.core.domain.services.course.operations.commands.CommandType;
+import io.roadmaps.core.domain.services.course.operations.context.OperationExecutionContext;
 import io.roadmaps.core.domain.services.courseAffiliation.CourseAffiliationService;
 import io.roadmaps.core.domain.services.user.UserService;
 import io.roadmaps.core.exception.EntityNotFoundException;
@@ -17,8 +16,8 @@ public class CourseEditPresentationOperation extends Operation<CourseEditPresent
 
     private final CourseRepository courseRepository;
 
-    public CourseEditPresentationOperation(OperationExecutionContextFactory contextFactory, UserService userService, CourseAffiliationService courseAffiliationService, CourseRepository courseRepository) {
-        super(contextFactory, userService, courseAffiliationService);
+    public CourseEditPresentationOperation(UserService userService, CourseAffiliationService courseAffiliationService, CourseRepository courseRepository) {
+        super(userService, courseAffiliationService);
         this.courseRepository = courseRepository;
     }
 
@@ -29,7 +28,7 @@ public class CourseEditPresentationOperation extends Operation<CourseEditPresent
 
     @Override
     @Transactional
-    protected ExplainedExecResult doExecute(AbstractOperationExecutionContext context, CourseEditPresentationCommand command) {
+    protected ExplainedExecResult doExecute(OperationExecutionContext context, CourseEditPresentationCommand command) {
         Course course = courseRepository.findCourse(command.getCourseId()).orElseThrow(EntityNotFoundException::new);
         course.editPresentation(command);
         courseRepository.save(course);

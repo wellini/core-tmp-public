@@ -1,16 +1,18 @@
 package io.roadmaps.core.domain.services.courseAffiliation;
 
+import java.util.UUID;
+
 public interface AffiliationResolvable {
 
-    default Long getCourseId() {
+    default UUID getCourseId() {
         return null;
     }
 
-    default Long getModuleId() {
+    default UUID getModuleId() {
         return null;
     }
 
-    default Long getLeafId() {
+    default UUID getLeafId() {
         return null;
     }
 }

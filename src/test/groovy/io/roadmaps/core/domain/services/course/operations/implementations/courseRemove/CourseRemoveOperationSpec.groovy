@@ -6,10 +6,9 @@ import io.roadmaps.core.domain.model.courseAffiliation.CourseAffiliationReposito
 import io.roadmaps.core.domain.model.courseAffiliation.enums.CourseAffiliationType
 import io.roadmaps.core.domain.model.leaf.LeafRepository
 import io.roadmaps.core.domain.model.module.ModuleRepository
-import io.roadmaps.core.domain.services.course.operations.context.implementations.SimpleOperationExecutionContext
 import io.roadmaps.core.domain.services.courseAffiliation.CourseAffiliationService
 import io.roadmaps.core.domain.services.user.UserService
-import io.roadmaps.core.integrations.web.rest.api.course.dtos.commands.CourseRemoveCommandDto
+import io.roadmaps.core.integrations.web.rest.course.dtos.commands.CourseRemoveCommandDto
 import spock.lang.Specification
 
 class CourseRemoveOperationSpec extends Specification {

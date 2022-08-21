@@ -11,13 +11,13 @@ import javax.transaction.Transactional;
 import java.util.Optional;
 import java.util.UUID;
 
-@RepositoryDefinition(domainClass = AuthProvider.class, idClass = Long.class)
+@RepositoryDefinition(domainClass = AuthProvider.class, idClass = UUID.class)
 public interface JpaAuthProviderRepository extends AuthProviderRepository {
 
     @Override
     @Query("SELECT ap FROM AuthProvider ap WHERE ap.userId = :userId AND ap.type = :type")
     @Transactional
-    Optional<AuthProvider> findByUserIdAndType(@Param("userId") Long userId, @Param("type") AuthProviderType type);
+    Optional<AuthProvider> findByUserIdAndType(@Param("userId") UUID userId, @Param("type") AuthProviderType type);
 
     @Override
     @Transactional

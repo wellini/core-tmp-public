@@ -3,8 +3,10 @@ package io.roadmaps.core.domain.services.course.operations.implementations.cours
 import io.roadmaps.core.domain.model.course.presentation.events.EditPresentationEvent;
 import io.roadmaps.core.domain.services.course.operations.commands.Command;
 
+import java.util.UUID;
+
 public interface CourseEditPresentationCommand extends Command, EditPresentationEvent {
 
     @Override
-    Long getCourseId();
+    UUID getCourseId();
 }

@@ -1,7 +1,6 @@
 package io.roadmaps.core.domain.services.course.operations.commands
 
 import io.roadmaps.core.domain.model.courseAffiliation.enums.CourseAffiliationType
-import io.roadmaps.core.domain.services.course.operations.context.implementations.SimpleOperationExecutionContext
 import spock.lang.Specification
 
 class CommandTypeSpec extends Specification {

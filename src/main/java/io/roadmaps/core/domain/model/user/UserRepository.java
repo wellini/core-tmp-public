@@ -6,11 +6,11 @@ import java.util.UUID;
 
 public interface UserRepository {
 
-    Optional<User> findUser(Long id);
+    Optional<User> findUser(UUID id);
 
     Optional<User> findUserByUsername(String username);
 
-    List<User> findStudentsInCourse(Long courseId);
+    List<User> findStudentsInCourse(UUID courseId);
 
     void save(User user);
 }
