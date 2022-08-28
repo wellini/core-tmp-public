@@ -5,7 +5,7 @@ import io.roadmaps.core.domain.model.module.Module
 import io.roadmaps.core.domain.model.module.ModuleRepository
 import io.roadmaps.core.domain.services.courseAffiliation.CourseAffiliationService
 import io.roadmaps.core.domain.services.user.UserService
-import io.roadmaps.core.integrations.web.rest.course.dtos.commands.ModuleEditTitleCommandDto
+import io.roadmaps.core.integrations.web.rest.api.course.dtos.commands.ModuleEditTitleCommandDto
 import org.apache.commons.lang3.RandomStringUtils
 import spock.lang.Specification
 

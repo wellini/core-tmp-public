@@ -7,7 +7,7 @@ import io.roadmaps.core.domain.model.courseAffiliation.enums.CourseAffiliationTy
 import io.roadmaps.core.domain.services.course.operations.utils.TestFabric
 import io.roadmaps.core.domain.services.courseAffiliation.CourseAffiliationService
 import io.roadmaps.core.domain.services.user.UserService
-import io.roadmaps.core.integrations.web.rest.course.dtos.commands.CourseEditPresentationCommandDto
+import io.roadmaps.core.integrations.web.rest.api.course.dtos.commands.CourseEditPresentationCommandDto
 import org.testcontainers.shaded.org.apache.commons.lang3.RandomStringUtils
 import spock.lang.Specification
 

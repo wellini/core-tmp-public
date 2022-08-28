@@ -59,6 +59,16 @@ public class ValidationFlow<T> {
     }
 
     /**
+     * Add a set of requirements
+     * @param check
+     * @return
+     */
+    public ValidationFlow<T> addCheck(Check<T> check) {
+        check.configureValidationFlow(this, propertyName, propertySupplier);
+        return this;
+    }
+
+    /**
      * Check rule and save error if it happens. all following checks and subflows will be ignored
      * @param rule
      * @param message

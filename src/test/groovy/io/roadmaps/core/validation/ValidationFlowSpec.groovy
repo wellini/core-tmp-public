@@ -5,6 +5,8 @@ import io.roadmaps.core.validation.utils.TestUser
 import org.apache.commons.lang3.RandomStringUtils
 import spock.lang.Specification
 
+import java.util.function.Supplier
+
 class ValidationFlowSpec extends Specification {
 
     def "Scenario: Root flow should not check requirements"() {
@@ -84,5 +86,28 @@ class ValidationFlowSpec extends Specification {
         report.getErrors().get("paymentInfo").get(0) == "MESSAGE1"
         report.getErrors().get("paymentInfo.address").size() == 1
         report.getErrors().get("paymentInfo.address").get(0) == "MESSAGE2"
+    }
+
+    def "Scenario: Flow successfully add configurations from checks"() {
+        given:
+        def user = TestUser.createFilledWithRandomData()
+        user.setName(RandomStringUtils.randomAlphabetic(1))
+
+        def check = (ValidationFlow<String> validationFlow, String propertyName, Supplier<String> propertySupplier) -> {
+            validationFlow.require(Rules.minAndMaxLength(2, 100), "MESSAGE1")
+        }
+
+        when:
+        def vf =
+                ValidationFlow.start()
+                        .forProperty("name", user::getName)
+                            .addCheck(check)
+                            .and()
+        def report = vf.getValidationReport()
+
+        then:
+        report.getErrors().size() == 1
+        report.getErrors().get("name").size() == 1
+        report.getErrors().get("name").get(0) == "MESSAGE1"
     }
 }

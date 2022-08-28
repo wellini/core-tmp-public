@@ -5,7 +5,7 @@ import io.roadmaps.core.domain.model.leaf.LeafRepository
 import io.roadmaps.core.domain.model.leaf.TextLeaf
 import io.roadmaps.core.domain.services.courseAffiliation.CourseAffiliationService
 import io.roadmaps.core.domain.services.user.UserService
-import io.roadmaps.core.integrations.web.rest.course.dtos.commands.LeafEditTitleCommandDto
+import io.roadmaps.core.integrations.web.rest.api.course.dtos.commands.LeafEditTitleCommandDto
 import org.apache.commons.lang3.RandomStringUtils
 import spock.lang.Specification
 

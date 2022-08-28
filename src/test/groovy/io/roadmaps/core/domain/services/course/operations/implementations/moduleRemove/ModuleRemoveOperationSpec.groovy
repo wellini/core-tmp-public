@@ -30,7 +30,7 @@ class ModuleRemoveOperationSpec extends Specification {
         course.getId() >> COURSE_ID
 
         and: "Removing command"
-        def command = new io.roadmaps.core.integrations.web.rest.course.dtos.commands.ModuleRemoveCommandDto(UUID.randomUUID())
+        def command = new io.roadmaps.core.integrations.web.rest.api.course.dtos.commands.ModuleRemoveCommandDto(UUID.randomUUID())
 
         and: "An execution context given by superclass"
         def context = SimpleOperationExecutionContext.create(USER_ID, CourseAffiliationType.TEACHER, command)
