@@ -1,6 +1,7 @@
 package io.roadmaps.core.integrations.web.rest.api.course.dtos.commands;
 
 import io.roadmaps.core.domain.services.course.operations.implementations.leafEditTitle.LeafEditTitleCommand;
+import io.roadmaps.core.integrations.web.rest.api.course.checks.LeafTitleCheck;
 import io.roadmaps.core.validation.Rules;
 import io.roadmaps.core.validation.ValidationFlow;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -31,8 +32,7 @@ public class LeafEditTitleCommandDto extends AbstractCommandDto implements LeafE
                     .strictlyRequire(Rules.notNull(), "Set leaf ID")
                     .and()
                 .forProperty("title", this::getTitle)
-                    .strictlyRequire(Rules.notBlank(), "Set title")
-                    .require(Rules.maxLength(256), "Length should be less than 256")
+                    .addCheck(LeafTitleCheck.getInstance())
                     .and();
         // @formatter:on
     }

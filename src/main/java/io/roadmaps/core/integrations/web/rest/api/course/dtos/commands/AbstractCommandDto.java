@@ -1,5 +1,6 @@
 package io.roadmaps.core.integrations.web.rest.api.course.dtos.commands;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.roadmaps.core.domain.services.course.operations.commands.Command;
@@ -8,26 +9,10 @@ import io.roadmaps.core.exception.ValidationException;
 import io.roadmaps.core.validation.Rules;
 import io.roadmaps.core.validation.Validatable;
 import io.roadmaps.core.validation.ValidationFlow;
-import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
-@Schema(
-        oneOf = {
-                CourseEditPresentationCommandDto.class,
-                CourseRemoveCommandDto.class,
-                CreateCourseCommandDto.class,
-                EnrollInCourseCommandDto.class,
-                LeafCreateCommandDto.class,
-                LeafEditTitleCommandDto.class,
-                LeafMoveCommandDto.class,
-                LeafRemoveCommandDto.class,
-                LeafUpdateTextCommandDto.class,
-                ModuleCreateCommandDto.class,
-                ModuleEditTitleCommandDto.class,
-                ModuleMoveCommandDto.class,
-                ModuleRemoveCommandDto.class
-        }
-)
+import java.util.UUID;
+
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
         property = "commandType",
@@ -55,12 +40,34 @@ public abstract class AbstractCommandDto implements Validatable, Command {
 
     @Override
     public void validate() throws ValidationException {
+
+        // @formatter:off
         ValidationFlow<?> validationFlow = ValidationFlow.start()
                 .forProperty("commandType", this::getCommandType)
-                .strictlyRequire(Rules.notNull(), "Set command type")
-                .and();
+                    .strictlyRequire(Rules.notNull(), "Set command type")
+                    .and();
+        // @formatter:off
+
         configureSpecificValidations(validationFlow);
         validationFlow.ifHasErrorsThrow(ValidationException::new);
+    }
+
+    @JsonIgnore
+    @Override
+    public UUID getCourseId() {
+        return Command.super.getCourseId();
+    }
+
+    @JsonIgnore
+    @Override
+    public UUID getModuleId() {
+        return Command.super.getModuleId();
+    }
+
+    @JsonIgnore
+    @Override
+    public UUID getLeafId() {
+        return Command.super.getLeafId();
     }
 
     protected <T> void configureSpecificValidations(ValidationFlow<T> validationFlow) {}

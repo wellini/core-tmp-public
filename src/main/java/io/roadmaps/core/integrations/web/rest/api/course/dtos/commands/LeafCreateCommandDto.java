@@ -2,6 +2,7 @@ package io.roadmaps.core.integrations.web.rest.api.course.dtos.commands;
 
 import io.roadmaps.core.domain.model.leaf.enums.LeafType;
 import io.roadmaps.core.domain.services.course.operations.implementations.leafCreate.LeafCreateCommand;
+import io.roadmaps.core.integrations.web.rest.api.course.checks.LeafTitleCheck;
 import io.roadmaps.core.validation.Rules;
 import io.roadmaps.core.validation.ValidationFlow;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -45,8 +46,7 @@ public class LeafCreateCommandDto extends AbstractCommandDto implements LeafCrea
                     .strictlyRequire(Rules.notNull(), "Set module ID")
                     .and()
                 .forProperty("title", this::getTitle)
-                    .strictlyRequire(Rules.notBlank(), "Set title")
-                    .require(Rules.maxLength(256, Rules.LengthComparisonMode.TRIMMED), "Length should be less than 256")
+                    .addCheck(LeafTitleCheck.getInstance())
                     .and()
                 .forProperty("type", this::getType)
                     .strictlyRequire(Rules.notNull(), "Set type")

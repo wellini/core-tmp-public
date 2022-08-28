@@ -1,6 +1,7 @@
 package io.roadmaps.core.integrations.web.rest.api.course.dtos.commands;
 
 import io.roadmaps.core.domain.services.course.operations.implementations.moduleCreate.ModuleCreateCommand;
+import io.roadmaps.core.integrations.web.rest.api.course.checks.ModuleTitleCheck;
 import io.roadmaps.core.validation.Rules;
 import io.roadmaps.core.validation.ValidationFlow;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -34,8 +35,7 @@ public class ModuleCreateCommandDto extends AbstractCommandDto implements Module
                     .strictlyRequire(Rules.notNull(), "Set course ID")
                     .and()
                 .forProperty("title", this::getTitle)
-                    .strictlyRequire(Rules.notBlank(), "Set title")
-                    .require(Rules.maxLength(256, Rules.LengthComparisonMode.TRIMMED), "Length should be less than 256")
+                    .addCheck(ModuleTitleCheck.getInstance())
                     .and()
                 .forProperty("orderId", this::getOrderId)
                     .strictlyRequire(Rules.notNull(), "Set order")

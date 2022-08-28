@@ -80,7 +80,7 @@ public class CourseController {
     }
 
     @PostMapping("/api/courses/execute")
-    public AbstractCommandExecResponse execute(@RequestBody AbstractCommandDto command) {
+    public <T extends AbstractCommandDto> AbstractCommandExecResponse execute(@RequestBody T command) {
         command.validate();
         ExplainedExecResult execResult = operationsService.execute(command);
         return AbstractCommandExecResponse.create(execResult);

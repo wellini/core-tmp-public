@@ -6,6 +6,12 @@ import lombok.Getter;
 
 import java.util.Objects;
 
+@Schema(
+        oneOf = {
+                IdentifiedCommandExecResponse.class,
+                VoidCommandExecResponse.class
+        }
+)
 @Getter
 public abstract class AbstractCommandExecResponse {
 
