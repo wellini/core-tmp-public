@@ -25,6 +25,6 @@
     </entity>
 
     <converter
-            class="cc.roadmaps.core.service.integrations.jpa.converters.LeafTypeConverter"
+            class="cc.roadmaps.core.service.integrations.jpa.domain.converters.LeafTypeConverter"
             auto-apply="true" />
 </entity-mappings>

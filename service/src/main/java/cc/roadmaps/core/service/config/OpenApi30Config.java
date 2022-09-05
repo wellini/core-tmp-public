@@ -1,6 +1,6 @@
 package cc.roadmaps.core.service.config;
 
-import cc.roadmaps.core.service.integrations.web.rest.authorization.annotations.UserId;
+import cc.roadmaps.core.service.integrations.web.rest.api.auth.annotations.UserId;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.security.SecurityRequirement;

@@ -13,7 +13,7 @@ import cc.roadmaps.core.service.integrations.web.rest.api.course.dtos.responses.
 import cc.roadmaps.core.service.integrations.web.rest.api.course.dtos.responses.GetStudentResponse;
 import cc.roadmaps.core.service.integrations.web.rest.api.course.dtos.responses.commandExecution.AbstractCommandExecResponse;
 import cc.roadmaps.core.service.integrations.web.rest.api.module.dtos.GetModuleResponse;
-import cc.roadmaps.core.service.integrations.web.rest.authorization.exceptions.AuthorizationServiceException;
+import cc.roadmaps.core.service.integrations.web.rest.api.auth.exceptions.AuthorizationServiceException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

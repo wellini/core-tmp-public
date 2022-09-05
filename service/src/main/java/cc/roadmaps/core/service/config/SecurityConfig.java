@@ -1,13 +1,8 @@
 package cc.roadmaps.core.service.config;
 
-import cc.roadmaps.core.service.integrations.externalAuthProviders.model.AuthProviderRepository;
-import cc.roadmaps.core.service.integrations.externalAuthProviders.services.AuthProviderService;
-import cc.roadmaps.core.service.integrations.externalAuthProviders.services.AuthProviderServiceImpl;
-import cc.roadmaps.core.service.integrations.web.rest.authorization.filter.JwtFilter;
+import cc.roadmaps.core.service.integrations.web.rest.api.auth.filters.JwtFilter;
 import cc.roadmaps.core.service.integrations.web.rest.filters.CORSFilter;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -21,14 +16,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @NonNull
     private final JwtFilter jwtFilter;
-    @NonNull
+
     private final CORSFilter corsFilter;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         // @formatter:off
         http
                 .cors().disable()
@@ -52,12 +45,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/api/hrid/**"
         );
     }
-
-    @Bean
-    public AuthProviderService getAuthProviderService(
-            AuthProviderRepository repository
-    ) {
-        return new AuthProviderServiceImpl(repository);
-    }
-
 }

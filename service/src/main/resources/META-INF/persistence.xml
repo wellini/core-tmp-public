@@ -14,7 +14,7 @@
         <mapping-file>META-INF/mappings/LinkLeafMapping.xml</mapping-file>
         <mapping-file>META-INF/mappings/ModuleMapping.xml</mapping-file>
         <mapping-file>META-INF/mappings/TextLeafMapping.xml</mapping-file>
-        <mapping-file>META-INF/mappings/AuthProvider.xml</mapping-file>
+        <mapping-file>META-INF/mappings/AuthProviderMapping.xml</mapping-file>
         <properties>
             <property name="hibernate.dialect"
                       value="org.hibernate.dialect.PostgreSQL10Dialect" />

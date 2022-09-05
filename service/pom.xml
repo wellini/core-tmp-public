@@ -32,6 +32,11 @@
         </dependency>
         <dependency>
             <groupId>cc.roadmaps</groupId>
+            <artifactId>extauth</artifactId>
+            <version>1.0.0-RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>cc.roadmaps</groupId>
             <artifactId>validation</artifactId>
             <version>1.0.0</version>
         </dependency>

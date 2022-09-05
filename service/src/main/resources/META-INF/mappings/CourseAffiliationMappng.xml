@@ -22,7 +22,7 @@
     </entity>
 
     <converter
-            class="cc.roadmaps.core.service.integrations.jpa.converters.CourseAffiliationTypeConverter"
+            class="cc.roadmaps.core.service.integrations.jpa.domain.converters.CourseAffiliationTypeConverter"
             auto-apply="true" />
 
 </entity-mappings>

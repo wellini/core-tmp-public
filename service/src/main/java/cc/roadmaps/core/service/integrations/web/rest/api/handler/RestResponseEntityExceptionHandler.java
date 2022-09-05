@@ -7,6 +7,8 @@ import cc.roadmaps.core.domain.exceptions.UnauthorizedDomainException;
 import cc.roadmaps.core.service.exceptions.RoadmapsServiceException;
 import cc.roadmaps.core.service.integrations.web.rest.api.common.dtos.ExplainedErrorResponse;
 import cc.roadmaps.core.service.integrations.web.rest.api.common.dtos.ValidationErrorResponse;
+import cc.roadmaps.extauth.exceptions.AuthenticationNotSupportedExternalAuthenticationException;
+import cc.roadmaps.extauth.exceptions.ExternalAuthenticationException;
 import cc.roadmaps.validation.exceptions.ValidationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.AnnotationUtils;
@@ -56,6 +58,20 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     public ResponseEntity<ExplainedErrorResponse> handleValidationException(UnauthorizedDomainException ex, WebRequest request) {
         log.warn("Domain exception handled");
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExplainedErrorResponse.create(ex.getMessage()));
+    }
+
+    @ExceptionHandler(value = {ExternalAuthenticationException.class})
+    public ResponseEntity<ExplainedErrorResponse> handleRuntimeException(ExternalAuthenticationException ex, WebRequest request) {
+        log.error("RestResponseEntityExceptionHandler", ex);
+        ex.printStackTrace();
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExplainedErrorResponse.create("Internal server error :("));
+    }
+
+    @ExceptionHandler(value = {AuthenticationNotSupportedExternalAuthenticationException.class})
+    public ResponseEntity<ExplainedErrorResponse> handleRuntimeException(AuthenticationNotSupportedExternalAuthenticationException ex, WebRequest request) {
+        log.warn("RestResponseEntityExceptionHandler", ex);
+        ex.printStackTrace();
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ExplainedErrorResponse.create(ex.getMessage()));
     }
 
     @ExceptionHandler(value = {ValidationException.class})

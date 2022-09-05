@@ -71,6 +71,6 @@
     </embeddable>
 
     <converter
-            class="cc.roadmaps.core.service.integrations.jpa.converters.CourseCoverThemeConverter"
+            class="cc.roadmaps.core.service.integrations.jpa.domain.converters.CourseCoverThemeConverter"
             auto-apply="true" />
 </entity-mappings>
