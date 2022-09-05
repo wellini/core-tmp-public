@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.2"
+                 xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_2.xsd">
+
+    <entity class="cc.roadmaps.core.domain.model.course.Course" name="Course">
+        <table name="courses" />
+        <attributes>
+            <id name="id">
+                <column name="id" />
+            </id>
+
+            <many-to-one name="author" fetch="EAGER">
+                <join-column name="author_id" />
+            </many-to-one>
+
+            <!-- TODO: !!!EAGER FETCH!!! Make it lazy and make code that uses this field transactional before go to prod!-->
+            <one-to-many name="modules" target-entity="cc.roadmaps.core.domain.model.module.Module" fetch="EAGER" orphan-removal="true">
+                <order-column name="order_id" nullable="false" updatable="true" insertable="true" />
+                <join-column name="course_id" />
+                <cascade>
+                    <cascade-all/>
+                </cascade>
+            </one-to-many>
+
+            <embedded name="presentation" />
+            <embedded name="affiliationsRegistry">
+                <attribute-override name="indexByUsers">
+                    <column insertable="false" updatable="false"/>
+                </attribute-override>
+            </embedded>
+        </attributes>
+    </entity>
+
+    <embeddable class="cc.roadmaps.core.domain.model.course.presentation.Presentation">
+        <attributes>
+            <basic name="title">
+                <column name="title" />
+            </basic>
+            <basic name="coverUrl">
+                <column name="cover_url" />
+            </basic>
+            <basic name="coverTheme">
+                <column name="cover_theme" />
+                <enumerated>STRING</enumerated>
+            </basic>
+        </attributes>
+    </embeddable>
+
+    <embeddable class="cc.roadmaps.core.domain.model.course.affiliationsregistry.AffiliationsRegistry" access="PROPERTY">
+        <attributes>
+            <basic name="courseId">
+                <column name="id" />
+            </basic>
+
+            <!-- TODO: !!!EAGER FETCH!!! Make it lazy and make code that uses this field transactional before go to prod!-->
+            <one-to-many
+                    name="courseAffiliations"
+                    target-entity="cc.roadmaps.core.domain.model.courseAffiliation.CourseAffiliation"
+                    fetch="EAGER"
+                    access="PROPERTY"
+                    orphan-removal="true"
+            >
+                <join-column name="course_id" />
+                <cascade>
+                    <cascade-all/>
+                </cascade>
+            </one-to-many>
+        </attributes>
+    </embeddable>
+
+    <converter
+            class="cc.roadmaps.core.service.integrations.jpa.converters.CourseCoverThemeConverter"
+            auto-apply="true" />
+</entity-mappings>

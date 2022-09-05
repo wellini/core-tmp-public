@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.2"
+                 xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_2.xsd">
+
+    <entity class="cc.roadmaps.core.domain.model.leaf.TextLeaf" name="TextLeaf">
+        <secondary-table name="leaves_text" />
+        <discriminator-value>TEXT</discriminator-value>
+        <attributes>
+            <basic name="text">
+                <column name="text" table="leaves_text"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>
