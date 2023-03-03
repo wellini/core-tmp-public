@@ -23,7 +23,7 @@ public class GetLeafResponse {
     @Schema(required = true)
     private LeafType type;
 
-    @Schema(required = false)
+    @Schema(required = true)
     private Integer orderId;
 
     @Schema(required = true, oneOf = {TextLeafData.class, LinkLeafData.class})
@@ -72,6 +72,7 @@ public class GetLeafResponse {
         throw new IllegalArgumentException("No compatible response dto for passed leaf class type");
     }
 
+    // TODO: Remove
     public static <T extends Leaf> GetLeafResponse create(T leaf) {
         return create(leaf, null);
     }

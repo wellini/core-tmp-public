@@ -17,7 +17,7 @@ import java.util.UUID;
 @EqualsAndHashCode(callSuper = true)
 public class LeafUpdateTextCommandDto extends AbstractCommandDto implements LeafUpdateTextCommand {
 
-    @Schema(required = true, type = "string")
+    @Schema(required = true)
     private UUID leafId;
 
     @Schema(required = true)

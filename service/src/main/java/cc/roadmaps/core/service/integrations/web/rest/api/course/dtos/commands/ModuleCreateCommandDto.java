@@ -18,7 +18,7 @@ import java.util.UUID;
 @EqualsAndHashCode(callSuper = true)
 public class ModuleCreateCommandDto extends AbstractCommandDto implements ModuleCreateCommand {
 
-    @Schema(required = true, type = "string")
+    @Schema(required = true)
     private UUID courseId;
 
     @Schema(required = true)

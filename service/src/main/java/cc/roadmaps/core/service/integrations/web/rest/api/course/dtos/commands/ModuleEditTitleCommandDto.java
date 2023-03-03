@@ -18,7 +18,7 @@ import java.util.UUID;
 @EqualsAndHashCode(callSuper = true)
 public class ModuleEditTitleCommandDto extends AbstractCommandDto implements ModuleEditTitleCommand {
 
-    @Schema(required = true, type = "string")
+    @Schema(required = true)
     private UUID moduleId;
 
     @Schema(required = true)

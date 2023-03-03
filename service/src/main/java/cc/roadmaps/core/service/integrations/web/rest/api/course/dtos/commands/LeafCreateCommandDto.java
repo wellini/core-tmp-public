@@ -20,7 +20,7 @@ import java.util.UUID;
 @EqualsAndHashCode(callSuper = true)
 public class LeafCreateCommandDto extends AbstractCommandDto implements LeafCreateCommand {
 
-    @Schema(required = true, type = "string")
+    @Schema(required = true)
     private UUID moduleId;
 
     @Schema(required = true)

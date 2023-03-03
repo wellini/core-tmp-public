@@ -19,7 +19,7 @@ import java.util.UUID;
 @EqualsAndHashCode(callSuper = true)
 public class CourseEditPresentationCommandDto extends AbstractCommandDto implements CourseEditPresentationCommand {
 
-    @Schema(required = true, type = "string")
+    @Schema(required = true)
     private UUID courseId;
 
     @Schema(required = true)

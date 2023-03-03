@@ -15,7 +15,7 @@ public class GetModuleResponse {
     @Schema(required = true)
     private UUID id;
 
-    @Schema(required = false)
+    @Schema(required = true)
     private Integer orderId;
 
     @Schema(required = true)
@@ -35,6 +35,7 @@ public class GetModuleResponse {
         return new GetModuleResponse(module, orderId);
     }
 
+    // TODO: Remove
     public static GetModuleResponse create(Module module) {
         return new GetModuleResponse(module, null);
     }

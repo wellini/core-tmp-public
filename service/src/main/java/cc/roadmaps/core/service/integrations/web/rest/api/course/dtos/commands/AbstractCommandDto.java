@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import cc.roadmaps.core.domain.services.course.operations.commands.Command;
 import cc.roadmaps.core.domain.services.course.operations.commands.CommandType;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.util.UUID;
@@ -36,6 +37,7 @@ import java.util.UUID;
 @Data
 public abstract class AbstractCommandDto implements Validatable, Command {
 
+    @Schema(required = true)
     private CommandType commandType;
 
     @Override
@@ -46,25 +48,22 @@ public abstract class AbstractCommandDto implements Validatable, Command {
                 .forProperty("commandType", this::getCommandType)
                     .strictlyRequire(Rules.notNull(), "Set command type")
                     .and();
-        // @formatter:off
+        // @formatter:on
 
         configureSpecificValidations(validationFlow);
         validationFlow.ifHasErrorsThrow(ValidationException::new);
     }
 
-    @JsonIgnore
     @Override
     public UUID getCourseId() {
         return Command.super.getCourseId();
     }
 
-    @JsonIgnore
     @Override
     public UUID getModuleId() {
         return Command.super.getModuleId();
     }
 
-    @JsonIgnore
     @Override
     public UUID getLeafId() {
         return Command.super.getLeafId();

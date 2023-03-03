@@ -17,7 +17,7 @@ import java.util.UUID;
 @EqualsAndHashCode(callSuper = true)
 public class EnrollInCourseCommandDto extends AbstractCommandDto implements EnrollInCourseCommand {
 
-    @Schema(required = true, type = "string")
+    @Schema(required = true)
     private UUID courseId;
 
     @Override

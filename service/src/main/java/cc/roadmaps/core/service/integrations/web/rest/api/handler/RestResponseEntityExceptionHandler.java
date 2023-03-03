@@ -10,6 +10,7 @@ import cc.roadmaps.core.service.integrations.web.rest.api.common.dtos.Validation
 import cc.roadmaps.extauth.exceptions.AuthenticationNotSupportedExternalAuthenticationException;
 import cc.roadmaps.extauth.exceptions.ExternalAuthenticationException;
 import cc.roadmaps.validation.exceptions.ValidationException;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.http.HttpHeaders;
@@ -37,54 +38,62 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     }
 
     @ExceptionHandler(value = {DomainException.class})
-    public ResponseEntity<ExplainedErrorResponse> handleValidationException(DomainException ex, WebRequest request) {
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ExplainedErrorResponse handleValidationException(DomainException ex, WebRequest request) {
         log.warn("Domain exception handled");
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExplainedErrorResponse.create(ex.getMessage()));
+        return ExplainedErrorResponse.create(ex.getMessage());
     }
 
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(value = {EntityNotFoundDomainException.class})
-    public ResponseEntity<ExplainedErrorResponse> handleValidationException(EntityNotFoundDomainException ex, WebRequest request) {
+    public ExplainedErrorResponse handleValidationException(EntityNotFoundDomainException ex, WebRequest request) {
         log.warn("Domain exception handled");
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ExplainedErrorResponse.create(ex.getMessage()));
+        return ExplainedErrorResponse.create(ex.getMessage());
     }
 
+    @ResponseStatus(HttpStatus.FORBIDDEN)
     @ExceptionHandler(value = {NotEnoughPermissionsDomainException.class})
-    public ResponseEntity<ExplainedErrorResponse> handleValidationException(NotEnoughPermissionsDomainException ex, WebRequest request) {
+    public ExplainedErrorResponse handleValidationException(NotEnoughPermissionsDomainException ex, WebRequest request) {
         log.warn("Domain exception handled");
-        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExplainedErrorResponse.create(ex.getMessage()));
+        return ExplainedErrorResponse.create(ex.getMessage());
     }
 
+    @ResponseStatus(HttpStatus.FORBIDDEN)
     @ExceptionHandler(value = {UnauthorizedDomainException.class})
-    public ResponseEntity<ExplainedErrorResponse> handleValidationException(UnauthorizedDomainException ex, WebRequest request) {
+    public ExplainedErrorResponse handleValidationException(UnauthorizedDomainException ex, WebRequest request) {
         log.warn("Domain exception handled");
-        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExplainedErrorResponse.create(ex.getMessage()));
+        return ExplainedErrorResponse.create(ex.getMessage());
     }
 
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(value = {ExternalAuthenticationException.class})
-    public ResponseEntity<ExplainedErrorResponse> handleRuntimeException(ExternalAuthenticationException ex, WebRequest request) {
+    public ExplainedErrorResponse handleRuntimeException(ExternalAuthenticationException ex, WebRequest request) {
         log.error("RestResponseEntityExceptionHandler", ex);
         ex.printStackTrace();
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExplainedErrorResponse.create("Internal server error :("));
+        return ExplainedErrorResponse.create("Internal server error :(");
     }
 
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(value = {AuthenticationNotSupportedExternalAuthenticationException.class})
-    public ResponseEntity<ExplainedErrorResponse> handleRuntimeException(AuthenticationNotSupportedExternalAuthenticationException ex, WebRequest request) {
+    public ExplainedErrorResponse handleRuntimeException(AuthenticationNotSupportedExternalAuthenticationException ex, WebRequest request) {
         log.warn("RestResponseEntityExceptionHandler", ex);
         ex.printStackTrace();
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ExplainedErrorResponse.create(ex.getMessage()));
+        return ExplainedErrorResponse.create(ex.getMessage());
     }
 
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(value = {ValidationException.class})
-    public ResponseEntity<ValidationErrorResponse> handleValidationException(ValidationException ex, WebRequest request) {
+    public ValidationErrorResponse handleValidationException(ValidationException ex, WebRequest request) {
         log.warn("400, Validation exception handled");
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ValidationErrorResponse.create(ex.getReport()));
+        return ValidationErrorResponse.create(ex.getReport());
     }
 
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(value = {RuntimeException.class})
-    public ResponseEntity<ExplainedErrorResponse> handleRuntimeException(RuntimeException ex, WebRequest request) {
+    public ExplainedErrorResponse handleRuntimeException(RuntimeException ex, WebRequest request) {
         log.error("RestResponseEntityExceptionHandler", ex);
         ex.printStackTrace();
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExplainedErrorResponse.create("Internal server error :("));
+        return ExplainedErrorResponse.create("Internal server error :(");
     }
 
     @Override

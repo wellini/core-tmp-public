@@ -18,7 +18,7 @@ import java.util.UUID;
 @EqualsAndHashCode(callSuper = true)
 public class ModuleRemoveCommandDto extends AbstractCommandDto implements ModuleRemoveCommand {
 
-    @Schema(required = true, type = "string")
+    @Schema(required = true)
     @JsonProperty("moduleId")
     private UUID moduleId;
 

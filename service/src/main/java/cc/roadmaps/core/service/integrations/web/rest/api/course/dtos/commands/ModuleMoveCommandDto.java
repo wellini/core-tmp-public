@@ -18,7 +18,7 @@ import java.util.UUID;
 @EqualsAndHashCode(callSuper = true)
 public class ModuleMoveCommandDto extends AbstractCommandDto implements ModuleMoveCommand {
 
-    @Schema(required = true, type = "string")
+    @Schema(required = true)
     @JsonProperty("moduleId")
     private UUID moduleId;
 

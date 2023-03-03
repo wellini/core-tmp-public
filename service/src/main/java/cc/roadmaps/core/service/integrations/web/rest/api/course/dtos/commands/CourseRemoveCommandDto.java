@@ -17,7 +17,7 @@ import java.util.UUID;
 @EqualsAndHashCode(callSuper = true)
 public class CourseRemoveCommandDto extends AbstractCommandDto implements CourseRemoveCommand {
 
-    @Schema(required = true, type = "string")
+    @Schema(required = true)
     private UUID courseId;
 
     @Override
