@@ -16,6 +16,6 @@ public class AuthService {
     public String authenticateWithGoogle(String code) {
         GoogleAuthentication googleAuthentication = GoogleAuthentication.create(code);
         AuthProvider authProvider = authenticationManager.authenticate(googleAuthentication);
-        return jwtTokenService.generate(authProvider.getUserId());
+        return jwtTokenService.createToken(authProvider.getUserId());
     }
 }

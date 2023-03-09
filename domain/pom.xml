@@ -38,12 +38,6 @@
             <version>2.1-groovy-3.0</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>cc.roadmaps.core</groupId>
-            <artifactId>service</artifactId>
-            <version>1.0.0-RELEASE</version>
-            <scope>test</scope>
-        </dependency>
         <!-- /TEST-DEPENDENCIES -->
     </dependencies>
 

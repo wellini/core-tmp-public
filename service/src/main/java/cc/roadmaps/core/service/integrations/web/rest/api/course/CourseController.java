@@ -8,19 +8,14 @@ import cc.roadmaps.core.domain.services.CurrentUserIdProvider;
 import cc.roadmaps.core.domain.services.course.CourseService;
 import cc.roadmaps.core.domain.services.course.operations.ExplainedExecResult;
 import cc.roadmaps.core.domain.services.course.operations.OperationsService;
+import cc.roadmaps.core.service.integrations.web.rest.api.auth.exceptions.UnauthorizedException;
 import cc.roadmaps.core.service.integrations.web.rest.api.course.dtos.commands.AbstractCommandDto;
 import cc.roadmaps.core.service.integrations.web.rest.api.course.dtos.responses.GetCourseResponse;
 import cc.roadmaps.core.service.integrations.web.rest.api.course.dtos.responses.GetStudentResponse;
 import cc.roadmaps.core.service.integrations.web.rest.api.course.dtos.responses.commandExecution.AbstractCommandExecResponse;
 import cc.roadmaps.core.service.integrations.web.rest.api.module.dtos.GetModuleResponse;
-import cc.roadmaps.core.service.integrations.web.rest.api.auth.exceptions.AuthorizationServiceException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.webjars.NotFoundException;
 
 import java.util.ArrayList;
@@ -39,14 +34,14 @@ public class CourseController {
 
     @GetMapping("/api/courses/{id}")
     public GetCourseResponse getCourse(@PathVariable UUID id) {
-        UUID currentUserId = currentUserIdProvider.getCurrentUserId().orElseThrow(AuthorizationServiceException::new);
+        UUID currentUserId = currentUserIdProvider.getCurrentUserId().orElseThrow(UnauthorizedException::new);
         Course course = courseService.getCourse(id);
         return GetCourseResponse.create(course, course.getAffiliationType(currentUserId));
     }
 
     @GetMapping("/api/courses")
     public List<GetCourseResponse> getAllCourses(@RequestParam(required = false) CourseAffiliationType affiliationType) {
-        UUID currentUserId = currentUserIdProvider.getCurrentUserId().orElseThrow(AuthorizationServiceException::new);
+        UUID currentUserId = currentUserIdProvider.getCurrentUserId().orElseThrow(UnauthorizedException::new);
         if (Objects.isNull(affiliationType)) {
             return courseService.getAllCourses().stream()
                     .map(course -> GetCourseResponse.create(course, course.getAffiliationType(currentUserId)))

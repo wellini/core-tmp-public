@@ -18,12 +18,16 @@ springdoc:
 server:
   forward-headers-strategy: NATIVE
 
-jwt:
-  secret: 123123123123123123123123123123123123123123123123123123
-  tokenValidDays: 365
-
 google:
   clientId: ${GOOGLE_CLIENT_ID}
   clientSecret: ${GOOGLE_CLIENT_SECRET}
   redirectUri: ${GOOGLE_REDIRECT_URI}
   appName: ${GOOGLE_APP_NAME}
+
+authorization:
+  writeDefaultUserJWTOnStartup: true
+  tokenLifeTimeInDays: 60
+  generateKeyPair: true
+  keyPair:
+    public: ${JWT_PUBLIC_KEY}
+    private: ${JWT_PRIVATE_KEY}
