@@ -1,0 +1,41 @@
+version: '3.9'
+
+services:
+  core:
+    container_name: core
+    build: .
+    depends_on:
+      - db
+    env_file:
+      - .env.example
+    ports:
+      - "8080:8080"
+    networks:
+      - core-and-db
+    volumes:
+      - m2:/root/.m2/repository
+    logging:
+      driver: local
+
+  db:
+    container_name: db
+    image: docker.io/postgres:11-alpine
+    env_file:
+      - .env.example
+    ports:
+      - "49322:5432"
+    networks:
+      - core-and-db
+    volumes:
+      - pg_volume:/var/database/postgres/data
+    environment:
+      PGDATA: /var/database/postgres/data
+    logging:
+      driver: local
+
+networks:
+  core-and-db: {}
+
+volumes:
+  pg_volume: {}
+  m2: {}
